@@ -7,3 +7,205 @@ Tags: portfolio, respsonsive, developer
 Author: Fabian Lins
 Author URI: fabian-lins.com
 */
+
+@import 'reset';
+@import 'rem-reset';
+//@import 'header';\
+
+@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100&display=swap');
+
+/*Variables*/
+
+$white: white;
+$primary: hsl(254, 58%, 44%);
+$gray: hsl(225, 3%, 70%);
+$text: hsl(180, 0%, 45%);
+$light-blue: hsl(180, 25%, 97%);
+$dark-blue: hsl(225, 29%, 23%);
+
+/*general*/
+
+body {
+    font-family: 'Heebo';
+    background: linear-gradient(rgba(gray, 0) 70%, rgba(gray, .2) 100%);
+    background-attachment: fixed;
+}
+
+.h2 {
+    font-size: 7.2rem;
+    font-weight: 100;
+    color: $primary;
+    letter-spacing: -1px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+}
+
+.mt-header {
+    margin-top: 15rem;
+}
+
+.h-pl {
+    padding-left: 16rem;
+    padding-right: 1rem;
+    border-bottom: 5px solid $primary;
+    display: inline-block;
+}
+
+.text-box {
+    margin-top: 6rem;
+    color: $text;
+
+    p {
+        max-width: 730px;
+        font-size: 2.4rem;
+        margin-bottom: 2.4rem;
+        letter-spacing: .5px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.mark {
+    color: $primary;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+.prim-btn {
+    background: $primary;
+    color: $white;
+    text-decoration: none;
+
+    &.big {
+        font-size: 4.8rem;
+        padding: 1rem 5rem;
+        letter-spacing: 1px;
+    }
+}
+
+/*Header*/
+
+
+img {
+    max-width: 100%;
+}
+
+.header {
+    background: $dark-blue;
+
+    .banner {
+        position: relative;
+        height: 100%;
+
+        .name {
+            z-index: 3;
+            position: relative;
+            font-size: 7.2rem;
+            color: $light-blue;
+            margin-left: 13rem;
+            padding-top: 9rem;
+
+            .full-name {
+                font-weight: normal;
+                border-bottom: 1rem solid $primary;
+            }
+
+            .rest {
+                font-weight: 100;
+                letter-spacing: -1px;
+            }
+        }
+
+
+        .bg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .4;
+        }
+
+        .slogan {
+            z-index: 3;
+            position: relative;
+            margin-top: 3rem;
+            letter-spacing: 1px;
+            color: $light-blue;
+            margin-left: 13rem;
+            padding-bottom: 16rem;
+
+            .more {
+                font-weight: 100;
+            }
+        }
+
+        .icon-container {
+            bottom: 0%;
+            transform: translateY(50%);
+            position: absolute;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .icons {
+            display: inline-flex;
+            flex-wrap: wrap;
+            background: $gray;
+            justify-content: center;
+            transform: translateX(-50%);
+            position: relative;
+            left: 50%;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 5rem;
+
+            img {
+                max-width: 200px;
+            }
+        }
+    }
+}
+
+/*About Me*/
+.about-me {
+    margin-bottom: 20rem;
+    position: relative;
+
+    .left {
+        grid-column: col-start / span 6;
+
+        .buttons {
+            margin-top: 7rem;
+
+            .btn-2 {
+                margin-top: 7rem;
+            }
+        }
+    }
+
+    .right {
+        grid-column: col-start 7 / span 6;
+
+        .photo {
+            max-width: 500px;
+            margin-left: auto;
+
+            img {
+                border-radius: 50%;
+            }
+        }
+    }
+
+}
