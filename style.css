@@ -6,4 +6,244 @@ Description: A custom made theme
 Tags: portfolio, respsonsive, developer
 Author: Fabian Lins
 Author URI: fabian-lins.com
-*//*# sourceMappingURL=style.css.map */
+*/
+@import url("https://fonts.googleapis.com/css?family=Heebo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100&display=swap");
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+          text-size-adjust: none;
+}
+
+footer, header, nav, section, main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+/* this is the "root" in "root em." */
+html {
+  font-size: 62.5%;
+  /* Now 10px = 1rem! */
+}
+
+body {
+  font-size: 16px;
+  /* px fallback */
+  font-size: 1.6rem;
+  /* default font-size for document */
+  line-height: 1.5;
+  /* a nice line-height */
+}
+
+/* for everything else, rem = px/10 */
+footer {
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+
+/* you can safely nest rems, it's still 1rem = 10px */
+footer small {
+  font-size: 10px;
+  font-size: 1rem;
+}
+
+/*Variables*/
+/*general*/
+body {
+  font-family: "Heebo";
+  background: linear-gradient(rgba(128, 128, 128, 0) 70%, rgba(128, 128, 128, 0.2) 100%);
+  background-attachment: fixed;
+}
+
+.h2 {
+  font-size: 7.2rem;
+  font-weight: 100;
+  color: hsl(254deg, 58%, 44%);
+  letter-spacing: -1px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+}
+
+.mt-header {
+  margin-top: 15rem;
+}
+
+.h-pl {
+  padding-left: 16rem;
+  padding-right: 1rem;
+  border-bottom: 5px solid hsl(254deg, 58%, 44%);
+  display: inline-block;
+}
+
+.text-box {
+  margin-top: 6rem;
+  color: hsl(180deg, 0%, 45%);
+}
+.text-box p {
+  max-width: 730px;
+  font-size: 2.4rem;
+  margin-bottom: 2.4rem;
+  letter-spacing: 0.5px;
+}
+.text-box p:last-of-type {
+  margin-bottom: 0;
+}
+
+.mark {
+  color: hsl(254deg, 58%, 44%);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.prim-btn {
+  background: hsl(254deg, 58%, 44%);
+  color: white;
+  text-decoration: none;
+}
+.prim-btn.big {
+  font-size: 4.8rem;
+  padding: 1rem 5rem;
+  letter-spacing: 1px;
+}
+
+/*Header*/
+img {
+  max-width: 100%;
+}
+
+.header {
+  background: hsl(225deg, 29%, 23%);
+}
+.header .banner {
+  position: relative;
+  height: 100%;
+}
+.header .banner .name {
+  z-index: 3;
+  position: relative;
+  font-size: 7.2rem;
+  color: hsl(180deg, 25%, 97%);
+  margin-left: 13rem;
+  padding-top: 9rem;
+}
+.header .banner .name .full-name {
+  font-weight: normal;
+  border-bottom: 1rem solid hsl(254deg, 58%, 44%);
+}
+.header .banner .name .rest {
+  font-weight: 100;
+  letter-spacing: -1px;
+}
+.header .banner .bg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.4;
+}
+.header .banner .slogan {
+  z-index: 3;
+  position: relative;
+  margin-top: 3rem;
+  letter-spacing: 1px;
+  color: hsl(180deg, 25%, 97%);
+  margin-left: 13rem;
+  padding-bottom: 16rem;
+}
+.header .banner .slogan .more {
+  font-weight: 100;
+}
+.header .banner .icon-container {
+  bottom: 0%;
+  transform: translateY(50%);
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+.header .banner .icons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  background: hsl(225deg, 3%, 70%);
+  justify-content: center;
+  transform: translateX(-50%);
+  position: relative;
+  left: 50%;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 5rem;
+}
+.header .banner .icons img {
+  max-width: 200px;
+}
+
+/*About Me*/
+.about-me {
+  margin-bottom: 20rem;
+  position: relative;
+}
+.about-me .left {
+  grid-column: col-start/span 6;
+}
+.about-me .left .buttons {
+  margin-top: 7rem;
+}
+.about-me .left .buttons .btn-2 {
+  margin-top: 7rem;
+}
+.about-me .right {
+  grid-column: col-start 7/span 6;
+}
+.about-me .right .photo {
+  max-width: 500px;
+  margin-left: auto;
+}
+.about-me .right .photo img {
+  border-radius: 50%;
+}/*# sourceMappingURL=style.css.map */
