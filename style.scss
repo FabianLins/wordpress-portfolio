@@ -68,10 +68,11 @@ body {
         &:last-of-type {
             margin-bottom: 0;
         }
+
     }
 }
 
-.mark {
+em {
     color: $primary;
 }
 
@@ -207,5 +208,4 @@ img {
             }
         }
     }
-
 }
