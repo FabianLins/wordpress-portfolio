@@ -86,39 +86,45 @@ footer small {
 }
 
 /*Variables*/
-/*general*/
+/*Breakpoint*/
+/*General*/
+p {
+  line-height: 1.7;
+}
+
 body {
   font-family: "Heebo";
-  background: linear-gradient(rgba(128, 128, 128, 0) 70%, rgba(128, 128, 128, 0.2) 100%);
+  background: linear-gradient(rgba(176, 177, 181, 0) 70%, rgba(176, 177, 181, 0.25) 100%);
   background-attachment: fixed;
 }
 
 .h2 {
   font-size: 7.2rem;
   font-weight: 100;
-  color: hsl(254deg, 58%, 44%);
+  color: hsl(254, 58%, 44%);
   letter-spacing: -1px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: 3rem;
 }
 
 .mt-header {
-  margin-top: 15rem;
+  margin-top: 13rem;
 }
 
 .h-pl {
   padding-left: 16rem;
   padding-right: 1rem;
-  border-bottom: 5px solid hsl(254deg, 58%, 44%);
+  border-bottom: 5px solid hsl(254, 58%, 44%);
   display: inline-block;
 }
 
 .text-box {
   margin-top: 6rem;
-  color: hsl(180deg, 0%, 45%);
+  color: hsl(180, 0%, 45%);
 }
 .text-box p {
   max-width: 730px;
@@ -130,17 +136,18 @@ body {
   margin-bottom: 0;
 }
 
-.mark {
-  color: hsl(254deg, 58%, 44%);
+em {
+  color: hsl(254, 58%, 44%);
 }
 
 .container {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 4rem;
 }
 
 .prim-btn {
-  background: hsl(254deg, 58%, 44%);
+  background: hsl(254, 58%, 44%);
   color: white;
   text-decoration: none;
 }
@@ -156,7 +163,7 @@ img {
 }
 
 .header {
-  background: hsl(225deg, 29%, 23%);
+  background: hsl(225, 29%, 23%);
 }
 .header .banner {
   position: relative;
@@ -166,13 +173,14 @@ img {
   z-index: 3;
   position: relative;
   font-size: 7.2rem;
-  color: hsl(180deg, 25%, 97%);
+  color: hsl(180, 25%, 97%);
   margin-left: 13rem;
-  padding-top: 9rem;
+  padding-top: 4rem;
+  margin-right: 5rem;
 }
 .header .banner .name .full-name {
   font-weight: normal;
-  border-bottom: 1rem solid hsl(254deg, 58%, 44%);
+  border-bottom: 1rem solid hsl(254, 58%, 44%);
 }
 .header .banner .name .rest {
   font-weight: 100;
@@ -193,9 +201,9 @@ img {
   position: relative;
   margin-top: 3rem;
   letter-spacing: 1px;
-  color: hsl(180deg, 25%, 97%);
+  color: hsl(180, 25%, 97%);
   margin-left: 13rem;
-  padding-bottom: 16rem;
+  padding-bottom: 15rem;
 }
 .header .banner .slogan .more {
   font-weight: 100;
@@ -206,21 +214,55 @@ img {
   position: absolute;
   width: 100%;
   z-index: 2;
+  padding: 0 2rem;
 }
 .header .banner .icons {
   display: inline-flex;
   flex-wrap: wrap;
-  background: hsl(225deg, 3%, 70%);
+  background: rgba(176, 177, 181, 0.85);
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
+  filter: blur(0.001px);
   justify-content: center;
   transform: translateX(-50%);
   position: relative;
   left: 50%;
-  gap: 20px;
-  padding: 20px;
+  gap: 2rem;
+  padding: 2rem;
   border-radius: 5rem;
 }
 .header .banner .icons img {
-  max-width: 200px;
+  max-width: 150px;
+  width: 100%;
+}
+@media only screen and (max-width: 992px) {
+  .header .banner .icons img {
+    max-width: 110px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .header .banner .icons img {
+    max-width: 90px;
+  }
+}
+@media only screen and (max-width: 660px) {
+  .header .banner .icons {
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  .header .banner .icons img {
+    max-width: 80px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .header .banner .icons img {
+    max-width: 70px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .header .banner .icons img {
+    max-width: 70px;
+  }
 }
 
 /*About Me*/
@@ -246,4 +288,28 @@ img {
 }
 .about-me .right .photo img {
   border-radius: 50%;
+}
+@media only screen and (max-width: 1550px) {
+  .about-me .container {
+    padding: 0 7rem;
+  }
+  .about-me .h-pl {
+    padding-left: 10rem;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .about-me .container {
+    padding: 0 7rem;
+  }
+  .about-me .h-pl {
+    padding-left: 6rem;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .about-me .container {
+    padding: 0 7rem;
+  }
+  .about-me .h-pl {
+    padding-left: 6rem;
+  }
 }/*# sourceMappingURL=style.css.map */

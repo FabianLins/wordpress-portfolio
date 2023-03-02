@@ -26,13 +26,13 @@
             </div>
             <div class="icon-container">
                 <div class="icons">
-                    <img src="/wp-content/themes/custom-theme/svg/html.svg" alt="" />
-                    <img src="/wp-content/themes/custom-theme/svg/css.svg" alt="" />
-                    <img src="/wp-content/themes/custom-theme/svg/js.svg" alt="" />
-                    <img src="/wp-content/themes/custom-theme/svg/php.svg" alt="" />
-                    <img src="/wp-content/themes/custom-theme/svg/adobe-cc.svg" alt="" />
+                    <img src="<?php echo (wp_get_attachment_image_src(26)[0]); ?>" alt="" />
+                    <img src="<?php echo (wp_get_attachment_image_src(25)[0]); ?>" alt="" />
+                    <img src="<?php echo (wp_get_attachment_image_src(27)[0]); ?>" alt="" />
+                    <img src="<?php echo (wp_get_attachment_image_src(28)[0]); ?>" alt="" />
+                    <img src="<?php echo (wp_get_attachment_image_src(24)[0]); ?>" alt="" />
                 </div>
             </div>
-            <img src="/wp-content/themes/custom-theme/img/header.jpg" class="bg" alt="">
+            <img src="<?php header_image(); ?>" class="bg" alt="">
         </div>
     </header>

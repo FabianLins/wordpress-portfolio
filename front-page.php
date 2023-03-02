@@ -20,13 +20,13 @@ get_header();
                 </div>
                 <div class="buttons">
                     <div class="btn-1">
-                        <a href="#" class="prim-btn big">
-                            List of skills
+                        <a href="<?php echo (get_permalink('22')); ?>" class="prim-btn big">
+                            <?php echo get_the_title('22'); ?>
                         </a>
                     </div>
                     <div class="btn-2">
-                        <a href="#" class="prim-btn big">
-                            Projects
+                        <a href="<?php echo (get_permalink('18')); ?>" class="prim-btn big">
+                            <?php echo get_the_title('18'); ?>
                         </a>
                     </div>
                 </div>

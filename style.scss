@@ -24,11 +24,24 @@ $text: hsl(180, 0%, 45%);
 $light-blue: hsl(180, 25%, 97%);
 $dark-blue: hsl(225, 29%, 23%);
 
-/*general*/
+/*Breakpoint*/
+$xxl: 1550px;
+$xl: 1200px;
+$lg: 992px;
+$md: 768px;
+$sm-md: 660px;
+$sm: 576px;
+$xs: 500px;
+
+/*General*/
+
+p {
+    line-height: 1.7;
+}
 
 body {
     font-family: 'Heebo';
-    background: linear-gradient(rgba(gray, 0) 70%, rgba(gray, .2) 100%);
+    background: linear-gradient(rgba($gray, 0) 70%, rgba($gray, .25) 100%);
     background-attachment: fixed;
 }
 
@@ -42,10 +55,11 @@ body {
 .grid {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: 3rem;
 }
 
 .mt-header {
-    margin-top: 15rem;
+    margin-top: 13rem;
 }
 
 .h-pl {
@@ -79,6 +93,7 @@ em {
 .container {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 4rem;
 }
 
 
@@ -114,7 +129,8 @@ img {
             font-size: 7.2rem;
             color: $light-blue;
             margin-left: 13rem;
-            padding-top: 9rem;
+            padding-top: 4rem;
+            margin-right: 5rem;
 
             .full-name {
                 font-weight: normal;
@@ -145,7 +161,7 @@ img {
             letter-spacing: 1px;
             color: $light-blue;
             margin-left: 13rem;
-            padding-bottom: 16rem;
+            padding-bottom: 15rem;
 
             .more {
                 font-weight: 100;
@@ -158,22 +174,79 @@ img {
             position: absolute;
             width: 100%;
             z-index: 2;
+            padding: 0 2rem;
         }
 
         .icons {
             display: inline-flex;
             flex-wrap: wrap;
-            background: $gray;
+            background: rgba($gray, .85);
+            backdrop-filter: blur(1rem);
+            filter: blur(0.001px);
             justify-content: center;
             transform: translateX(-50%);
             position: relative;
             left: 50%;
-            gap: 20px;
-            padding: 20px;
+            gap: 2rem;
+            padding: 2rem;
             border-radius: 5rem;
 
             img {
-                max-width: 200px;
+                max-width: 150px;
+                width: 100%;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $lg) {
+        .banner {
+            .icons {
+                img {
+                    max-width: 110px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $md) {
+        .banner {
+            .icons {
+                img {
+                    max-width: 90px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $sm-md) {
+        .banner {
+            .icons {
+                gap: 1.5rem;
+                padding: 1.5rem;
+
+                img {
+                    max-width: 80px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $sm) {
+        .banner {
+            .icons {
+                img {
+                    max-width: 70px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $xs) {
+        .banner {
+            .icons {
+                img {
+                    max-width: 70px;
+                }
             }
         }
     }
@@ -206,6 +279,36 @@ img {
             img {
                 border-radius: 50%;
             }
+        }
+    }
+
+    @media only screen and (max-width: $xxl) {
+        .container {
+            padding: 0 7rem;
+        }
+
+        .h-pl {
+            padding-left: 10rem;
+        }
+    }
+
+    @media only screen and (max-width: $xl) {
+        .container {
+            padding: 0 7rem;
+        }
+
+        .h-pl {
+            padding-left: 6rem;
+        }
+    }
+
+    @media only screen and (max-width: $lg) {
+        .container {
+            padding: 0 7rem;
+        }
+
+        .h-pl {
+            padding-left: 6rem;
         }
     }
 }
