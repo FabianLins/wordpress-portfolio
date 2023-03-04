@@ -86,12 +86,55 @@ footer small {
 }
 
 /*Variables*/
-/*Breakpoint*/
-/*General*/
-p {
-  line-height: 1.7;
+/*Breakpoints*/
+/*Animations*/
+.animation-spin {
+  animation-name: spin;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animation-jump {
+  animation-name: jump;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  position: relative;
+}
+.animation-jump.animation-delay-1 {
+  animation-delay: 2s;
+}
+.animation-jump.animation-delay-2 {
+  animation-delay: 4s;
+}
+.animation-jump.animation-delay-3 {
+  animation-delay: 6s;
+}
+.animation-jump.animation-delay-4 {
+  animation-delay: 8s;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/*General*/
 body {
   font-family: "Heebo";
   background: linear-gradient(rgba(176, 177, 181, 0) 70%, rgba(176, 177, 181, 0.25) 100%);
@@ -103,6 +146,7 @@ body {
   font-weight: 100;
   color: hsl(254, 58%, 44%);
   letter-spacing: -1px;
+  line-height: 1;
 }
 
 .grid {
@@ -114,6 +158,31 @@ body {
 .mt-header {
   margin-top: 13rem;
 }
+@media only screen and (max-width: 992px) {
+  .mt-header {
+    margin-top: 10rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .mt-header {
+    margin-top: 9rem;
+  }
+}
+@media only screen and (max-width: 660px) {
+  .mt-header {
+    margin-top: 8rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .mt-header {
+    margin-top: 7rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .mt-header {
+    margin-top: 6rem;
+  }
+}
 
 .h-pl {
   padding-left: 16rem;
@@ -123,7 +192,7 @@ body {
 }
 
 .text-box {
-  margin-top: 6rem;
+  margin-top: 4rem;
   color: hsl(180, 0%, 45%);
 }
 .text-box p {
@@ -131,6 +200,7 @@ body {
   font-size: 2.4rem;
   margin-bottom: 2.4rem;
   letter-spacing: 0.5px;
+  line-height: 1.7;
 }
 .text-box p:last-of-type {
   margin-bottom: 0;
@@ -150,11 +220,40 @@ em {
   background: hsl(254, 58%, 44%);
   color: white;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  display: inline-block;
+}
+.prim-btn:hover::before, .prim-btn:focus::before {
+  transform: translateX(0);
+}
+.prim-btn::before {
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  background: hsl(208, 73%, 58%);
+  z-index: -1;
+  transform: translateX(-130%);
+  transition: transform 0.2s;
 }
 .prim-btn.big {
   font-size: 4.8rem;
   padding: 1rem 5rem;
   letter-spacing: 1px;
+}
+.prim-btn.big::before {
+  box-shadow: 0 0 5rem 3rem hsl(208, 73%, 58%);
+}
+@media only screen and (max-width: 992px) {
+  .prim-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /*Header*/
@@ -164,6 +263,7 @@ img {
 
 .header {
   background: hsl(225, 29%, 23%);
+  word-break: break-word;
 }
 .header .banner {
   position: relative;
@@ -177,6 +277,7 @@ img {
   margin-left: 13rem;
   padding-top: 4rem;
   margin-right: 5rem;
+  line-height: 1.8;
 }
 .header .banner .name .full-name {
   font-weight: normal;
@@ -199,11 +300,12 @@ img {
 .header .banner .slogan {
   z-index: 3;
   position: relative;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   letter-spacing: 1px;
   color: hsl(180, 25%, 97%);
   margin-left: 13rem;
   padding-bottom: 15rem;
+  margin-right: 5rem;
 }
 .header .banner .slogan .more {
   font-weight: 100;
@@ -236,13 +338,32 @@ img {
   width: 100%;
 }
 @media only screen and (max-width: 992px) {
+  .header .banner .name {
+    font-size: 6.2rem;
+    margin-left: 5rem;
+    padding-top: 3rem;
+  }
   .header .banner .icons img {
     max-width: 110px;
   }
+  .header .banner .slogan {
+    margin-left: 5rem;
+    padding-bottom: 12rem;
+    margin-top: 1rem;
+  }
 }
 @media only screen and (max-width: 768px) {
+  .header .banner .name {
+    font-size: 5.2rem;
+    margin-left: 5rem;
+  }
   .header .banner .icons img {
     max-width: 90px;
+  }
+  .header .banner .slogan {
+    margin-left: 5rem;
+    padding-bottom: 10rem;
+    margin-top: 0.5rem;
   }
 }
 @media only screen and (max-width: 660px) {
@@ -253,25 +374,67 @@ img {
   .header .banner .icons img {
     max-width: 80px;
   }
+  .header .banner .slogan {
+    padding-bottom: 9rem;
+  }
 }
 @media only screen and (max-width: 576px) {
+  .header .banner .name {
+    font-size: 4.2rem;
+    margin-left: 4rem;
+  }
+  .header .banner .slogan {
+    margin-top: 0;
+    margin-left: 4rem;
+    padding-bottom: 7rem;
+  }
   .header .banner .icons img {
     max-width: 70px;
   }
 }
 @media only screen and (max-width: 500px) {
+  .header .banner .name {
+    font-size: 3.7rem;
+    margin-left: 3rem;
+  }
+  .header .banner .slogan {
+    margin-left: 3rem;
+    padding-bottom: 7rem;
+  }
   .header .banner .icons img {
-    max-width: 70px;
+    max-width: 50px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .header .banner .name {
+    font-size: 3.7rem;
+    margin-left: 3rem;
+  }
+  .header .banner .slogan {
+    margin-left: 3rem;
+    padding-bottom: 5rem;
+  }
+  .header .banner .icons {
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .header .banner .icons img {
+    max-width: 40px;
   }
 }
 
 /*About Me*/
 .about-me {
-  margin-bottom: 20rem;
+  padding-bottom: 10rem;
   position: relative;
+  overflow: hidden;
 }
 .about-me .left {
+  z-index: 2;
   grid-column: col-start/span 6;
+}
+.about-me .left .photo {
+  display: none;
 }
 .about-me .left .buttons {
   margin-top: 7rem;
@@ -280,14 +443,22 @@ img {
   margin-top: 7rem;
 }
 .about-me .right {
+  z-index: 2;
   grid-column: col-start 7/span 6;
 }
-.about-me .right .photo {
+.about-me .photo {
   max-width: 500px;
   margin-left: auto;
 }
-.about-me .right .photo img {
+.about-me .photo img {
   border-radius: 50%;
+}
+.about-me .wheel-icon {
+  position: absolute;
+  margin-top: -45rem;
+  width: 800px;
+  margin-left: -7rem;
+  opacity: 0.025;
 }
 @media only screen and (max-width: 1550px) {
   .about-me .container {
@@ -298,18 +469,59 @@ img {
   }
 }
 @media only screen and (max-width: 1200px) {
-  .about-me .container {
-    padding: 0 7rem;
-  }
   .about-me .h-pl {
     padding-left: 6rem;
   }
 }
 @media only screen and (max-width: 992px) {
-  .about-me .container {
-    padding: 0 7rem;
-  }
   .about-me .h-pl {
-    padding-left: 6rem;
+    padding-left: 5rem;
+  }
+  .about-me .container {
+    padding: 0 6rem;
+  }
+  .about-me .container .grid {
+    gap: 0;
+  }
+  .about-me .container .grid .left {
+    grid-column: col-start/span 12;
+  }
+  .about-me .container .grid .left .text-box {
+    margin-top: 3rem;
+  }
+  .about-me .container .grid .left .photo {
+    display: block;
+    margin: 4rem auto;
+  }
+  .about-me .container .grid .left .buttons {
+    margin-top: 0;
+  }
+  .about-me .container .grid .right {
+    grid-column: col-start/span 12;
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .about-me .h-pl {
+    padding-left: 4rem;
+  }
+  .about-me .container {
+    padding: 0 5rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .about-me .h-pl {
+    padding-left: 3rem;
+  }
+  .about-me .container {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .about-me .h-pl {
+    padding-left: 2rem;
+  }
+  .about-me .container {
+    padding: 0 3rem;
   }
 }/*# sourceMappingURL=style.css.map */

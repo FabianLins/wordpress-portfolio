@@ -18,6 +18,9 @@ get_header();
                     }
                     ?>
                 </div>
+                <div class="photo">
+                    <img src="/wp-content/themes/custom-theme/img/lucico.jpg" alt="">
+                </div>
                 <div class="buttons">
                     <div class="btn-1">
                         <a href="<?php echo (get_permalink('22')); ?>" class="prim-btn big">
@@ -41,7 +44,7 @@ get_header();
 
 
     </div>
-    <div class="bot-fade"></div>
+    <img class="wheel-icon animation-spin " src="<?php echo (wp_get_attachment_image_src(35)[0]); ?>" alt="" />
 </section>
 <?php
 get_footer();

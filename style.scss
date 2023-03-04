@@ -23,8 +23,9 @@ $gray: hsl(225, 3%, 70%);
 $text: hsl(180, 0%, 45%);
 $light-blue: hsl(180, 25%, 97%);
 $dark-blue: hsl(225, 29%, 23%);
+$hover: hsl(208, 73%, 58%);
+/*Breakpoints*/
 
-/*Breakpoint*/
 $xxl: 1550px;
 $xl: 1200px;
 $lg: 992px;
@@ -32,13 +33,58 @@ $md: 768px;
 $sm-md: 660px;
 $sm: 576px;
 $xs: 500px;
+$xxs: 400px;
 
-/*General*/
 
-p {
-    line-height: 1.7;
+/*Animations*/
+.animation-spin {
+    animation-name: spin;
+    animation-duration: 25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animation-jump {
+    animation-name: jump;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    position: relative;
+
+    &.animation-delay {
+        @for $i from 1 through 4 {
+            &-#{$i} {
+                animation-delay: #{$i * 2}s;
+            }
+        }
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-1rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/*General*/
 body {
     font-family: 'Heebo';
     background: linear-gradient(rgba($gray, 0) 70%, rgba($gray, .25) 100%);
@@ -50,6 +96,7 @@ body {
     font-weight: 100;
     color: $primary;
     letter-spacing: -1px;
+    line-height: 1;
 }
 
 .grid {
@@ -60,6 +107,31 @@ body {
 
 .mt-header {
     margin-top: 13rem;
+
+    @media only screen and (max-width: $lg) {
+        margin-top: 10rem;
+
+    }
+
+    @media only screen and (max-width: $md) {
+        margin-top: 9rem;
+
+    }
+
+    @media only screen and (max-width: $sm-md) {
+        margin-top: 8rem;
+
+    }
+
+    @media only screen and (max-width: $sm) {
+        margin-top: 7rem;
+
+    }
+
+    @media only screen and (max-width: $xs) {
+        margin-top: 6rem;
+
+    }
 }
 
 .h-pl {
@@ -70,7 +142,7 @@ body {
 }
 
 .text-box {
-    margin-top: 6rem;
+    margin-top: 4rem;
     color: $text;
 
     p {
@@ -78,6 +150,7 @@ body {
         font-size: 2.4rem;
         margin-bottom: 2.4rem;
         letter-spacing: .5px;
+        line-height: 1.7;
 
         &:last-of-type {
             margin-bottom: 0;
@@ -101,11 +174,50 @@ em {
     background: $primary;
     color: $white;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    display: inline-block;
+
+    &:hover,
+    &:focus {
+
+        &::before {
+            transform: translateX(0);
+        }
+    }
+
+    &::before {
+        content: '';
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        background: $hover;
+        z-index: -1;
+        transform: translateX(-130%);
+        transition: transform 0.2s;
+    }
 
     &.big {
         font-size: 4.8rem;
         padding: 1rem 5rem;
         letter-spacing: 1px;
+
+        &::before {
+            box-shadow: 0 0 5rem 3rem $hover;
+        }
+
+        @media only screen and (max-width: $md) {
+            //font-size: 3rem;
+        }
+    }
+
+    @media only screen and (max-width: $lg) {
+        display: block;
+        width: 100%;
+        text-align: center;
     }
 }
 
@@ -118,6 +230,7 @@ img {
 
 .header {
     background: $dark-blue;
+    word-break: break-word;
 
     .banner {
         position: relative;
@@ -131,6 +244,7 @@ img {
             margin-left: 13rem;
             padding-top: 4rem;
             margin-right: 5rem;
+            line-height: 1.8;
 
             .full-name {
                 font-weight: normal;
@@ -157,11 +271,12 @@ img {
         .slogan {
             z-index: 3;
             position: relative;
-            margin-top: 3rem;
+            margin-top: 1.5rem;
             letter-spacing: 1px;
             color: $light-blue;
             margin-left: 13rem;
             padding-bottom: 15rem;
+            margin-right: 5rem;
 
             .more {
                 font-weight: 100;
@@ -200,26 +315,50 @@ img {
 
     @media only screen and (max-width: $lg) {
         .banner {
+            .name {
+                font-size: 6.2rem;
+                margin-left: 5rem;
+                padding-top: 3rem;
+            }
+
             .icons {
                 img {
                     max-width: 110px;
                 }
+            }
+
+            .slogan {
+                margin-left: 5rem;
+                padding-bottom: 12rem;
+                margin-top: 1rem;
             }
         }
     }
 
     @media only screen and (max-width: $md) {
         .banner {
+            .name {
+                font-size: 5.2rem;
+                margin-left: 5rem;
+            }
+
             .icons {
                 img {
                     max-width: 90px;
                 }
+            }
+
+            .slogan {
+                margin-left: 5rem;
+                padding-bottom: 10rem;
+                margin-top: .5rem;
             }
         }
     }
 
     @media only screen and (max-width: $sm-md) {
         .banner {
+
             .icons {
                 gap: 1.5rem;
                 padding: 1.5rem;
@@ -228,11 +367,26 @@ img {
                     max-width: 80px;
                 }
             }
+
+            .slogan {
+                padding-bottom: 9rem;
+            }
         }
     }
 
     @media only screen and (max-width: $sm) {
         .banner {
+            .name {
+                font-size: 4.2rem;
+                margin-left: 4rem;
+            }
+
+            .slogan {
+                margin-top: 0;
+                margin-left: 4rem;
+                padding-bottom: 7rem;
+            }
+
             .icons {
                 img {
                     max-width: 70px;
@@ -243,9 +397,45 @@ img {
 
     @media only screen and (max-width: $xs) {
         .banner {
+            .name {
+                font-size: 3.7rem;
+                margin-left: 3rem;
+            }
+
+            .slogan {
+
+                margin-left: 3rem;
+                padding-bottom: 7rem;
+            }
+
             .icons {
                 img {
-                    max-width: 70px;
+                    max-width: 50px;
+                }
+            }
+        }
+    }
+
+
+    @media only screen and (max-width: $xxs) {
+        .banner {
+            .name {
+                font-size: 3.7rem;
+                margin-left: 3rem;
+            }
+
+            .slogan {
+
+                margin-left: 3rem;
+                padding-bottom: 5rem;
+            }
+
+            .icons {
+                gap: 1rem;
+                padding: 1rem;
+
+                img {
+                    max-width: 40px;
                 }
             }
         }
@@ -254,11 +444,17 @@ img {
 
 /*About Me*/
 .about-me {
-    margin-bottom: 20rem;
+    padding-bottom: 10rem;
     position: relative;
+    overflow: hidden;
 
     .left {
+        z-index: 2;
         grid-column: col-start / span 6;
+
+        .photo {
+            display: none;
+        }
 
         .buttons {
             margin-top: 7rem;
@@ -270,16 +466,26 @@ img {
     }
 
     .right {
+        z-index: 2;
         grid-column: col-start 7 / span 6;
 
-        .photo {
-            max-width: 500px;
-            margin-left: auto;
+    }
 
-            img {
-                border-radius: 50%;
-            }
+    .photo {
+        max-width: 500px;
+        margin-left: auto;
+
+        img {
+            border-radius: 50%;
         }
+    }
+
+    .wheel-icon {
+        position: absolute;
+        margin-top: -45rem;
+        width: 800px;
+        margin-left: -7rem;
+        opacity: .025;
     }
 
     @media only screen and (max-width: $xxl) {
@@ -293,9 +499,6 @@ img {
     }
 
     @media only screen and (max-width: $xl) {
-        .container {
-            padding: 0 7rem;
-        }
 
         .h-pl {
             padding-left: 6rem;
@@ -303,12 +506,68 @@ img {
     }
 
     @media only screen and (max-width: $lg) {
-        .container {
-            padding: 0 7rem;
+        .h-pl {
+            padding-left: 5rem;
         }
 
+        .container {
+            padding: 0 6rem;
+
+            .grid {
+                gap: 0;
+
+                .left {
+                    grid-column: col-start/span 12;
+
+                    .text-box {
+                        margin-top: 3rem;
+                    }
+
+                    .photo {
+                        display: block;
+                        margin: 4rem auto;
+                    }
+
+                    .buttons {
+                        margin-top: 0;
+                    }
+                }
+
+                .right {
+                    grid-column: col-start/span 12;
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $md) {
         .h-pl {
-            padding-left: 6rem;
+            padding-left: 4rem;
+        }
+
+        .container {
+            padding: 0 5rem;
+        }
+    }
+
+    @media only screen and (max-width: $sm) {
+        .h-pl {
+            padding-left: 3rem;
+        }
+
+        .container {
+            padding: 0 4rem;
+        }
+    }
+
+    @media only screen and (max-width: $xs) {
+        .h-pl {
+            padding-left: 2rem;
+        }
+
+        .container {
+            padding: 0 3rem;
         }
     }
 }
