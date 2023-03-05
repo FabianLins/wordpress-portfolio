@@ -84,6 +84,96 @@ $xxs: 400px;
     }
 }
 
+.animation-slide-in {
+    &-left {
+        animation-name: slide-in-left;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        position: relative;
+    }
+
+    &-right {
+        animation-name: slide-in-right;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        position: relative;
+
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(50vw) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(0) rotate(0);
+    }
+}
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(-50vw);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animation-blur-in {
+    animation-name: blur-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes blur-in {
+    0% {
+        filter: blur(1rem);
+    }
+
+    100% {
+        filter: blur(0);
+    }
+}
+
+.animation-fade-blur-in {
+    animation-name: fade-blur-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fade-blur-in {
+    0% {
+        opacity: 0;
+        filter: blur(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.animation-zoom-in {
+    animation-name: zoom-in;
+    animation-duration: .6s;
+    animation-timing-function: ease-out;
+    position: relative;
+}
+
+@keyframes zoom-in {
+    0% {
+        opacity: .4;
+        transform: scale(.5) translateX(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateX(-50%);
+    }
+}
+
 /*General*/
 body {
     font-family: 'Heebo';
@@ -549,6 +639,10 @@ img {
         .container {
             padding: 0 5rem;
         }
+
+        .wheel-icon {
+            margin-top: -55rem;
+        }
     }
 
     @media only screen and (max-width: $sm) {
@@ -559,6 +653,10 @@ img {
         .container {
             padding: 0 4rem;
         }
+
+        .wheel-icon {
+            margin-top: -35rem;
+        }
     }
 
     @media only screen and (max-width: $xs) {
@@ -568,6 +666,10 @@ img {
 
         .container {
             padding: 0 3rem;
+        }
+
+        .wheel-icon {
+            margin-top: -25rem;
         }
     }
 }

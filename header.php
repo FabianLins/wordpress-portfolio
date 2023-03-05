@@ -14,18 +14,18 @@
 <body>
     <header class="header">
         <div class="banner">
-            <div class="name">
+            <div class="name animation-blur-in">
                 <span class="full-name">Fabian Lins</span>
                 <span class="rest">
                     - <span class="title">Full Stack Development</span>
                 </span>
             </div>
-            <div class="slogan">
+            <div class="slogan animation-fade-blur-in">
                 <span class="langs">HTML, (S)CSS, JavaScript, PHP, Media Design </span><span class="more">and much
                     more!</span>
             </div>
             <div class="icon-container">
-                <div class="icons">
+                <div class="icons animation-zoom-in">
                     <img class="animation-jump" src="<?php echo (wp_get_attachment_image_src(26)[0]); ?>" alt="" />
                     <img class="animation-jump animation-delay-1"
                         src="<?php echo (wp_get_attachment_image_src(25)[0]); ?>" alt="" />

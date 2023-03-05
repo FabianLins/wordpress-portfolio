@@ -2,12 +2,12 @@
 get_header();
 ?>
 <section class="about-me">
-    <h2 class="h2 mt-header h-pl">
+    <h2 class="h2 mt-header h-pl animation-slide-in-right">
         <?php the_title() ?>
     </h2>
     <div class="container">
         <div class="grid">
-            <div class="left">
+            <div class="left animation-slide-in-right">
                 <div class="text-box">
                     <?php
                     if (have_posts()) {
@@ -35,7 +35,7 @@ get_header();
                 </div>
             </div>
             <div class="right">
-                <div class="photo">
+                <div class="photo animation-slide-in-left animation-spin-in">
                     <img src="/wp-content/themes/custom-theme/img/lucico.jpg" alt="">
                 </div>
             </div>
@@ -44,7 +44,7 @@ get_header();
 
 
     </div>
-    <img class="wheel-icon animation-spin " src="<?php echo (wp_get_attachment_image_src(35)[0]); ?>" alt="" />
+    <img class="wheel-icon animation-spin" src="<?php echo (wp_get_attachment_image_src(35)[0]); ?>" alt="" />
 </section>
 <?php
 get_footer();
