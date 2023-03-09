@@ -18,7 +18,9 @@ Author URI: fabian-lins.com
 /*Variables*/
 
 $white: white;
-$primary: hsl(254, 58%, 44%);
+$prim: hsl(255, 60%, 45%);
+$sec: hsl(275, 100%, 50%);
+$sec-light: hsl(250, 100%, 80%);
 $gray: hsl(225, 3%, 70%);
 $text: hsl(180, 0%, 45%);
 $light-blue: hsl(180, 25%, 97%);
@@ -37,6 +39,31 @@ $xxs: 400px;
 
 
 /*Animations*/
+.animation-button-blink {
+    animation-name: button-blink;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+    &.animation-delay {
+        animation-delay: 2s;
+    }
+}
+
+@keyframes button-blink {
+    0% {
+        box-shadow: 0 0 0 0 $sec-light;
+    }
+
+    50% {
+        box-shadow: 0 0 3rem .3rem $sec-light;
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 $sec-light;
+    }
+}
+
 .animation-spin {
     animation-name: spin;
     animation-duration: 25s;
@@ -45,11 +72,11 @@ $xxs: 400px;
 }
 
 @keyframes spin {
-    from {
+    0% {
         transform: rotate(0deg);
     }
 
-    to {
+    100% {
         transform: rotate(360deg);
     }
 }
@@ -70,13 +97,26 @@ $xxs: 400px;
     }
 }
 
+:root {
+    --jump-50-percent: -1rem;
+
+    @media only screen and (max-width: $lg) {
+        --jump-50-percent: -.5rem;
+    }
+
+    @media only screen and (max-width: $md) {
+        --jump-50-percent: -.2rem;
+    }
+}
+
+
 @keyframes jump {
     0% {
         transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-1rem);
+        transform: translateY(var(--jump-50-percent));
     }
 
     100% {
@@ -87,14 +127,14 @@ $xxs: 400px;
 .animation-slide-in {
     &-left {
         animation-name: slide-in-left;
-        animation-duration: 1s;
+        animation-duration: .8s;
         animation-timing-function: ease-out;
         position: relative;
     }
 
     &-right {
         animation-name: slide-in-right;
-        animation-duration: 1s;
+        animation-duration: .65s;
         animation-timing-function: ease-out;
         position: relative;
 
@@ -125,15 +165,25 @@ $xxs: 400px;
     animation-name: blur-in;
     animation-duration: 1s;
     animation-timing-function: ease-out;
+
+    @media only screen and (min-width: ($lg + 1px)) {
+        opacity: 1 !important;
+    }
+
+    @media only screen and (max-width: $lg) {
+        filter: blur(0) !important;
+    }
 }
 
 @keyframes blur-in {
     0% {
         filter: blur(1rem);
+        opacity: 0;
     }
 
     100% {
         filter: blur(0);
+        opacity: 1;
     }
 }
 
@@ -141,6 +191,10 @@ $xxs: 400px;
     animation-name: fade-blur-in;
     animation-duration: 1s;
     animation-timing-function: ease-out;
+
+    @media only screen and (max-width: $lg) {
+        filter: blur(0) !important;
+    }
 }
 
 @keyframes fade-blur-in {
@@ -184,7 +238,7 @@ body {
 .h2 {
     font-size: 7.2rem;
     font-weight: 100;
-    color: $primary;
+    color: $prim;
     letter-spacing: -1px;
     line-height: 1;
 }
@@ -227,7 +281,7 @@ body {
 .h-pl {
     padding-left: 16rem;
     padding-right: 1rem;
-    border-bottom: 5px solid $primary;
+    border-bottom: 5px solid $prim;
     display: inline-block;
 }
 
@@ -250,7 +304,7 @@ body {
 }
 
 em {
-    color: $primary;
+    color: $prim;
 }
 
 .container {
@@ -261,7 +315,8 @@ em {
 
 
 .prim-btn {
-    background: $primary;
+    background: linear-gradient(90deg, $prim, $sec);
+    border: 2px solid $prim;
     color: $white;
     text-decoration: none;
     position: relative;
@@ -294,6 +349,7 @@ em {
         font-size: 4.8rem;
         padding: 1rem 5rem;
         letter-spacing: 1px;
+        border: 2px solid $prim;
 
         &::before {
             box-shadow: 0 0 5rem 3rem $hover;
@@ -338,7 +394,7 @@ img {
 
             .full-name {
                 font-weight: normal;
-                border-bottom: 1rem solid $primary;
+                border-bottom: 1rem solid $prim;
             }
 
             .rest {
@@ -387,7 +443,7 @@ img {
             flex-wrap: wrap;
             background: rgba($gray, .85);
             backdrop-filter: blur(1rem);
-            filter: blur(0.001px);
+            filter: blur(0);
             justify-content: center;
             transform: translateX(-50%);
             position: relative;
@@ -549,8 +605,27 @@ img {
         .buttons {
             margin-top: 7rem;
 
+            .btn-1,
+            .btn-2 {
+                display: inline-flex;
+                transition: 0.1s ease-in;
+
+                &:hover {
+                    box-shadow: 0 0 2rem .3rem rgba($hover, .5);
+
+                    .prim-btn {
+                        box-shadow: none !important;
+                    }
+                }
+
+                @media only screen and (max-width: $lg) {
+                    display: flex;
+                }
+            }
+
             .btn-2 {
                 margin-top: 7rem;
+
             }
         }
     }
