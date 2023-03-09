@@ -101,12 +101,15 @@ footer small {
 @keyframes button-blink {
   0% {
     box-shadow: 0 0 0 0 hsl(250, 100%, 80%);
+    opacity: 1;
   }
   50% {
     box-shadow: 0 0 3rem 0.3rem hsl(250, 100%, 80%);
+    opacity: 0.85;
   }
   100% {
     box-shadow: 0 0 0 0 hsl(250, 100%, 80%);
+    opacity: 1;
   }
 }
 .animation-spin {
@@ -364,7 +367,7 @@ em {
   bottom: 0;
   right: 0;
   position: absolute;
-  background: hsl(208, 73%, 58%);
+  background: hsl(210, 75%, 60%);
   z-index: -1;
   transform: translateX(-130%);
   transition: transform 0.2s;
@@ -376,7 +379,7 @@ em {
   border: 2px solid hsl(255, 60%, 45%);
 }
 .prim-btn.big::before {
-  box-shadow: 0 0 5rem 3rem hsl(208, 73%, 58%);
+  box-shadow: 0 0 5rem 3rem hsl(210, 75%, 60%);
 }
 @media only screen and (max-width: 992px) {
   .prim-btn {
@@ -392,7 +395,7 @@ img {
 }
 
 .header {
-  background: hsl(225, 29%, 23%);
+  background: hsl(225, 30%, 25%);
   word-break: break-word;
 }
 .header .banner {
@@ -567,19 +570,35 @@ img {
   display: none;
 }
 .about-me .left .buttons {
-  margin-top: 7rem;
+  margin-top: 4.5rem;
 }
 .about-me .left .buttons .btn-1,
 .about-me .left .buttons .btn-2 {
   display: inline-flex;
-  transition: 0.1s ease-in;
+  transition: 0.2s ease-in;
 }
-.about-me .left .buttons .btn-1:hover,
-.about-me .left .buttons .btn-2:hover {
-  box-shadow: 0 0 2rem 0.3rem rgba(70, 153, 226, 0.5);
+.about-me .left .buttons .btn-1:hover, .about-me .left .buttons .btn-1:focus,
+.about-me .left .buttons .btn-2:hover,
+.about-me .left .buttons .btn-2:focus {
+  animation-name: button-blink-hover;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
-.about-me .left .buttons .btn-1:hover .prim-btn,
-.about-me .left .buttons .btn-2:hover .prim-btn {
+@keyframes button-blink-hover {
+  0% {
+    box-shadow: 0 0 2rem 0 hsl(210, 75%, 60%);
+  }
+  50% {
+    box-shadow: 0 0 3rem 0.3rem hsl(210, 75%, 60%);
+  }
+  100% {
+    box-shadow: 0 0 2rem 0 hsl(210, 75%, 60%);
+  }
+}
+.about-me .left .buttons .btn-1:hover .prim-btn, .about-me .left .buttons .btn-1:focus .prim-btn,
+.about-me .left .buttons .btn-2:hover .prim-btn,
+.about-me .left .buttons .btn-2:focus .prim-btn {
   box-shadow: none !important;
 }
 @media only screen and (max-width: 992px) {
@@ -589,7 +608,7 @@ img {
   }
 }
 .about-me .left .buttons .btn-2 {
-  margin-top: 7rem;
+  margin-top: 4.5rem;
 }
 .about-me .right {
   z-index: 2;

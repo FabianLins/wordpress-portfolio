@@ -24,8 +24,8 @@ $sec-light: hsl(250, 100%, 80%);
 $gray: hsl(225, 3%, 70%);
 $text: hsl(180, 0%, 45%);
 $light-blue: hsl(180, 25%, 97%);
-$dark-blue: hsl(225, 29%, 23%);
-$hover: hsl(208, 73%, 58%);
+$dark-blue: hsl(225, 30%, 25%);
+$hover: hsl(210, 75%, 60%);
 /*Breakpoints*/
 
 $xxl: 1550px;
@@ -39,6 +39,7 @@ $xxs: 400px;
 
 
 /*Animations*/
+
 .animation-button-blink {
     animation-name: button-blink;
     animation-duration: 4s;
@@ -53,14 +54,17 @@ $xxs: 400px;
 @keyframes button-blink {
     0% {
         box-shadow: 0 0 0 0 $sec-light;
+        opacity: 1;
     }
 
     50% {
         box-shadow: 0 0 3rem .3rem $sec-light;
+        opacity: .85;
     }
 
     100% {
         box-shadow: 0 0 0 0 $sec-light;
+        opacity: 1;
     }
 }
 
@@ -108,7 +112,6 @@ $xxs: 400px;
         --jump-50-percent: -.2rem;
     }
 }
-
 
 @keyframes jump {
     0% {
@@ -603,15 +606,33 @@ img {
         }
 
         .buttons {
-            margin-top: 7rem;
+            margin-top: 4.5rem;
 
             .btn-1,
             .btn-2 {
                 display: inline-flex;
-                transition: 0.1s ease-in;
+                transition: 0.2s ease-in;
 
-                &:hover {
-                    box-shadow: 0 0 2rem .3rem rgba($hover, .5);
+                &:hover,
+                &:focus {
+                    animation-name: button-blink-hover;
+                    animation-duration: 4s;
+                    animation-iteration-count: infinite;
+                    animation-timing-function: ease-in-out;
+
+                    @keyframes button-blink-hover {
+                        0% {
+                            box-shadow: 0 0 2rem 0 $hover;
+                        }
+
+                        50% {
+                            box-shadow: 0 0 3rem .3rem $hover;
+                        }
+
+                        100% {
+                            box-shadow: 0 0 2rem 0 $hover;
+                        }
+                    }
 
                     .prim-btn {
                         box-shadow: none !important;
@@ -624,7 +645,7 @@ img {
             }
 
             .btn-2 {
-                margin-top: 7rem;
+                margin-top: 4.5rem;
 
             }
         }
