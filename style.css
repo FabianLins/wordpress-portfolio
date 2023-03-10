@@ -356,6 +356,7 @@ em {
   overflow: hidden;
   z-index: 2;
   display: inline-block;
+  transition: 0.35s ease-in;
 }
 .prim-btn:hover::before, .prim-btn:focus::before {
   transform: translateX(0);
@@ -587,19 +588,20 @@ img {
 }
 @keyframes button-blink-hover {
   0% {
-    box-shadow: 0 0 2rem 0 hsl(210, 75%, 60%);
+    box-shadow: 0 0 1rem 0 rgba(77, 153, 230, 0.5);
   }
   50% {
-    box-shadow: 0 0 3rem 0.3rem hsl(210, 75%, 60%);
+    box-shadow: 0 0 2rem 0.3rem hsl(210, 75%, 60%);
   }
   100% {
-    box-shadow: 0 0 2rem 0 hsl(210, 75%, 60%);
+    box-shadow: 0 0 1rem 0 rgba(77, 153, 230, 0.5);
   }
 }
 .about-me .left .buttons .btn-1:hover .prim-btn, .about-me .left .buttons .btn-1:focus .prim-btn,
 .about-me .left .buttons .btn-2:hover .prim-btn,
 .about-me .left .buttons .btn-2:focus .prim-btn {
   box-shadow: none !important;
+  border-color: #368ce2;
 }
 @media only screen and (max-width: 992px) {
   .about-me .left .buttons .btn-1,

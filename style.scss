@@ -326,6 +326,7 @@ em {
     overflow: hidden;
     z-index: 2;
     display: inline-block;
+    transition: 0.35s ease-in;
 
     &:hover,
     &:focus {
@@ -622,20 +623,21 @@ img {
 
                     @keyframes button-blink-hover {
                         0% {
-                            box-shadow: 0 0 2rem 0 $hover;
+                            box-shadow: 0 0 1rem 0 rgba($hover, .5);
                         }
 
                         50% {
-                            box-shadow: 0 0 3rem .3rem $hover;
+                            box-shadow: 0 0 2rem .3rem $hover;
                         }
 
                         100% {
-                            box-shadow: 0 0 2rem 0 $hover;
+                            box-shadow: 0 0 1rem 0 rgba($hover, .5);
                         }
                     }
 
                     .prim-btn {
                         box-shadow: none !important;
+                        border-color: darken($hover, 5);
                     }
                 }
 
