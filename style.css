@@ -87,6 +87,14 @@ footer small {
 
 /*Variables*/
 /*Breakpoints*/
+/*Checkbox Hacks*/
+#list-of-skills:checked ~ .about-me-container .btn-1 {
+  display: none;
+}
+#list-of-skills:checked ~ .about-me-container .list-of-skills {
+  display: block;
+}
+
 /*Animations*/
 .animation-button-blink {
   animation-name: button-blink;
@@ -570,13 +578,16 @@ img {
 .about-me .left .photo {
   display: none;
 }
-.about-me .left .buttons {
-  margin-top: 4.5rem;
-}
 .about-me .left .buttons .btn-1,
 .about-me .left .buttons .btn-2 {
+  margin-top: 4.5rem;
   display: inline-flex;
+  text-decoration: none;
   transition: 0.2s ease-in;
+}
+.about-me .left .buttons .btn-1 label,
+.about-me .left .buttons .btn-2 label {
+  cursor: pointer;
 }
 .about-me .left .buttons .btn-1:hover, .about-me .left .buttons .btn-1:focus,
 .about-me .left .buttons .btn-2:hover,
@@ -608,9 +619,6 @@ img {
   .about-me .left .buttons .btn-2 {
     display: flex;
   }
-}
-.about-me .left .buttons .btn-2 {
-  margin-top: 4.5rem;
 }
 .about-me .right {
   z-index: 2;
@@ -703,4 +711,10 @@ img {
   .about-me .wheel-icon {
     margin-top: -25rem;
   }
+}
+
+/*List of skills*/
+.list-of-skills {
+  min-height: 1500px;
+  display: none;
 }/*# sourceMappingURL=style.css.map */
