@@ -37,22 +37,6 @@ $sm: 576px;
 $xs: 500px;
 $xxs: 400px;
 
-/*Checkbox Hacks*/
-#list-of-skills {
-    &:checked {
-        ~.about-me-container {
-            .btn-1 {
-                display: none;
-            }
-
-            .list-of-skills {
-                display: block;
-            }
-        }
-    }
-}
-
-
 /*Animations*/
 
 .animation-button-blink {
@@ -329,6 +313,7 @@ em {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 4rem;
+
 }
 
 
@@ -790,6 +775,43 @@ img {
 
 /*List of skills*/
 .list-of-skills {
-    min-height: 1500px;
-    display: none;
+    .skill-heading {
+        //margin-top: 5.5rem;
+        color: $prim;
+        font-size: 4.8rem;
+        font-weight: 100;
+    }
+
+    .left {
+        grid-column: col-start / span 6;
+
+        .skills {
+            &-point {
+                align-items: center;
+
+                li {
+                    grid-column: col-start / span 6;
+                    font-size: 2rem;
+                    &::before {
+                        content: "•";
+                        margin-right: .5rem;
+                    }
+                }
+
+                .rating {
+                    grid-column: col-start 7/ span 6;
+
+                    img {
+                        width: 2.5rem;
+                    }
+                }
+
+            }
+        }
+    }
+
+    .right {
+        grid-column: col-start 7 / span 6;
+
+    }
 }

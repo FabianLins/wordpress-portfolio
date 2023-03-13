@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 Theme Name: Fabian Lins Portfolio Theme
 Text Domain: Fabian Lins Portfolio Theme
@@ -87,14 +88,6 @@ footer small {
 
 /*Variables*/
 /*Breakpoints*/
-/*Checkbox Hacks*/
-#list-of-skills:checked ~ .about-me-container .btn-1 {
-  display: none;
-}
-#list-of-skills:checked ~ .about-me-container .list-of-skills {
-  display: block;
-}
-
 /*Animations*/
 .animation-button-blink {
   animation-name: button-blink;
@@ -714,7 +707,31 @@ img {
 }
 
 /*List of skills*/
-.list-of-skills {
-  min-height: 1500px;
-  display: none;
+.list-of-skills .skill-heading {
+  color: hsl(255, 60%, 45%);
+  font-size: 4.8rem;
+  font-weight: 100;
+}
+.list-of-skills .left {
+  grid-column: col-start/span 6;
+}
+.list-of-skills .left .skills-point {
+  align-items: center;
+}
+.list-of-skills .left .skills-point li {
+  grid-column: col-start/span 6;
+  font-size: 2rem;
+}
+.list-of-skills .left .skills-point li::before {
+  content: "•";
+  margin-right: 0.5rem;
+}
+.list-of-skills .left .skills-point .rating {
+  grid-column: col-start 7/span 6;
+}
+.list-of-skills .left .skills-point .rating img {
+  width: 2.5rem;
+}
+.list-of-skills .right {
+  grid-column: col-start 7/span 6;
 }/*# sourceMappingURL=style.css.map */
