@@ -31,7 +31,7 @@ get_header();
                     </div>
                     <div class="btn-2">
                         <a href="<?php echo (get_permalink('18')); ?>"
-                            class="prim-btn big animation-button-blink animation-delay">
+                            class="prim-btn big animation-button-blink">
                             <?php echo get_the_title('18'); ?>
                         </a>
                     </div>
@@ -49,7 +49,7 @@ get_header();
 </section>
 <div id="anchor"></div>
 <section class="list-of-skills">
-    lol
+    test
 </section>
 
 
