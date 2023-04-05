@@ -21,13 +21,17 @@ $white: white;
 $prim: hsl(255, 60%, 45%);
 $sec: hsl(275, 100%, 50%);
 $sec-light: hsl(250, 100%, 80%);
-$gray: rgb(176, 177, 181);
-$text: hsl(0, 0%, 45%);
-$light-blue: hsl(180, 25%, 97%);
+
+$gray: hsl(228, 3%, 70%);
+$gray-dark: hsl(210, 2%, 49%);
+$text: hsl(204, 2%, 43%);
+$gray-darker: hsl(220, 1%, 41%);
+
+$blue-light: hsl(180, 25%, 97%);
 $hover: hsl(210, 75%, 60%);
-$dark-blue: hsl(215, 50%, 55%);
-$darker-blue: hsl(215, 50%, 45%);
-$darkest-blue: hsl(225, 30%, 25%);
+$blue-dark: hsl(215, 50%, 55%);
+$blue-darker: hsl(215, 50%, 45%);
+$blue-darkest: hsl(225, 30%, 25%);
 
 /*Breakpoints*/
 
@@ -417,6 +421,7 @@ body {
     font-family: 'Heebo';
     background: linear-gradient(rgba($gray, 0) 70%, rgba($gray, .25) 100%);
     background-attachment: fixed;
+    scroll-behavior: smooth;
 }
 
 section {
@@ -430,6 +435,7 @@ section {
     color: $prim;
     letter-spacing: -1px;
     line-height: 1;
+    z-index: 2;
 }
 
 .grid {
@@ -478,6 +484,7 @@ section {
 .h-pl {
     padding-left: 16rem;
     padding-right: 1rem;
+    padding-bottom: .5rem;
     border-bottom: 5px solid $prim;
     display: inline-block;
 
@@ -617,7 +624,7 @@ img {
 }
 
 .header {
-    background: $darkest-blue;
+    background: $blue-darkest;
     word-break: break-word;
 
     .banner {
@@ -628,7 +635,7 @@ img {
             z-index: 3;
             position: relative;
             font-size: 7.2rem;
-            color: $light-blue;
+            color: $blue-light;
             margin-left: 13rem;
             padding-top: 4rem;
             margin-right: 5rem;
@@ -660,7 +667,7 @@ img {
             position: relative;
             margin-top: 1.5rem;
             letter-spacing: 1px;
-            color: $light-blue;
+            color: $blue-light;
             margin-left: 13rem;
             padding-bottom: 15rem;
             margin-right: 5rem;
@@ -1027,28 +1034,12 @@ img {
 /*List of skills*/
 .list-of-skills {
     padding-bottom: 10rem;
-
     background: linear-gradient(hsl(195, 18%, 96%), hsl(228, 80%, 98%));
 
     .container {
         margin-top: 3rem;
 
         .category-container {
-            &:nth-child(2) {
-                .left {
-                    margin-top: 0;
-                    display: flex;
-                    align-items: center;
-
-                    .skill-heading {
-                        &-content {
-                            width: 100%;
-                        }
-
-                        margin-top: 3rem;
-                    }
-                }
-            }
 
             &:nth-child(3) {
                 .left {
@@ -1067,6 +1058,7 @@ img {
         font-size: 4.8rem;
         font-weight: 100;
         line-height: 1;
+        margin-top: 3rem;
     }
 
     .mac-dot-input {
@@ -1076,6 +1068,14 @@ img {
     .left {
         margin-top: 2.5rem;
         grid-column: col-start / span 7;
+        display: flex;
+        z-index: 2;
+        margin-top: 0;
+        align-items: center;
+
+        .skill-heading-content {
+            width: 100%;
+        }
 
         .skills {
             margin-left: 4.5rem;
@@ -1119,6 +1119,7 @@ img {
     .right {
         margin-top: 2.5rem;
         grid-column: col-start 8 / span 5;
+        z-index: 2;
 
         .icon {
             max-width: 425px;
@@ -1193,12 +1194,12 @@ img {
                 .top {
                     border-top-left-radius: 2rem;
                     border-top-right-radius: 2rem;
-                    border: 1rem solid $darker-blue;
+                    border: 1rem solid $blue-darker;
                     transition: 0.2s;
 
                     .dots {
                         display: flex;
-                        background: $darker-blue;
+                        background: $blue-darker;
                         padding-left: .3rem;
 
                         label {
@@ -1211,7 +1212,7 @@ img {
 
                             &:hover {
                                 filter: blur(.1rem);
-
+                                transform: scale(1.15);
                             }
 
                             &.red {
@@ -1248,10 +1249,10 @@ img {
                 }
 
                 .bottom {
-                    background: $dark-blue;
+                    background: $blue-dark;
                     border-bottom-left-radius: 2rem;
                     border-bottom-right-radius: 2rem;
-                    border: 1rem solid $dark-blue;
+                    border: 1rem solid $blue-dark;
                     max-height: 250px;
                     opacity: 1;
                     transition: .2s;
@@ -1285,7 +1286,7 @@ img {
             transition: .18s ease-out;
 
             &:hover {
-                opacity: .9;
+                opacity: .95;
             }
 
             .wheels {
@@ -1782,5 +1783,15 @@ img {
                 }
             }
         }
+    }
+}
+
+/*Projects*/
+.projects {
+    background: $gray-dark;
+
+    .h2 {
+        color: $blue-light;
+        border-bottom-color: $blue-light;
     }
 }

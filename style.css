@@ -422,6 +422,7 @@ body {
   font-family: "Heebo";
   background: linear-gradient(rgba(176, 177, 181, 0) 70%, rgba(176, 177, 181, 0.25) 100%);
   background-attachment: fixed;
+  scroll-behavior: smooth;
 }
 
 section {
@@ -435,6 +436,7 @@ section {
   color: hsl(255, 60%, 45%);
   letter-spacing: -1px;
   line-height: 1;
+  z-index: 2;
 }
 
 .grid {
@@ -483,6 +485,7 @@ section {
 .h-pl {
   padding-left: 16rem;
   padding-right: 1rem;
+  padding-bottom: 0.5rem;
   border-bottom: 5px solid hsl(255, 60%, 45%);
   display: inline-block;
 }
@@ -519,7 +522,7 @@ section {
 
 .text-box {
   margin-top: 4rem;
-  color: hsl(0, 0%, 45%);
+  color: hsl(204, 2%, 43%);
 }
 .text-box p {
   max-width: 730px;
@@ -926,17 +929,6 @@ img {
 .list-of-skills .container {
   margin-top: 3rem;
 }
-.list-of-skills .container .category-container:nth-child(2) .left {
-  margin-top: 0;
-  display: flex;
-  align-items: center;
-}
-.list-of-skills .container .category-container:nth-child(2) .left .skill-heading {
-  margin-top: 3rem;
-}
-.list-of-skills .container .category-container:nth-child(2) .left .skill-heading-content {
-  width: 100%;
-}
 .list-of-skills .container .category-container:nth-child(3) {
   margin-bottom: 2rem;
 }
@@ -950,6 +942,7 @@ img {
   font-size: 4.8rem;
   font-weight: 100;
   line-height: 1;
+  margin-top: 3rem;
 }
 .list-of-skills .mac-dot-input {
   display: none;
@@ -957,6 +950,13 @@ img {
 .list-of-skills .left {
   margin-top: 2.5rem;
   grid-column: col-start/span 7;
+  display: flex;
+  z-index: 2;
+  margin-top: 0;
+  align-items: center;
+}
+.list-of-skills .left .skill-heading-content {
+  width: 100%;
 }
 .list-of-skills .left .skills {
   margin-left: 4.5rem;
@@ -968,7 +968,7 @@ img {
 .list-of-skills .left .skills-point li {
   grid-column: col-start/span 8;
   font-size: 2.4rem;
-  color: hsl(0, 0%, 45%);
+  color: hsl(204, 2%, 43%);
   line-height: 1.2;
   margin: 0.8rem 0;
   letter-spacing: 0.6px;
@@ -992,6 +992,7 @@ img {
 .list-of-skills .right {
   margin-top: 2.5rem;
   grid-column: col-start 8/span 5;
+  z-index: 2;
 }
 .list-of-skills .right .icon {
   max-width: 425px;
@@ -1066,6 +1067,7 @@ img {
 }
 .list-of-skills .right .front-end-icon .window .top .dots label:hover {
   filter: blur(0.1rem);
+  transform: scale(1.15);
 }
 .list-of-skills .right .front-end-icon .window .top .dots label.red {
   background: hsl(358, 100%, 85%);
@@ -1121,7 +1123,7 @@ img {
   display: flex;
 }
 .list-of-skills .right .back-end-icon:hover {
-  opacity: 0.9;
+  opacity: 0.95;
 }
 .list-of-skills .right .back-end-icon .wheels {
   position: absolute;
@@ -1409,4 +1411,13 @@ img {
     bottom: 3rem;
     left: 3rem;
   }
+}
+
+/*Projects*/
+.projects {
+  background: hsl(210, 2%, 49%);
+}
+.projects .h2 {
+  color: hsl(180, 25%, 97%);
+  border-bottom-color: hsl(180, 25%, 97%);
 }/*# sourceMappingURL=style.css.map */
