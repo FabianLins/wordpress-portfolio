@@ -41,10 +41,8 @@ get_header();
                 unset($projects[0]);
                 $projects = array_values($projects);
                 $projectsLen = count($projects);
-                //var_dump($projectsLen);
                 for ($i = 0; $i < $projectsLen - 1; $i++) {
                     $currProject = $projects[$i];
-                    //var_dump($currProject);die;
                     // Headline
                     $headlineEnd = strpos($currProject, "<!-- /wp:heading -->");
                     $headline = substr($currProject,0,$headlineEnd);
@@ -70,9 +68,7 @@ get_header();
                     $projectInfo = [$paragraphs[0], $paragraphs[1]];
                     $projectInfo[0] = str_replace("{#made with}", "", $projectInfo[0]);
                     $madeWithArr = explode(',', $projectInfo[0]);
-                    //var_dump($madeWithArr);
                     $madeWithArrLen = count($madeWithArr);
-                    //var_dump($madeWithArrLen);
                     $projectInfo[0] = "<strong>";
                     if($madeWithArrLen > 1){
                         for ($j = 0; $j < ($madeWithArrLen - 1); $j++){
@@ -147,7 +143,7 @@ get_header();
                     echo ("<div class='project'>");
                         echo ("<div class='container grid'>");
                             echo ("<div class='left'>");
-                                echo ("<h3 class='h3' >" . $headlineContent . "</h3>");
+                                echo ("<h3 class='h3'>" . $headlineContent . "</h3>");
                                 echo ("<div class='project-info'>");
                                     echo ("<div class='made-with'>");
                                         echo ("<div class='wheel'>");
@@ -179,17 +175,29 @@ get_header();
                                     echo ("</div>"); // created in
                                 echo ("</div>"); // project-info
                                 echo ("<div class='buttons grid'>");
-                                    //TODO: var_dump($buttons);
                                     foreach($buttons as $currButton){
                                         $target = "";
-                                            if(strpos(strtolower($currButton["content"]), "github") !== false){
-                                                echo ("<div class='button-container github'>");
-                                                $src = get_template_directory_uri() . "/svg/github.svg";
-                                                echo file_get_contents( $src );
-                                            }
-                                            else{
-                                                echo ("<div class='button-container'>");
-                                            }
+                                        $currStr = strtolower($currButton["content"]);
+                                        $addClass = "";
+                                        $icon = "";
+
+                                        if (strpos($currStr, "github") !== false){
+                                            $addClass = "github";
+                                            $src = get_template_directory_uri() . "/svg/github.svg";
+                                            $icon = file_get_contents( $src );
+                                        }
+                                        elseif (strpos($currStr, "show more") !== false){
+                                            $addClass = "more";
+                                            $src = get_template_directory_uri() . "/svg/show-more.svg";
+                                            $icon = file_get_contents( $src );
+                                        }
+                                        elseif (strpos($currStr, "demo") !== false){
+                                            $addClass = "demo";
+                                            $src = get_template_directory_uri() . "/svg/world.svg";
+                                            $icon = file_get_contents( $src );
+                                        }
+                                        echo ("<div class='button-container " . $addClass . "'>");
+                                            echo $icon;
                                             if($currButton["new-tab"]){
                                                 $target = " target='_blank'";
                                             }
@@ -201,17 +209,26 @@ get_header();
                                             }
                                         echo ("</div>"); // button-container
                                     }
-                                echo ("</div>"); //buttons
-                            echo ("</div>"); //left
+                                echo ("</div>"); // buttons
+                            echo ("</div>"); // left
                             echo ("<div class='right'>");
-                                echo ("<img src=" . wp_get_attachment_image_src($imgID,[1000, 1000])[0] . " alt='' />");
-                                echo ("<p>" . $projectState . "</p>");
-                                
-                            echo ("</div>"); //right
-                        echo ("</div>"); //container
-                    echo ("</div>"); //project
+                                echo ("<div class='right-content'>");
+                                    if($projectState === "{#finished}"){
+                                        echo ("<div class='project-state finished'>");
+                                            echo ("Finished");
+                                        echo ("</div>"); // project-state
+                                    }
+                                    elseif($projectState === "{#in progress}"){
+                                        echo ("<div class='project-state in-progress'>");
+                                            echo ("In Progress");
+                                        echo ("</div>"); // project-state
+                                    }
+                                    echo ("<img src=" . wp_get_attachment_image_src($imgID,[1000, 1000])[0] . " alt='' />");
+                                echo ("</div>"); // right-content  
+                            echo ("</div>"); // right
+                        echo ("</div>"); // container
+                    echo ("</div>"); // project
                 }
-                //
             }
         }
         ?>

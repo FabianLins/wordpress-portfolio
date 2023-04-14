@@ -1440,11 +1440,11 @@ img {
   letter-spacing: -0.05rem;
   margin-top: -1.3rem;
 }
-.projects .project .container {
-  align-items: center;
-}
 .projects .project .left {
   grid-column: col-start/span 7;
+}
+.projects .project .left .project-info {
+  margin-top: 2rem;
 }
 .projects .project .left .made-with,
 .projects .project .left .created-in {
@@ -1544,12 +1544,29 @@ img {
   padding: 1rem 3rem;
   margin-top: 2rem;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  transition: 0.35s ease-in;
+  border: 2px solid hsl(255, 60%, 45%);
+}
+.projects .project .left .buttons .button-container.github {
+  background: linear-gradient(90deg, hsl(275, 100%, 50%), hsl(250, 100%, 80%));
+  border-color: hsl(275, 100%, 50%);
+}
+.projects .project .left .buttons .button-container.more {
+  background: linear-gradient(90deg, hsl(121, 35%, 45%), hsl(80, 55%, 60%));
+  border-color: hsl(121, 35%, 45%);
+}
+.projects .project .left .buttons .button-container:first-of-type {
+  margin-top: 0;
 }
 .projects .project .left .buttons .button-container svg {
   width: 6rem;
   margin-right: 1rem;
 }
-.projects .project .left .buttons .button-container svg path {
+.projects .project .left .buttons .button-container svg path,
+.projects .project .left .buttons .button-container svg circle {
   fill: hsl(180, 25%, 97%) !important;
 }
 .projects .project .left .buttons .button-container a {
@@ -1559,6 +1576,27 @@ img {
 }
 .projects .project .right {
   grid-column: col-start 8/span 5;
+  align-items: center;
+  display: flex;
+}
+.projects .project .right-content {
+  max-width: 500px;
+  position: relative;
+  border-radius: 1rem;
+}
+.projects .project .right-content .project-state {
+  position: absolute;
+  background: red;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  padding: 7px;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+}
+.projects .project .right-content img {
+  border-radius: 3rem;
 }
 .projects .project:nth-of-type(even) {
   background: hsl(220, 1%, 41%);
