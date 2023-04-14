@@ -430,6 +430,10 @@ section {
   overflow: hidden;
 }
 
+strong {
+  font-weight: bold;
+}
+
 .h2 {
   font-size: 7.2rem;
   font-weight: 100;
@@ -1420,4 +1424,147 @@ img {
 .projects .h2 {
   color: hsl(180, 25%, 97%);
   border-bottom-color: hsl(180, 25%, 97%);
+}
+.projects .project {
+  font-size: 2.4rem;
+  color: hsl(180, 25%, 97%);
+  padding: 3rem 0;
+}
+.projects .project strong {
+  color: white;
+  letter-spacing: 0.05rem;
+}
+.projects .project .h3 {
+  font-size: 4.8rem;
+  font-weight: 100;
+  letter-spacing: -0.05rem;
+  margin-top: -1.3rem;
+}
+.projects .project .container {
+  align-items: center;
+}
+.projects .project .left {
+  grid-column: col-start/span 7;
+}
+.projects .project .left .made-with,
+.projects .project .left .created-in {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.projects .project .left .made-with svg,
+.projects .project .left .created-in svg {
+  width: 6rem;
+}
+.projects .project .left .made-with svg path,
+.projects .project .left .created-in svg path {
+  fill: hsl(180, 25%, 97%) !important;
+}
+.projects .project .left .made-with .text,
+.projects .project .left .created-in .text {
+  margin-left: 1rem;
+  font-weight: 100;
+}
+.projects .project .left .made-with {
+  margin-top: 0.5rem;
+}
+.projects .project .left .made-with .wheel {
+  display: flex;
+}
+.projects .project .left .created-in .calender {
+  display: flex;
+  position: relative;
+}
+.projects .project .left .created-in .calender .circle-container {
+  width: 50%;
+  position: absolute;
+  aspect-ratio: 1/1;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 0.2rem solid hsl(210, 2%, 49%);
+  background: hsl(210, 2%, 49%);
+}
+.projects .project .left .created-in .calender .circle-container .circle {
+  border: 0.2rem hsl(180, 25%, 97%) solid;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  width: 100%;
+  position: relative;
+}
+.projects .project .left .created-in .calender .circle-container .circle .sm-pointer {
+  width: calc(50% - 0.45rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: left;
+  height: 0.2rem;
+  border-radius: 1rem;
+  background: hsl(180, 25%, 97%);
+}
+.projects .project .left .created-in .calender .circle-container .circle .lg-pointer {
+  width: calc(50% - 0.1rem);
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 0.1px);
+  transform-origin: left;
+  transform: rotate(-90deg);
+  height: 0.2rem;
+  border-radius: 1rem;
+  background: hsl(180, 25%, 97%);
+}
+.projects .project .left .created-in .calender .circle-container .circle .dot {
+  position: absolute;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: hsl(180, 25%, 97%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 0.5px;
+  border-radius: 50%;
+}
+.projects .project .left .created-in .calender svg {
+  width: 6rem;
+}
+.projects .project .left .created-in .calender svg path {
+  fill: hsl(180, 25%, 97%) !important;
+}
+.projects .project .left .buttons {
+  gap: 0;
+  margin-top: 4rem;
+}
+.projects .project .left .buttons .button-container {
+  grid-column: col-start/span 12;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: red;
+  padding: 1rem 3rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+.projects .project .left .buttons .button-container svg {
+  width: 6rem;
+  margin-right: 1rem;
+}
+.projects .project .left .buttons .button-container svg path {
+  fill: hsl(180, 25%, 97%) !important;
+}
+.projects .project .left .buttons .button-container a {
+  text-decoration: none;
+  font-size: 4rem;
+  color: inherit;
+}
+.projects .project .right {
+  grid-column: col-start 8/span 5;
+}
+.projects .project:nth-of-type(even) {
+  background: hsl(220, 1%, 41%);
+  grid-column: col-start/span 7;
+}
+.projects .project:nth-of-type(even) .created-in .calender .circle-container {
+  border-color: hsl(220, 1%, 41%);
+  background: hsl(220, 1%, 41%);
 }/*# sourceMappingURL=style.css.map */
