@@ -595,7 +595,7 @@ em {
   bottom: 0;
   right: 0;
   position: absolute;
-  background: hsl(210, 75%, 60%);
+  background: hsl(215, 75%, 60%);
   z-index: -1;
   transform: translateX(-130%);
   transition: transform 0.2s;
@@ -607,7 +607,7 @@ em {
   border: 2px solid hsl(255, 60%, 45%);
 }
 .prim-btn.big::before {
-  box-shadow: 0 0 5rem 3rem hsl(210, 75%, 60%);
+  box-shadow: 0 0 5rem 3rem hsl(215, 75%, 60%);
 }
 @media only screen and (max-width: 992px) {
   .prim-btn {
@@ -623,7 +623,7 @@ img {
 }
 
 .header {
-  background: hsl(225, 30%, 25%);
+  background: hsl(215, 30%, 25%);
   word-break: break-word;
 }
 .header .banner {
@@ -816,20 +816,20 @@ img {
 }
 @keyframes button-blink-hover {
   0% {
-    box-shadow: 0 0 1rem 0 rgba(77, 153, 230, 0.5);
+    box-shadow: 0 0 1rem 0 rgba(77, 140, 230, 0.5);
   }
   50% {
-    box-shadow: 0 0 2rem 0.2trem rgba(77, 153, 230, 0.7);
+    box-shadow: 0 0 2rem 0.2trem rgba(77, 140, 230, 0.7);
   }
   100% {
-    box-shadow: 0 0 1rem 0 rgba(77, 153, 230, 0.5);
+    box-shadow: 0 0 1rem 0 rgba(77, 140, 230, 0.5);
   }
 }
 .about-me .left .buttons .btn-1:hover .prim-btn, .about-me .left .buttons .btn-1:focus .prim-btn,
 .about-me .left .buttons .btn-2:hover .prim-btn,
 .about-me .left .buttons .btn-2:focus .prim-btn {
   box-shadow: none !important;
-  border-color: #368ce2;
+  border-color: #367ee2;
 }
 @media only screen and (max-width: 992px) {
   .about-me .left .buttons .btn-1,
@@ -1432,12 +1432,12 @@ img {
 }
 .projects .project strong {
   color: white;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.7px;
 }
 .projects .project .h3 {
   font-size: 4.8rem;
   font-weight: 100;
-  letter-spacing: -0.05rem;
+  letter-spacing: -0.5px;
   margin-top: -1.3rem;
 }
 .projects .project .left {
@@ -1551,12 +1551,16 @@ img {
   border: 2px solid hsl(255, 60%, 45%);
 }
 .projects .project .left .buttons .button-container.github {
-  background: linear-gradient(90deg, hsl(275, 100%, 50%), hsl(250, 100%, 80%));
-  border-color: hsl(275, 100%, 50%);
+  background: linear-gradient(90deg, hsl(255, 28%, 60%), hsl(250, 100%, 80%));
+  border-color: hsl(255, 28%, 60%);
 }
 .projects .project .left .buttons .button-container.more {
-  background: linear-gradient(90deg, hsl(121, 35%, 45%), hsl(80, 55%, 60%));
-  border-color: hsl(121, 35%, 45%);
+  background: linear-gradient(90deg, hsl(120, 15%, 55%), hsl(120, 10%, 70%));
+  border-color: hsl(120, 15%, 55%);
+}
+.projects .project .left .buttons .button-container.demo {
+  background: linear-gradient(90deg, hsl(215, 30%, 61%), hsl(215, 30%, 70%));
+  border-color: hsl(215, 30%, 61%);
 }
 .projects .project .left .buttons .button-container:first-of-type {
   margin-top: 0;
@@ -1583,26 +1587,93 @@ img {
   max-width: 500px;
   position: relative;
   border-radius: 1rem;
+  display: flex;
 }
 .projects .project .right-content .project-state {
   position: absolute;
-  background: red;
   width: 100%;
   display: flex;
   justify-content: center;
   bottom: 0;
-  padding: 7px;
+  padding: 1rem;
   border-bottom-left-radius: 3rem;
   border-bottom-right-radius: 3rem;
+  font-size: 3rem;
+  letter-spacing: 0.7px;
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
+  filter: blur(0);
+  align-items: center;
+}
+.projects .project .right-content .project-state.in-progress {
+  background: rgba(77, 140, 230, 0.9);
+}
+.projects .project .right-content .project-state.in-progress .circle {
+  border: 0.25rem hsl(180, 25%, 97%) solid;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  width: 100%;
+  position: relative;
+  max-width: 5rem;
+  margin-right: 1rem;
+}
+.projects .project .right-content .project-state.in-progress .circle .sm-pointer {
+  width: calc(50% - 1rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: left;
+  height: 0.25rem;
+  border-radius: 1rem;
+  background: hsl(180, 25%, 97%);
+}
+.projects .project .right-content .project-state.in-progress .circle .lg-pointer {
+  width: calc(50% - 0.3rem);
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 0.1px);
+  transform-origin: left;
+  transform: rotate(-90deg);
+  height: 0.25rem;
+  border-radius: 1rem;
+  background: hsl(180, 25%, 97%);
+}
+.projects .project .right-content .project-state.in-progress .circle .dot {
+  position: absolute;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: hsl(180, 25%, 97%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 0.5px;
+  border-radius: 50%;
+  margin-left: 0.05rem;
+}
+.projects .project .right-content .project-state.finished {
+  background: rgba(122, 184, 122, 0.9);
+}
+.projects .project .right-content .project-state.finished .icon {
+  display: flex;
+}
+.projects .project .right-content .project-state.finished .icon svg {
+  max-width: 5rem;
+  margin-right: 1rem;
+}
+.projects .project .right-content .project-state.finished .icon path {
+  stroke: hsl(180, 25%, 97%) !important;
+  stroke-width: 0.25rem !important;
 }
 .projects .project .right-content img {
   border-radius: 3rem;
 }
 .projects .project:nth-of-type(even) {
   background: hsl(220, 1%, 41%);
-  grid-column: col-start/span 7;
 }
 .projects .project:nth-of-type(even) .created-in .calender .circle-container {
   border-color: hsl(220, 1%, 41%);
   background: hsl(220, 1%, 41%);
+}
+.projects .project:last-of-type {
+  padding-bottom: 8rem;
 }/*# sourceMappingURL=style.css.map */

@@ -19,6 +19,7 @@ Author URI: fabian-lins.com
 
 $white: white;
 $prim: hsl(255, 60%, 45%);
+$prim-light-gray: hsl(255, 28%, 60%);
 $sec: hsl(275, 100%, 50%);
 $sec-light: hsl(250, 100%, 80%);
 
@@ -28,13 +29,16 @@ $text: hsl(204, 2%, 43%);
 $gray-darker: hsl(220, 1%, 41%);
 
 $blue-light: hsl(180, 25%, 97%);
-$hover: hsl(210, 75%, 60%);
+$blue: hsl(215, 75%, 60%);
+$blue-gray-lighter: hsl(215, 30%, 70%);
+$blue-gray: hsl(215, 30%, 61%);
 $blue-dark: hsl(215, 50%, 55%);
 $blue-darker: hsl(215, 50%, 45%);
-$blue-darkest: hsl(225, 30%, 25%);
+$blue-darkest: hsl(215, 30%, 25%);
 
-$green-darker: hsl(121, 35%, 45%);
-$green: hsl(80, 55%, 60%);
+$green-gray-darker: hsl(120, 15%, 55%);
+$green: hsl(120, 30%, 60%);
+$green-gray: hsl(120, 10%, 70%);
 
 /*Breakpoints*/
 
@@ -594,7 +598,7 @@ em {
         bottom: 0;
         right: 0;
         position: absolute;
-        background: $hover;
+        background: $blue;
         z-index: -1;
         transform: translateX(-130%);
         transition: transform 0.2s;
@@ -607,7 +611,7 @@ em {
         border: 2px solid $prim;
 
         &::before {
-            box-shadow: 0 0 5rem 3rem $hover;
+            box-shadow: 0 0 5rem 3rem $blue;
         }
     }
 
@@ -872,21 +876,21 @@ img {
 
                     @keyframes button-blink-hover {
                         0% {
-                            box-shadow: 0 0 1rem 0 rgba($hover, .5);
+                            box-shadow: 0 0 1rem 0 rgba($blue, .5);
                         }
 
                         50% {
-                            box-shadow: 0 0 2rem .2trem rgba($hover, .7);
+                            box-shadow: 0 0 2rem .2trem rgba($blue, .7);
                         }
 
                         100% {
-                            box-shadow: 0 0 1rem 0 rgba($hover, .5);
+                            box-shadow: 0 0 1rem 0 rgba($blue, .5);
                         }
                     }
 
                     .prim-btn {
                         box-shadow: none !important;
-                        border-color: darken($hover, 5);
+                        border-color: darken($blue, 5);
                     }
                 }
 
@@ -1802,13 +1806,13 @@ img {
 
         strong {
             color: $white;
-            letter-spacing: .05rem;
+            letter-spacing: .7px;
         }
 
         .h3 {
             font-size: 4.8rem;
             font-weight: 100;
-            letter-spacing: -.05rem;
+            letter-spacing: -.5px;
             //negative margin to fix the line height
             margin-top: -1.3rem;
         }
@@ -1941,13 +1945,18 @@ img {
                     border: 2px solid $prim;
 
                     &.github {
-                        background: linear-gradient(90deg, $sec, $sec-light);
-                        border-color: $sec;
+                        background: linear-gradient(90deg, $prim-light-gray, $sec-light);
+                        border-color: $prim-light-gray;
                     }
 
                     &.more {
-                        background: linear-gradient(90deg, $green-darker, $green);
-                        border-color: $green-darker;
+                        background: linear-gradient(90deg, $green-gray-darker, $green-gray);
+                        border-color: $green-gray-darker;
+                    }
+
+                    &.demo {
+                        background: linear-gradient(90deg, $blue-gray, $blue-gray-lighter);
+                        border-color: $blue-gray;
                     }
 
                     &:first-of-type {
@@ -1982,17 +1991,91 @@ img {
                 max-width: 500px;
                 position: relative;
                 border-radius: 1rem;
+                display: flex;
 
                 .project-state {
                     position: absolute;
-                    background: red;
                     width: 100%;
                     display: flex;
                     justify-content: center;
                     bottom: 0;
-                    padding: 7px;
+                    padding: 1rem;
                     border-bottom-left-radius: 3rem;
                     border-bottom-right-radius: 3rem;
+                    font-size: 3rem;
+                    letter-spacing: .7px;
+                    backdrop-filter: blur(.5rem);
+                    // Backdrop scale bug fix for older Chromium based browsers
+                    filter: blur(0);
+                    align-items: center;
+
+                    &.in-progress {
+                        background: rgba($blue, .9);
+
+                        .circle {
+                            border: .25rem $blue-light solid;
+                            border-radius: 50%;
+                            aspect-ratio: 1 / 1;
+                            width: 100%;
+                            position: relative;
+                            max-width: 5rem;
+                            margin-right: 1rem;
+
+                            .sm-pointer {
+                                width: calc(50% - 1rem);
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform-origin: left;
+                                height: .25rem;
+                                border-radius: 1rem;
+                                background: $blue-light;
+                            }
+
+                            .lg-pointer {
+                                width: calc(50% - .3rem);
+                                position: absolute;
+                                top: 50%;
+                                left: calc(50% + .1px);
+                                transform-origin: left;
+                                transform: rotate(-90deg);
+                                height: .25rem;
+                                border-radius: 1rem;
+                                background: $blue-light;
+                            }
+
+                            .dot {
+                                position: absolute;
+                                width: .6rem;
+                                height: .6rem;
+                                background: $blue-light;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                margin-top: .5px;
+                                border-radius: 50%;
+                                margin-left: .05rem;
+                            }
+                        }
+                    }
+
+                    &.finished {
+                        background: rgba($green, .9);
+
+                        .icon {
+                            display: flex;
+
+                            svg {
+                                max-width: 5rem;
+                                margin-right: 1rem;
+                            }
+
+                            path {
+                                stroke: $blue-light !important;
+                                stroke-width: 0.25rem !important;
+                            }
+                        }
+                    }
                 }
 
                 img {
@@ -2003,7 +2086,6 @@ img {
 
         &:nth-of-type(even) {
             background: $gray-darker;
-            grid-column: col-start / span 7;
 
             .created-in {
                 .calender {
@@ -2013,6 +2095,10 @@ img {
                     }
                 }
             }
+        }
+
+        &:last-of-type {
+            padding-bottom: 8rem;
         }
     }
 }

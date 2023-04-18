@@ -47,10 +47,6 @@ get_header();
     </div>
     <img class="wheel-icon animation-spin" src="<?php echo (wp_get_attachment_image_src(35)[0]); ?>" alt="" />
 </section>
-<div id="anchor"></div>
-<section class="list-of-skills">
-    test
-</section>
 
 
 <?php
