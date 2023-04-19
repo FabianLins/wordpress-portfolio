@@ -1666,7 +1666,7 @@ img {
   width: calc(50% - 0.3rem);
   position: absolute;
   top: 50%;
-  left: calc(50% + 0.1px);
+  left: 50%;
   transform-origin: left;
   transform: rotate(-90deg);
   height: 0.25rem;
@@ -1681,10 +1681,7 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 0.5px;
   border-radius: 50%;
-  margin-left: 0.05rem;
-  margin-top: 0.1rem;
 }
 .projects .project .right-content .project-state.finished {
   background: rgba(122, 184, 122, 0.9);
