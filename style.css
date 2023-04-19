@@ -89,6 +89,33 @@ footer small {
 /*Variables*/
 /*Breakpoints*/
 /*Animations*/
+.animation-clock .lg-pointer {
+  animation: spin-min-90 20s linear infinite;
+}
+.animation-clock .sm-pointer {
+  animation: spin 240s linear infinite;
+}
+
+.animation-draw-tick {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-tick 14s ease-in-out infinite;
+}
+
+@keyframes draw-tick {
+  0% {
+    stroke-dashoffset: 1;
+  }
+  15% {
+    stroke-dashoffset: 0;
+  }
+  97% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1;
+  }
+}
 .animation-cursor-move {
   animation-name: cursor-move;
   animation-duration: 3.5s;
@@ -232,6 +259,14 @@ footer small {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@keyframes spin-min-90 {
+  0% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(270deg);
   }
 }
 @keyframes spin {
@@ -1649,6 +1684,7 @@ img {
   margin-top: 0.5px;
   border-radius: 50%;
   margin-left: 0.05rem;
+  margin-top: 0.1rem;
 }
 .projects .project .right-content .project-state.finished {
   background: rgba(122, 184, 122, 0.9);

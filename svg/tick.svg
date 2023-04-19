@@ -4,7 +4,7 @@
     <rect id="Artboard1" x="0" y="0" width="60" height="60" style="fill:none;"/>
     <g id="Artboard11" serif:id="Artboard1">
         <g transform="matrix(1.36996,0,0,1.36996,-18.5103,-26.9633)">
-            <path d="M16.348,42.279L31.108,56.834L54.472,26.326" style="fill:none;stroke:black;stroke-width:1.46px;"/>
+            <path d="M16.348,42.279L31.108,56.834L54.472,26.326" style="fill:none;stroke:black;stroke-width:1.46px;" pathLength="1"/>
         </g>
     </g>
 </svg>

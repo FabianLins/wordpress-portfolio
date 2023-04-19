@@ -215,7 +215,7 @@ get_header();
                                 echo ("<div class='right-content'>");
                                     if($projectState === "{#finished}"){
                                         echo ("<div class='project-state finished'>");
-                                            echo ("<div class='icon'>");
+                                            echo ("<div class='icon animation-draw-tick'>");
                                                 $src = get_template_directory_uri() . "/svg/tick.svg";
                                                 echo file_get_contents( $src );
                                             echo ("</div>"); // icon 
@@ -225,7 +225,7 @@ get_header();
                                         echo ("</div>"); // project-state
                                     }
                                     elseif($projectState === "{#in progress}"){
-                                        echo ("<div class='project-state in-progress'>");
+                                        echo ("<div class='project-state in-progress animation-clock'>");
                                             echo ("<div class='circle'>");
                                                 echo ("<div class='lg-pointer'>");
                                                 echo ("</div>"); // lg-pointer
