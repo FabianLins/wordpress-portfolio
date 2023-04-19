@@ -19,6 +19,7 @@ Author URI: fabian-lins.com
 
 $white: white;
 $prim: hsl(255, 60%, 45%);
+$prim-lighter-gray: hsl(255, 28%, 75%);
 $prim-light-gray: hsl(255, 28%, 60%);
 $sec: hsl(275, 100%, 50%);
 $sec-light: hsl(250, 100%, 80%);
@@ -30,6 +31,7 @@ $gray-darker: hsl(220, 1%, 41%);
 
 $blue-light: hsl(180, 25%, 97%);
 $blue: hsl(215, 75%, 60%);
+$blue-gray-lightest: hsl(215, 30%, 75%);
 $blue-gray-lighter: hsl(215, 30%, 70%);
 $blue-gray: hsl(215, 30%, 61%);
 $blue-dark: hsl(215, 50%, 55%);
@@ -38,6 +40,7 @@ $blue-darkest: hsl(215, 30%, 25%);
 
 $green-gray-darker: hsl(120, 15%, 55%);
 $green: hsl(120, 30%, 60%);
+$green-light-gray: hsl(120, 10%, 75%);
 $green-gray: hsl(120, 10%, 70%);
 
 /*Breakpoints*/
@@ -61,6 +64,16 @@ $xxs: 400px;
 
     .sm-pointer {
         animation: spin 240s linear infinite;
+    }
+
+    &.animation-slower {
+        .lg-pointer {
+            animation: spin-min-90 40s linear infinite;
+        }
+
+        .sm-pointer {
+            animation: spin 480s linear infinite;
+        }
     }
 }
 
@@ -177,6 +190,80 @@ $xxs: 400px;
     }
 }
 
+.animation-button-blink-demo {
+    animation-name: button-blink-demo;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-delay: 2.66s;
+}
+
+@keyframes button-blink-demo {
+    0% {
+        box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .3);
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow: 0 0 3rem .3rem rgba($blue-gray-lightest, .4);
+        filter: brightness(1.05);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .3);
+        opacity: 1;
+    }
+}
+
+.animation-button-blink-more {
+    animation-name: button-blink-more;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1.33s;
+}
+
+@keyframes button-blink-more {
+    0% {
+        box-shadow: 0 0 0 0 rgba($green-light-gray, .3);
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow: 0 0 3rem .3rem rgba($green-light-gray, .4);
+        filter: brightness(1.05);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba($green-light-gray, .3);
+        opacity: 1;
+    }
+}
+
+.animation-button-blink-github {
+    animation-name: button-blink-github;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes button-blink-github {
+    0% {
+        box-shadow: 0 0 0 0 rgba($prim-light-gray, .3);
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow: 0 0 3rem .3rem rgba($prim-ligh-gray, .7);
+        filter: brightness(1.05);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba($prim-ligh-gray, .3);
+        opacity: 1;
+    }
+}
+
 .animation-button-blink {
     animation-name: button-blink;
     animation-duration: 4s;
@@ -203,6 +290,13 @@ $xxs: 400px;
         box-shadow: 0 0 0 0 $sec-light;
         opacity: 1;
     }
+}
+
+.animation-wheel-icon {
+    animation-name: spin;
+    animation-duration: 85s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 .animation-wheel-top {
@@ -619,7 +713,7 @@ em {
 
 .prim-btn {
     background: linear-gradient(90deg, $prim, $sec);
-    border: 2px solid $prim;
+    border: .2rem solid $prim;
     color: $white;
     text-decoration: none;
     position: relative;
@@ -630,7 +724,6 @@ em {
 
     &:hover,
     &:focus {
-
         &::before {
             transform: translateX(0);
         }
@@ -910,7 +1003,7 @@ img {
 
                 display: inline-flex;
                 text-decoration: none;
-                transition: 0.2s ease-in;
+                transition: 0.35s ease-in;
 
                 &:hover,
                 &:focus {
@@ -925,7 +1018,7 @@ img {
                         }
 
                         50% {
-                            box-shadow: 0 0 2rem .2trem rgba($blue, .7);
+                            box-shadow: 0 0 2rem .2rem rgba($blue, .7);
                         }
 
                         100% {
@@ -1979,7 +2072,6 @@ img {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background: red;
                     padding: 1rem 3rem;
                     margin-top: 2rem;
                     cursor: pointer;
@@ -1987,21 +2079,54 @@ img {
                     overflow: hidden;
                     z-index: 2;
                     transition: 0.35s ease-in;
-                    border: 2px solid $prim;
+                    border: .2rem solid $prim;
+
+                    &:hover,
+                    &:focus {
+                        &::before {
+                            transform: translateX(0);
+                        }
+                    }
+
+                    &::before {
+                        content: '';
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        position: absolute;
+                        z-index: -1;
+                        transform: translateX(-130%);
+                        transition: transform 0.25s;
+                    }
+
 
                     &.github {
                         background: linear-gradient(90deg, $prim-light-gray, $sec-light);
                         border-color: $prim-light-gray;
+
+                        &::before {
+                            background: $prim-lighter-gray;
+                        }
                     }
 
                     &.more {
                         background: linear-gradient(90deg, $green-gray-darker, $green-gray);
                         border-color: $green-gray-darker;
+
+                        &::before {
+                            background: $green-light-gray;
+                        }
                     }
 
                     &.demo {
                         background: linear-gradient(90deg, $blue-gray, $blue-gray-lighter);
                         border-color: $blue-gray;
+
+                        &::before {
+                            background: $blue-gray-lightest;
+                        }
+
                     }
 
                     &:first-of-type {
@@ -2098,6 +2223,7 @@ img {
                                 left: 50%;
                                 transform: translate(-50%, -50%);
                                 border-radius: 50%;
+                                margin-top: .15rem;
                             }
                         }
                     }

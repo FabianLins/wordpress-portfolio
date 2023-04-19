@@ -95,6 +95,12 @@ footer small {
 .animation-clock .sm-pointer {
   animation: spin 240s linear infinite;
 }
+.animation-clock.animation-slower .lg-pointer {
+  animation: spin-min-90 40s linear infinite;
+}
+.animation-clock.animation-slower .sm-pointer {
+  animation: spin 480s linear infinite;
+}
 
 .animation-draw-tick {
   stroke-dasharray: 1;
@@ -193,6 +199,71 @@ footer small {
     box-shadow: 0 0 0 0 rgba(255, 204, 206, 0);
   }
 }
+.animation-button-blink-demo {
+  animation-name: button-blink-demo;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: 2.66s;
+}
+
+@keyframes button-blink-demo {
+  0% {
+    box-shadow: 0 0 0 0 rgba(172, 188, 210, 0.3);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 3rem 0.3rem rgba(172, 188, 210, 0.4);
+    filter: brightness(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(172, 188, 210, 0.3);
+    opacity: 1;
+  }
+}
+.animation-button-blink-more {
+  animation-name: button-blink-more;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1.33s;
+}
+
+@keyframes button-blink-more {
+  0% {
+    box-shadow: 0 0 0 0 rgba(185, 198, 185, 0.3);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 3rem 0.3rem rgba(185, 198, 185, 0.4);
+    filter: brightness(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(185, 198, 185, 0.3);
+    opacity: 1;
+  }
+}
+.animation-button-blink-github {
+  animation-name: button-blink-github;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes button-blink-github {
+  0% {
+    box-shadow: 0 0 0 0 rgba(139, 124, 182, 0.3);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 3rem 0.3rem rgba(182, 173, 209, 0.4);
+    filter: brightness(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(182, 173, 209, 0.3);
+    opacity: 1;
+  }
+}
 .animation-button-blink {
   animation-name: button-blink;
   animation-duration: 4s;
@@ -217,6 +288,13 @@ footer small {
     opacity: 1;
   }
 }
+.animation-wheel-icon {
+  animation-name: spin;
+  animation-duration: 85s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 .animation-wheel-top {
   animation-name: spin;
   animation-duration: 55s;
@@ -611,7 +689,7 @@ em {
 
 .prim-btn {
   background: linear-gradient(90deg, hsl(255, 60%, 45%), hsl(275, 100%, 50%));
-  border: 2px solid hsl(255, 60%, 45%);
+  border: 0.2rem solid hsl(255, 60%, 45%);
   color: white;
   text-decoration: none;
   position: relative;
@@ -835,7 +913,7 @@ img {
   margin-top: 4.5rem;
   display: inline-flex;
   text-decoration: none;
-  transition: 0.2s ease-in;
+  transition: 0.35s ease-in;
 }
 .about-me .left .buttons .btn-1 label,
 .about-me .left .buttons .btn-2 label {
@@ -854,7 +932,7 @@ img {
     box-shadow: 0 0 1rem 0 rgba(77, 140, 230, 0.5);
   }
   50% {
-    box-shadow: 0 0 2rem 0.2trem rgba(77, 140, 230, 0.7);
+    box-shadow: 0 0 2rem 0.2rem rgba(77, 140, 230, 0.7);
   }
   100% {
     box-shadow: 0 0 1rem 0 rgba(77, 140, 230, 0.5);
@@ -1575,7 +1653,6 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: red;
   padding: 1rem 3rem;
   margin-top: 2rem;
   cursor: pointer;
@@ -1583,19 +1660,42 @@ img {
   overflow: hidden;
   z-index: 2;
   transition: 0.35s ease-in;
-  border: 2px solid hsl(255, 60%, 45%);
+  border: 0.2rem solid hsl(255, 60%, 45%);
+}
+.projects .project .left .buttons .button-container:hover::before, .projects .project .left .buttons .button-container:focus::before {
+  transform: translateX(0);
+}
+.projects .project .left .buttons .button-container::before {
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  transform: translateX(-130%);
+  transition: transform 0.25s;
 }
 .projects .project .left .buttons .button-container.github {
   background: linear-gradient(90deg, hsl(255, 28%, 60%), hsl(250, 100%, 80%));
   border-color: hsl(255, 28%, 60%);
 }
+.projects .project .left .buttons .button-container.github::before {
+  background: hsl(255, 28%, 75%);
+}
 .projects .project .left .buttons .button-container.more {
   background: linear-gradient(90deg, hsl(120, 15%, 55%), hsl(120, 10%, 70%));
   border-color: hsl(120, 15%, 55%);
 }
+.projects .project .left .buttons .button-container.more::before {
+  background: hsl(120, 10%, 75%);
+}
 .projects .project .left .buttons .button-container.demo {
   background: linear-gradient(90deg, hsl(215, 30%, 61%), hsl(215, 30%, 70%));
   border-color: hsl(215, 30%, 61%);
+}
+.projects .project .left .buttons .button-container.demo::before {
+  background: hsl(215, 30%, 75%);
 }
 .projects .project .left .buttons .button-container:first-of-type {
   margin-top: 0;
@@ -1682,6 +1782,7 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
+  margin-top: 0.15rem;
 }
 .projects .project .right-content .project-state.finished {
   background: rgba(122, 184, 122, 0.9);

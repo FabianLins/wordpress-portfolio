@@ -146,7 +146,7 @@ get_header();
                                 echo ("<h3 class='h3'>" . $headlineContent . "</h3>");
                                 echo ("<div class='project-info'>");
                                     echo ("<div class='made-with'>");
-                                        echo ("<div class='wheel'>");
+                                        echo ("<div class='wheel animation-wheel-icon'>");
                                             $src = get_template_directory_uri() . "/svg/wheel.svg";
                                             echo file_get_contents( $src );
                                         echo ("</div>"); // wheel
@@ -156,7 +156,7 @@ get_header();
                                     echo ("</div>"); // made with
                                     echo ("<div class='created-in'>");
                                         echo ("<div class='calender'>");
-                                            echo ("<div class='circle-container'>");
+                                            echo ("<div class='circle-container animation-clock animation-slower'>");
                                                 echo ("<div class='circle'>");
                                                     echo ("<div class='dot'>");
                                                     echo ("</div>"); // dot
@@ -180,19 +180,19 @@ get_header();
                                         $currStr = strtolower($currButton["content"]);
                                         $addClass = "";
                                         $icon = "";
-
+                                        $animation = "animation-button-blink";
                                         if (strpos($currStr, "github") !== false){
-                                            $addClass = "github";
+                                            $addClass = "github " . $animation . "-github";
                                             $src = get_template_directory_uri() . "/svg/github.svg";
                                             $icon = file_get_contents( $src );
                                         }
                                         elseif (strpos($currStr, "show more") !== false){
-                                            $addClass = "more";
+                                            $addClass = "more " . $animation . "-more";
                                             $src = get_template_directory_uri() . "/svg/show-more.svg";
                                             $icon = file_get_contents( $src );
                                         }
                                         elseif (strpos($currStr, "demo") !== false){
-                                            $addClass = "demo";
+                                            $addClass = "demo " . $animation . "-demo";
                                             $src = get_template_directory_uri() . "/svg/world.svg";
                                             $icon = file_get_contents( $src );
                                         }
