@@ -200,17 +200,17 @@ $xxs: 400px;
 
 @keyframes button-blink-demo {
     0% {
-        box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .3);
+        box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .2);
         opacity: 1;
     }
 
     50% {
-        box-shadow: 0 0 3rem .3rem rgba($blue-gray-lightest, .4);
-        filter: brightness(1.05);
+        box-shadow: 0 0 2rem .2rem rgba($blue-gray-lightest, .4);
+        filter: brightness(1.035);
     }
 
     100% {
-        box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .3);
+        box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .2);
         opacity: 1;
     }
 }
@@ -225,17 +225,17 @@ $xxs: 400px;
 
 @keyframes button-blink-more {
     0% {
-        box-shadow: 0 0 0 0 rgba($green-light-gray, .3);
+        box-shadow: 0 0 0 0 rgba($green-light-gray, .2);
         opacity: 1;
     }
 
     50% {
-        box-shadow: 0 0 3rem .3rem rgba($green-light-gray, .4);
-        filter: brightness(1.05);
+        box-shadow: 0 0 2rem .2rem rgba($green-light-gray, .3);
+        filter: brightness(1.035);
     }
 
     100% {
-        box-shadow: 0 0 0 0 rgba($green-light-gray, .3);
+        box-shadow: 0 0 0 0 rgba($green-light-gray, .2);
         opacity: 1;
     }
 }
@@ -249,17 +249,17 @@ $xxs: 400px;
 
 @keyframes button-blink-github {
     0% {
-        box-shadow: 0 0 0 0 rgba($prim-light-gray, .3);
+        box-shadow: 0 0 0 0 rgba($sec-light, .2);
         opacity: 1;
     }
 
     50% {
-        box-shadow: 0 0 3rem .3rem rgba($prim-ligh-gray, .7);
-        filter: brightness(1.05);
+        box-shadow: 0 0 2rem .2rem rgba($sec-light, .3);
+        filter: brightness(1.035);
     }
 
     100% {
-        box-shadow: 0 0 0 0 rgba($prim-ligh-gray, .3);
+        box-shadow: 0 0 0 0 rgba($sec-light, .2);
         opacity: 1;
     }
 }
@@ -2025,10 +2025,10 @@ img {
                             }
 
                             .lg-pointer {
-                                width: calc(50% - .1rem);
+                                width: calc(50% - .2rem);
                                 position: absolute;
-                                top: 50%;
-                                left: calc(50% + .1px);
+                                top: calc(50% - 1px);
+                                left: 50%;
                                 transform-origin: left;
                                 transform: rotate(-90deg);
                                 height: .2rem;
@@ -2100,13 +2100,40 @@ img {
                         transition: transform 0.25s;
                     }
 
-
                     &.github {
                         background: linear-gradient(90deg, $prim-light-gray, $sec-light);
                         border-color: $prim-light-gray;
 
                         &::before {
                             background: $prim-lighter-gray;
+                        }
+
+                        &:hover,
+                        &:focus {
+                            animation-name: button-blink-github-hover;
+                            animation-duration: 3s;
+                            animation-iteration-count: infinite;
+                            animation-timing-function: ease-in-out;
+
+                            svg {
+                                transform: rotate(360deg);
+
+                                #dots {}
+                            }
+
+                            @keyframes button-blink-github-hover {
+                                0% {
+                                    box-shadow: 0 0 0 0 rgba($prim-lighter-gray, .4);
+                                }
+
+                                50% {
+                                    box-shadow: 0 0 2rem .2rem rgba($prim-lighter-gray, .6);
+                                }
+
+                                100% {
+                                    box-shadow: 0 0 0 0 rgba($prim-lighter-gray, .4);
+                                }
+                            }
                         }
                     }
 
@@ -2116,6 +2143,80 @@ img {
 
                         &::before {
                             background: $green-light-gray;
+                        }
+
+                        &:hover,
+                        &:focus {
+                            animation-name: button-blink-more-hover;
+                            animation-duration: 3s;
+                            animation-iteration-count: infinite;
+                            animation-timing-function: ease-in-out;
+                            animation-delay: unset;
+
+                            svg {
+                                transform: rotate(-360deg);
+
+                                #dots {
+                                    g {
+                                        &:nth-child(3) {
+                                            circle {
+                                                animation-name: dot-jump;
+                                                animation-duration: 2.5s;
+                                                animation-iteration-count: infinite;
+                                                animation-timing-function: ease-in-out;
+                                            }
+                                        }
+
+                                        &:nth-child(2) {
+                                            circle {
+                                                animation-name: dot-jump;
+                                                animation-duration: 2.5s;
+                                                animation-iteration-count: infinite;
+                                                animation-timing-function: ease-in-out;
+                                                animation-delay: .7s;
+                                            }
+                                        }
+
+                                        &:nth-child(1) {
+                                            circle {
+                                                animation-name: dot-jump;
+                                                animation-duration: 2.5s;
+                                                animation-iteration-count: infinite;
+                                                animation-timing-function: ease-in-out;
+                                                animation-delay: 1.4s;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @keyframes dot-jump {
+                                    0% {
+                                        transform: translateY(0);
+                                    }
+
+                                    50% {
+                                        transform: translateY(-.6rem);
+                                    }
+
+                                    100% {
+                                        transform: translateY(0);
+                                    }
+                                }
+                            }
+
+                            @keyframes button-blink-more-hover {
+                                0% {
+                                    box-shadow: 0 0 0 0 rgba($green-light-gray, .4);
+                                }
+
+                                50% {
+                                    box-shadow: 0 0 2rem .2rem rgba($green-light-gray, .6);
+                                }
+
+                                100% {
+                                    box-shadow: 0 0 0 0 rgba($green-light-gray, .4);
+                                }
+                            }
                         }
                     }
 
@@ -2127,6 +2228,32 @@ img {
                             background: $blue-gray-lightest;
                         }
 
+                        &:hover,
+                        &:focus {
+                            animation-name: button-blink-demo-hover;
+                            animation-duration: 3s;
+                            animation-iteration-count: infinite;
+                            animation-timing-function: ease-in-out;
+                            animation-delay: unset;
+
+                            svg {
+                                transform: rotate(360deg);
+                            }
+
+                            @keyframes button-blink-demo-hover {
+                                0% {
+                                    box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .4);
+                                }
+
+                                50% {
+                                    box-shadow: 0 0 2rem .2rem rgba($blue-gray-lightest, .6);
+                                }
+
+                                100% {
+                                    box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .4);
+                                }
+                            }
+                        }
                     }
 
                     &:first-of-type {
@@ -2136,6 +2263,7 @@ img {
                     svg {
                         width: 6rem;
                         margin-right: 1rem;
+                        transition: transform .6s ease-in-out;
 
                         path,
                         circle {

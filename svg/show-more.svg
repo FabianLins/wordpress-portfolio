@@ -3,17 +3,19 @@
 <svg width="100%" height="100%" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <rect id="Artboard1" x="0" y="0" width="60" height="60" style="fill:none;"/>
     <g id="Artboard11" serif:id="Artboard1">
-        <g transform="matrix(1.76249,0,0,1.76249,-22.135,-29.707)">
+        <g id="circle" transform="matrix(1.76249,0,0,1.76249,-22.135,-29.707)">
             <path d="M29.58,17.139C38.818,17.139 46.318,24.639 46.318,33.877C46.318,43.114 38.818,50.614 29.58,50.614C20.343,50.614 12.843,43.114 12.843,33.877C12.843,24.639 20.343,17.139 29.58,17.139ZM29.58,19.408C21.595,19.408 15.112,25.891 15.112,33.877C15.112,41.862 21.595,48.345 29.58,48.345C37.566,48.345 44.049,41.862 44.049,33.877C44.049,25.891 37.566,19.408 29.58,19.408Z"/>
         </g>
-        <g transform="matrix(0.932361,0,0,0.932361,14.7521,2.38898)">
-            <circle cx="15.777" cy="29.865" r="5.899"/>
-        </g>
-        <g transform="matrix(0.932361,0,0,0.932361,30.7021,2.38898)">
-            <circle cx="15.777" cy="29.865" r="5.899"/>
-        </g>
-        <g transform="matrix(0.932361,0,0,0.932361,-0.149642,2.38898)">
-            <circle cx="15.777" cy="29.865" r="5.899"/>
+        <g id="dots">
+            <g id="dot3" transform="matrix(0.932361,0,0,0.932361,30.7021,2.38898)">
+                <circle cx="15.777" cy="29.865" r="5.899"/>
+            </g>
+            <g id="dot2" transform="matrix(0.932361,0,0,0.932361,14.7521,2.38898)">
+                <circle cx="15.777" cy="29.865" r="5.899"/>
+            </g>
+            <g id="dot" transform="matrix(0.932361,0,0,0.932361,-0.149642,2.38898)">
+                <circle cx="15.777" cy="29.865" r="5.899"/>
+            </g>
         </g>
     </g>
 </svg>

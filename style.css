@@ -209,15 +209,15 @@ footer small {
 
 @keyframes button-blink-demo {
   0% {
-    box-shadow: 0 0 0 0 rgba(172, 188, 210, 0.3);
+    box-shadow: 0 0 0 0 rgba(172, 188, 210, 0.2);
     opacity: 1;
   }
   50% {
-    box-shadow: 0 0 3rem 0.3rem rgba(172, 188, 210, 0.4);
-    filter: brightness(1.05);
+    box-shadow: 0 0 2rem 0.2rem rgba(172, 188, 210, 0.4);
+    filter: brightness(1.035);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(172, 188, 210, 0.3);
+    box-shadow: 0 0 0 0 rgba(172, 188, 210, 0.2);
     opacity: 1;
   }
 }
@@ -231,15 +231,15 @@ footer small {
 
 @keyframes button-blink-more {
   0% {
-    box-shadow: 0 0 0 0 rgba(185, 198, 185, 0.3);
+    box-shadow: 0 0 0 0 rgba(185, 198, 185, 0.2);
     opacity: 1;
   }
   50% {
-    box-shadow: 0 0 3rem 0.3rem rgba(185, 198, 185, 0.4);
-    filter: brightness(1.05);
+    box-shadow: 0 0 2rem 0.2rem rgba(185, 198, 185, 0.3);
+    filter: brightness(1.035);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(185, 198, 185, 0.3);
+    box-shadow: 0 0 0 0 rgba(185, 198, 185, 0.2);
     opacity: 1;
   }
 }
@@ -252,15 +252,15 @@ footer small {
 
 @keyframes button-blink-github {
   0% {
-    box-shadow: 0 0 0 0 rgba(139, 124, 182, 0.3);
+    box-shadow: 0 0 0 0 rgba(170, 153, 255, 0.2);
     opacity: 1;
   }
   50% {
-    box-shadow: 0 0 3rem 0.3rem rgba(182, 173, 209, 0.4);
-    filter: brightness(1.05);
+    box-shadow: 0 0 2rem 0.2rem rgba(170, 153, 255, 0.3);
+    filter: brightness(1.035);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(182, 173, 209, 0.3);
+    box-shadow: 0 0 0 0 rgba(170, 153, 255, 0.2);
     opacity: 1;
   }
 }
@@ -1616,10 +1616,10 @@ img {
   background: hsl(180, 25%, 97%);
 }
 .projects .project .left .created-in .calender .circle-container .circle .lg-pointer {
-  width: calc(50% - 0.1rem);
+  width: calc(50% - 0.2rem);
   position: absolute;
-  top: 50%;
-  left: calc(50% + 0.1px);
+  top: calc(50% - 1px);
+  left: 50%;
   transform-origin: left;
   transform: rotate(-90deg);
   height: 0.2rem;
@@ -1683,12 +1683,84 @@ img {
 .projects .project .left .buttons .button-container.github::before {
   background: hsl(255, 28%, 75%);
 }
+.projects .project .left .buttons .button-container.github:hover, .projects .project .left .buttons .button-container.github:focus {
+  animation-name: button-blink-github-hover;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.projects .project .left .buttons .button-container.github:hover svg, .projects .project .left .buttons .button-container.github:focus svg {
+  transform: rotate(360deg);
+}
+@keyframes button-blink-github-hover {
+  0% {
+    box-shadow: 0 0 0 0 rgba(182, 173, 209, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 2rem 0.2rem rgba(182, 173, 209, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(182, 173, 209, 0.4);
+  }
+}
 .projects .project .left .buttons .button-container.more {
   background: linear-gradient(90deg, hsl(120, 15%, 55%), hsl(120, 10%, 70%));
   border-color: hsl(120, 15%, 55%);
 }
 .projects .project .left .buttons .button-container.more::before {
   background: hsl(120, 10%, 75%);
+}
+.projects .project .left .buttons .button-container.more:hover, .projects .project .left .buttons .button-container.more:focus {
+  animation-name: button-blink-more-hover;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: unset;
+}
+.projects .project .left .buttons .button-container.more:hover svg, .projects .project .left .buttons .button-container.more:focus svg {
+  transform: rotate(-360deg);
+}
+.projects .project .left .buttons .button-container.more:hover svg #dots g:nth-child(3) circle, .projects .project .left .buttons .button-container.more:focus svg #dots g:nth-child(3) circle {
+  animation-name: dot-jump;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.projects .project .left .buttons .button-container.more:hover svg #dots g:nth-child(2) circle, .projects .project .left .buttons .button-container.more:focus svg #dots g:nth-child(2) circle {
+  animation-name: dot-jump;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.7s;
+}
+.projects .project .left .buttons .button-container.more:hover svg #dots g:nth-child(1) circle, .projects .project .left .buttons .button-container.more:focus svg #dots g:nth-child(1) circle {
+  animation-name: dot-jump;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1.4s;
+}
+@keyframes dot-jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.6rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes button-blink-more-hover {
+  0% {
+    box-shadow: 0 0 0 0 rgba(185, 198, 185, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 2rem 0.2rem rgba(185, 198, 185, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(185, 198, 185, 0.4);
+  }
 }
 .projects .project .left .buttons .button-container.demo {
   background: linear-gradient(90deg, hsl(215, 30%, 61%), hsl(215, 30%, 70%));
@@ -1697,12 +1769,34 @@ img {
 .projects .project .left .buttons .button-container.demo::before {
   background: hsl(215, 30%, 75%);
 }
+.projects .project .left .buttons .button-container.demo:hover, .projects .project .left .buttons .button-container.demo:focus {
+  animation-name: button-blink-demo-hover;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: unset;
+}
+.projects .project .left .buttons .button-container.demo:hover svg, .projects .project .left .buttons .button-container.demo:focus svg {
+  transform: rotate(360deg);
+}
+@keyframes button-blink-demo-hover {
+  0% {
+    box-shadow: 0 0 0 0 rgba(172, 188, 210, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 2rem 0.2rem rgba(172, 188, 210, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(172, 188, 210, 0.4);
+  }
+}
 .projects .project .left .buttons .button-container:first-of-type {
   margin-top: 0;
 }
 .projects .project .left .buttons .button-container svg {
   width: 6rem;
   margin-right: 1rem;
+  transition: transform 0.6s ease-in-out;
 }
 .projects .project .left .buttons .button-container svg path,
 .projects .project .left .buttons .button-container svg circle {
