@@ -43,6 +43,9 @@ $green: hsl(120, 30%, 60%);
 $green-light-gray: hsl(120, 10%, 75%);
 $green-gray: hsl(120, 10%, 70%);
 
+$mac-red: hsl(358, 100%, 85%);
+$mac-yellow: hsl(52, 100%, 85%);
+$mac-green: hsl(108, 100%, 85%);
 /*Breakpoints*/
 
 $xxl: 1550px;
@@ -56,6 +59,38 @@ $xs: 500px;
 $xxs: 400px;
 
 /*Animations*/
+
+.animation-shadow-fade-in {
+    animation: shadow-fade-in .35s ease-in;
+    transform-origin: top left;
+}
+
+@keyframes shadow-fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animation-modal-fade-in {
+    animation: modal-fade-in .35s ease-in;
+    transform-origin: top left;
+}
+
+@keyframes modal-fade-in {
+    0% {
+        transform: scale(.7) rotateX(90deg) translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotateX(0) translate(-50%, -50%);
+        opacity: 1;
+    }
+}
 
 .animation-clock {
     .lg-pointer {
@@ -226,7 +261,7 @@ $xxs: 400px;
 @keyframes button-blink-more {
     0% {
         box-shadow: 0 0 0 0 rgba($green-light-gray, .2);
-        opacity: 1;
+        filter: brightness(1);
     }
 
     50% {
@@ -236,7 +271,7 @@ $xxs: 400px;
 
     100% {
         box-shadow: 0 0 0 0 rgba($green-light-gray, .2);
-        opacity: 1;
+        filter: brightness(1);
     }
 }
 
@@ -250,7 +285,7 @@ $xxs: 400px;
 @keyframes button-blink-github {
     0% {
         box-shadow: 0 0 0 0 rgba($sec-light, .2);
-        opacity: 1;
+        filter: brightness(1);
     }
 
     50% {
@@ -1359,7 +1394,7 @@ img {
                             }
 
                             &.red {
-                                background: hsl(358, 100%, 85%);
+                                background: $mac-red;
 
                                 &:hover {
                                     background: hsl(25, 100%, 90%);
@@ -1368,7 +1403,7 @@ img {
                             }
 
                             &.yellow {
-                                background: hsl(52, 100%, 85%);
+                                background: $mac-yellow;
                                 margin: 0 1rem;
 
                                 &:hover {
@@ -1379,7 +1414,7 @@ img {
                             }
 
                             &.green {
-                                background: hsl(108, 100%, 85%);
+                                background: $mac-green;
 
                                 &:hover {
                                     background: hsl(84, 100%, 91%);
@@ -1932,6 +1967,10 @@ img {
 .projects {
     background: $gray-dark;
 
+    input {
+        display: none;
+    }
+
     .h2 {
         color: $blue-light;
         border-bottom-color: $blue-light;
@@ -2080,6 +2119,7 @@ img {
                     z-index: 2;
                     transition: 0.35s ease-in;
                     border: .2rem solid $prim;
+                    box-shadow: 0 0 0 0 rgba($sec-light, .2);
 
                     &:hover,
                     &:focus {
@@ -2110,29 +2150,8 @@ img {
 
                         &:hover,
                         &:focus {
-                            animation-name: button-blink-github-hover;
-                            animation-duration: 3s;
-                            animation-iteration-count: infinite;
-                            animation-timing-function: ease-in-out;
-
                             svg {
                                 transform: rotate(360deg);
-
-                                #dots {}
-                            }
-
-                            @keyframes button-blink-github-hover {
-                                0% {
-                                    box-shadow: 0 0 0 0 rgba($prim-lighter-gray, .4);
-                                }
-
-                                50% {
-                                    box-shadow: 0 0 2rem .2rem rgba($prim-lighter-gray, .6);
-                                }
-
-                                100% {
-                                    box-shadow: 0 0 0 0 rgba($prim-lighter-gray, .4);
-                                }
                             }
                         }
                     }
@@ -2147,12 +2166,6 @@ img {
 
                         &:hover,
                         &:focus {
-                            animation-name: button-blink-more-hover;
-                            animation-duration: 3s;
-                            animation-iteration-count: infinite;
-                            animation-timing-function: ease-in-out;
-                            animation-delay: unset;
-
                             svg {
                                 transform: rotate(-360deg);
 
@@ -2203,20 +2216,6 @@ img {
                                     }
                                 }
                             }
-
-                            @keyframes button-blink-more-hover {
-                                0% {
-                                    box-shadow: 0 0 0 0 rgba($green-light-gray, .4);
-                                }
-
-                                50% {
-                                    box-shadow: 0 0 2rem .2rem rgba($green-light-gray, .6);
-                                }
-
-                                100% {
-                                    box-shadow: 0 0 0 0 rgba($green-light-gray, .4);
-                                }
-                            }
                         }
                     }
 
@@ -2230,28 +2229,8 @@ img {
 
                         &:hover,
                         &:focus {
-                            animation-name: button-blink-demo-hover;
-                            animation-duration: 3s;
-                            animation-iteration-count: infinite;
-                            animation-timing-function: ease-in-out;
-                            animation-delay: unset;
-
                             svg {
                                 transform: rotate(360deg);
-                            }
-
-                            @keyframes button-blink-demo-hover {
-                                0% {
-                                    box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .4);
-                                }
-
-                                50% {
-                                    box-shadow: 0 0 2rem .2rem rgba($blue-gray-lightest, .6);
-                                }
-
-                                100% {
-                                    box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .4);
-                                }
                             }
                         }
                     }
@@ -2271,7 +2250,8 @@ img {
                         }
                     }
 
-                    a {
+                    a,
+                    span {
                         text-decoration: none;
                         font-size: 4rem;
                         color: inherit;
@@ -2381,6 +2361,155 @@ img {
             }
         }
 
+        .modal {
+            &-container {
+                display: none;
+            }
+
+            transition: .2s ease-in-out;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 90%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba($blue-light, .9);
+            z-index: 10;
+            color: $text;
+            overflow-y: auto;
+
+            &-top {
+                display: flex;
+                position: sticky;
+                margin-top: -1px;
+                top: 0;
+                background: $prim-light-gray;
+
+                .mac-buttons {
+                    display: flex;
+                    padding: 1rem;
+
+                    label {
+                        width: 3rem;
+                        height: 3rem;
+                        display: block;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        margin: .5rem;
+                        transition: .1s ease-in-out;
+
+                        &:hover {
+                            filter: blur(.1rem);
+                            transform: scale(1.15);
+                        }
+
+                        &.red {
+                            background: $mac-red;
+
+                            &:hover {
+                                background: hsl(25, 100%, 90%);
+                                box-shadow: 0 0 1.5rem 1rem rgba(hsl(358, 100%, 85%), .4) !important;
+                            }
+                        }
+
+                        &.yellow {
+                            background: $mac-yellow;
+
+                            &:hover {
+                                background: hsl(52, 100%, 99%);
+                                box-shadow: 0 0 1.5rem 1rem rgba(hsl(52, 100%, 85%), .4) !important;
+                            }
+
+                        }
+
+                        &.green {
+                            background: $mac-green;
+
+                            &:hover {
+                                background: hsl(84, 100%, 91%);
+                                box-shadow: 0 0 1.5rem 1rem rgba(hsl(84, 100%, 85%), .4) !important;
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-content {
+                padding: 2.5rem;
+                height: auto;
+                width: 100%;
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    color: $prim;
+                    font-size: 4rem;
+                    font-weight: 100;
+                    line-height: 1;
+                    letter-spacing: -.5px;
+                    margin-top: 2rem;
+
+                    &:first-of-type {
+                        margin-top: 0;
+                    }
+                }
+
+                p {
+                    margin-top: 1rem;
+                    margin-left: 2rem;
+                    margin-right: 2rem;
+                    font-size: 2rem;
+                    letter-spacing: .2px;
+                }
+
+                ul {
+                    margin-left: 5rem;
+                    margin-top: 1rem;
+
+                    li {
+                        font-size: 2rem;
+                        margin-bottom: .5rem;
+                        letter-spacing: .5px;
+
+                        &::before {
+                            content: "•";
+                            color: $gray;
+                            font-weight: bold;
+                            display: inline-block;
+                            width: 1em;
+                        }
+                    }
+                }
+
+                a {
+                    color: $prim-light-gray;
+                }
+
+            }
+
+            &-shadow {
+                width: 100%;
+                height: 100vh;
+                overflow: none;
+                background: rgba($blue-darkest, .7);
+                backdrop-filter: blur(.5rem);
+                filter: blur(0);
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9;
+            }
+
+            em {
+                color: $prim-light-gray;
+            }
+        }
+
         &:nth-of-type(even) {
             background: $gray-darker;
 
@@ -2396,6 +2525,35 @@ img {
 
         &:last-of-type {
             padding-bottom: 8rem;
+        }
+
+    }
+
+    @for $i from 1 through 4 {
+        #modal#{$i} {
+            &:checked {
+                ~.modal-container {
+                    display: block;
+                }
+            }
+
+            &-min {
+                &:checked {
+                    ~.modal {
+                        max-width: 700px;
+                        max-height: 60vh;
+                    }
+                }
+            }
+
+            &-max {
+                &:checked {
+                    ~.modal {
+                        max-width: 900px;
+                        max-height: 90vh;
+                    }
+                }
+            }
         }
     }
 }

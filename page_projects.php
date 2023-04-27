@@ -1,46 +1,55 @@
 <?php
 /* Template Name: Projects Page */
 get_header();
+function getHeadlineContent($headline){
+    $matches = [];
+    preg_match("/<h(1|2|3|4|5|6).*?>([\s\S]*)<\/h.*?>/", $headline, $matches);
+    return $matches;
+}
+
+function getParagraphContent($paragraph){
+    $matches = [];
+    preg_match("/<p.*?>([\s\S]*)<\/p>/", $paragraph, $matches);
+    return $matches;
+}
+
+function getLinkContent($link){
+    $matches = [];
+    if(strpos($link, "href") !== false){
+        preg_match("/<a.* href=\"(.*?)\"(.*?)>([\s\S]*)<\/a>/", $link, $matches);
+    }
+    else{
+        preg_match("/<a.*>([\s\S]*)<\/a>/", $link, $matches);
+    }
+    return $matches;
+}
+
+function sanitizeMarkup($input){
+    return preg_replace("/<!--(.*)-->/Uis", "", $input);
+}
 ?>
 
 <section class="projects">
+    <input type="radio" id="unset-modal" name="modalboxes2" checked>
     <h2 class="h2 mt-header h-pl animation-slide-in-right">
         <?php the_title() ?>
     </h2>
     <div class="all-projects">
         <?php
-
-        function getHeadlineContent($headline){
-            $matches = [];
-            preg_match("/<h(1|2|3|4|5|6).*?>([\s\S]*)<\/h.*?>/", $headline, $matches);
-            return $matches;
-        }
-
-        function getParagraphContent($paragraph){
-            $matches = [];
-            preg_match("/<p.*?>([\s\S]*)<\/p>/", $paragraph, $matches);
-            return $matches;
-        }
-
-        function getLinkContent($link){
-            $matches = [];
-            if(strpos($link, "href") !== false){
-                preg_match("/<a.* href=\"(.*?)\"(.*?)>([\s\S]*)<\/a>/", $link, $matches);
-            }
-            else{
-                preg_match("/<a.*>([\s\S]*)<\/a>/", $link, $matches);
-            }
-            return $matches;
-        }
-
         if (have_posts()) {
             while (have_posts()) {
                 the_post();
                 $content  = get_the_content();
+                $content = str_replace("<strong>", "", $content);
+                $content = str_replace("</strong>", "", $content);
                 $projects = explode("<!-- wp:heading -->", $content);
                 unset($projects[0]);
                 $projects = array_values($projects);
                 $projectsLen = count($projects);
+                $modalBoxes = get_pages( array(
+                    'child_of' => $post->ID,
+                    'post_status' => array( 'publish', 'private' )
+                ) );
                 for ($i = 0; $i < $projectsLen - 1; $i++) {
                     $currProject = $projects[$i];
                     // Headline
@@ -95,6 +104,11 @@ get_header();
                         $projectInfo[1] .= " to <strong>" . $toDate . "</strong>";
                     }       
                     $projectState = $paragraphs[2];
+                    // Modal
+                    $modal = $paragraphs[3];
+                    $modal = strtolower($modal);                   
+                    preg_match("/{#modal([\s\S]*)}/", $modal, $matches);
+                    $modal = "modal" . $matches[1];
                     // Buttons
                     $buttonsLen = substr_count($currProject, "<!-- wp:button -->");
                     $buttons = [];
@@ -140,6 +154,7 @@ get_header();
                             break;
                         }
                     }
+                    // HTML output
                     echo ("<div class='project'>");
                         echo ("<div class='container grid'>");
                             echo ("<div class='left'>");
@@ -196,18 +211,26 @@ get_header();
                                             $src = get_template_directory_uri() . "/svg/world.svg";
                                             $icon = file_get_contents( $src );
                                         }
-                                        echo ("<div class='button-container " . $addClass . "'>");
+                                        if (strpos($currStr, "show more") !== false) {
+                                            echo("<label class='button-container " . $addClass . "' for='" . $modal . "'>");
+                                                echo $icon;
+                                                echo("<span>" . $currButton["content"] . "</span>");
+                                            echo("</label>"); // button-container
+                                        }
+                                        else{
+                                            echo("<div class='button-container " . $addClass . "'>");
                                             echo $icon;
-                                            if($currButton["new-tab"]){
+                                            if($currButton["new-tab"]) {
                                                 $target = " target='_blank'";
                                             }
-                                            if($currButton["href"]){
-                                                echo ("<a href=" . $currButton["href"] . $target . ">" . $currButton["content"] . "</a>");
+                                            if($currButton["href"]) {
+                                                echo("<a href=" . $currButton["href"] . $target . ">" . $currButton["content"] . "</a>");
+                                            } else {
+                                                echo("<a href='#'" . ">" . $currButton["content"] . "</a>");
                                             }
-                                            else{
-                                                echo ("<a href='#'" . ">" . $currButton["content"] . "</a>");
-                                            }
-                                        echo ("</div>"); // button-container
+                                            echo("</div>"); // button-container
+
+                                        }
                                     }
                                 echo ("</div>"); // buttons
                             echo ("</div>"); // left
@@ -218,7 +241,7 @@ get_header();
                                             echo ("<div class='icon animation-draw-tick'>");
                                                 $src = get_template_directory_uri() . "/svg/tick.svg";
                                                 echo file_get_contents( $src );
-                                            echo ("</div>"); // icon 
+                                            echo ("</div>"); // icon
                                             echo ("<div class='project-state-text'>");
                                                 echo ("Finished");
                                             echo ("</div>"); // project-state-text 
@@ -243,6 +266,30 @@ get_header();
                                 echo ("</div>"); // right-content  
                             echo ("</div>"); // right
                         echo ("</div>"); // container
+                        foreach($modalBoxes as $currBox){
+                            if($currBox->post_name === $modal){
+                                echo ("<input type='checkbox' id='" . $modal ."' name='modalboxes'>");
+                                echo ("<div class='modal-container'>");
+                                    echo ("<input type='radio' id='" . $modal ."-min' name='". $modal ."-min-max'>");
+                                    echo ("<input type='radio' id='" . $modal ."-max' name='". $modal ."-min-max'>");
+                                    echo ("<div class='modal animation-modal-fade-in'>");
+                                        echo ("<div class='modal-top'>");
+                                            echo ("<div class='mac-buttons'>");
+                                                echo ("<label class='red animation-mac-red-blink' for='" . $modal . "'></label>");
+                                                echo ("<label class='yellow animation-mac-yellow-blink' for='" . $modal . "-min'></label>");
+                                                echo ("<label class='green animation-mac-green-blink' for='" . $modal . "-max'></label>");
+                                            echo ("</div>"); // mac-buttons
+                                        echo ("</div>"); // modal-top
+                                        echo ("<div class='modal-content'>");
+                                            echo (sanitizeMarkup($currBox->post_content));
+                                        echo ("</div>"); // modal-content
+                                    echo ("</div>"); // modal
+                                    echo ("<label class='modal-shadow animation-shadow-fade-in' for='" . $modal ."'>");
+                                    echo ("</label>"); // modal-shadow    
+                                echo ("</div>"); // modal-container
+                                break;
+                            }
+                        }
                     echo ("</div>"); // project
                 }
             }
