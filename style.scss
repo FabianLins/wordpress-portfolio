@@ -1348,6 +1348,7 @@ img {
                     z-index: 2;
                     opacity: .35;
                     transform: translate(calc(-50% + 90% + .5rem), calc(-50% + 5rem + .5rem));
+
                 }
             }
 
@@ -1997,15 +1998,99 @@ img {
         .left {
             grid-column: col-start / span 7;
 
-            .project-info {
-                margin-top: 2rem;
+        }
+
+        .project-info {
+            margin-top: 2rem;
+        }
+
+        .made-with,
+        .created-in {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            svg {
+                width: 6rem;
+
+                path {
+                    fill: $blue-light !important;
+
+                }
             }
 
-            .made-with,
-            .created-in {
+            .text {
+                margin-left: 1rem;
+                font-weight: 100;
+            }
+        }
+
+        .made-with {
+            .wheel {
                 display: flex;
-                align-items: center;
-                margin-bottom: 1rem;
+            }
+
+            margin-top: .5rem;
+        }
+
+        .created-in {
+            .calender {
+                display: flex;
+                position: relative;
+
+                .circle-container {
+                    width: 50%;
+                    position: absolute;
+                    aspect-ratio: 1 / 1;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: 50%;
+                    border: .2rem solid $gray-dark;
+                    background: $gray-dark;
+
+                    .circle {
+                        border: .2rem $blue-light solid;
+                        border-radius: 50%;
+                        aspect-ratio: 1 / 1;
+                        width: 100%;
+                        position: relative;
+
+                        .sm-pointer {
+                            width: calc(50% - .45rem);
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform-origin: left;
+                            height: .2rem;
+                            border-radius: 1rem;
+                            background: $blue-light;
+                        }
+
+                        .lg-pointer {
+                            width: calc(50% - .2rem);
+                            position: absolute;
+                            top: calc(50% - 1px);
+                            left: 50%;
+                            transform-origin: left;
+                            transform: rotate(-90deg);
+                            height: .2rem;
+                            border-radius: 1rem;
+                            background: $blue-light;
+                        }
+
+                        .dot {
+                            position: absolute;
+                            width: .4rem;
+                            height: .4rem;
+                            background: $blue-light;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            margin-top: .5px;
+                            border-radius: 50%;
+                        }
+                    }
+                }
 
                 svg {
                     width: 6rem;
@@ -2015,248 +2100,165 @@ img {
 
                     }
                 }
+            }
 
-                .text {
-                    margin-left: 1rem;
-                    font-weight: 100;
+        }
+
+        .buttons {
+            gap: 0;
+            margin-top: 4rem;
+        }
+
+        .button-container {
+            grid-column: col-start/span 12;
+            width: 65%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 3rem;
+            margin-top: 2rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            transition: 0.35s ease-in;
+            border: .2rem solid $prim;
+            box-shadow: 0 0 0 0 rgba($sec-light, .2);
+
+            &:hover,
+            &:focus {
+                &::before {
+                    transform: translateX(0);
                 }
             }
 
-            .made-with {
-                .wheel {
-                    display: flex;
-                }
-
-                margin-top: .5rem;
+            &::before {
+                content: '';
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                position: absolute;
+                z-index: -1;
+                transform: translateX(-130%);
+                transition: transform 0.25s;
             }
 
-            .created-in {
-                .calender {
-                    display: flex;
-                    position: relative;
+            &.github {
+                background: linear-gradient(90deg, $prim-light-gray, $sec-light);
+                border-color: $prim-light-gray;
 
-                    .circle-container {
-                        width: 50%;
-                        position: absolute;
-                        aspect-ratio: 1 / 1;
-                        right: 0;
-                        bottom: 0;
-                        border-radius: 50%;
-                        border: .2rem solid $gray-dark;
-                        background: $gray-dark;
+                &::before {
+                    background: $prim-lighter-gray;
+                }
 
-                        .circle {
-                            border: .2rem $blue-light solid;
-                            border-radius: 50%;
-                            aspect-ratio: 1 / 1;
-                            width: 100%;
-                            position: relative;
-
-                            .sm-pointer {
-                                width: calc(50% - .45rem);
-                                position: absolute;
-                                top: 50%;
-                                left: 50%;
-                                transform-origin: left;
-                                height: .2rem;
-                                border-radius: 1rem;
-                                background: $blue-light;
-                            }
-
-                            .lg-pointer {
-                                width: calc(50% - .2rem);
-                                position: absolute;
-                                top: calc(50% - 1px);
-                                left: 50%;
-                                transform-origin: left;
-                                transform: rotate(-90deg);
-                                height: .2rem;
-                                border-radius: 1rem;
-                                background: $blue-light;
-                            }
-
-                            .dot {
-                                position: absolute;
-                                width: .4rem;
-                                height: .4rem;
-                                background: $blue-light;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
-                                margin-top: .5px;
-                                border-radius: 50%;
-                            }
-                        }
-                    }
-
+                &:hover,
+                &:focus {
                     svg {
-                        width: 6rem;
-
-                        path {
-                            fill: $blue-light !important;
-
-                        }
+                        transform: rotate(360deg);
                     }
                 }
-
             }
 
-            .buttons {
-                gap: 0;
-                margin-top: 4rem;
+            &.more {
+                background: linear-gradient(90deg, $green-gray-darker, $green-gray);
+                border-color: $green-gray-darker;
 
-                .button-container {
-                    grid-column: col-start/span 12;
-                    width: 65%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 1rem 3rem;
-                    margin-top: 2rem;
-                    cursor: pointer;
-                    position: relative;
-                    overflow: hidden;
-                    z-index: 2;
-                    transition: 0.35s ease-in;
-                    border: .2rem solid $prim;
-                    box-shadow: 0 0 0 0 rgba($sec-light, .2);
+                &::before {
+                    background: $green-light-gray;
+                }
 
-                    &:hover,
-                    &:focus {
-                        &::before {
-                            transform: translateX(0);
-                        }
-                    }
+                &:hover,
+                &:focus {
+                    svg {
+                        transform: rotate(-360deg);
 
-                    &::before {
-                        content: '';
-                        top: 0;
-                        left: 0;
-                        bottom: 0;
-                        right: 0;
-                        position: absolute;
-                        z-index: -1;
-                        transform: translateX(-130%);
-                        transition: transform 0.25s;
-                    }
-
-                    &.github {
-                        background: linear-gradient(90deg, $prim-light-gray, $sec-light);
-                        border-color: $prim-light-gray;
-
-                        &::before {
-                            background: $prim-lighter-gray;
-                        }
-
-                        &:hover,
-                        &:focus {
-                            svg {
-                                transform: rotate(360deg);
-                            }
-                        }
-                    }
-
-                    &.more {
-                        background: linear-gradient(90deg, $green-gray-darker, $green-gray);
-                        border-color: $green-gray-darker;
-
-                        &::before {
-                            background: $green-light-gray;
-                        }
-
-                        &:hover,
-                        &:focus {
-                            svg {
-                                transform: rotate(-360deg);
-
-                                #dots {
-                                    g {
-                                        &:nth-child(3) {
-                                            circle {
-                                                animation-name: dot-jump;
-                                                animation-duration: 2.5s;
-                                                animation-iteration-count: infinite;
-                                                animation-timing-function: ease-in-out;
-                                            }
-                                        }
-
-                                        &:nth-child(2) {
-                                            circle {
-                                                animation-name: dot-jump;
-                                                animation-duration: 2.5s;
-                                                animation-iteration-count: infinite;
-                                                animation-timing-function: ease-in-out;
-                                                animation-delay: .7s;
-                                            }
-                                        }
-
-                                        &:nth-child(1) {
-                                            circle {
-                                                animation-name: dot-jump;
-                                                animation-duration: 2.5s;
-                                                animation-iteration-count: infinite;
-                                                animation-timing-function: ease-in-out;
-                                                animation-delay: 1.4s;
-                                            }
-                                        }
+                        #dots {
+                            g {
+                                &:nth-child(3) {
+                                    circle {
+                                        animation-name: dot-jump;
+                                        animation-duration: 2.5s;
+                                        animation-iteration-count: infinite;
+                                        animation-timing-function: ease-in-out;
                                     }
                                 }
 
-                                @keyframes dot-jump {
-                                    0% {
-                                        transform: translateY(0);
+                                &:nth-child(2) {
+                                    circle {
+                                        animation-name: dot-jump;
+                                        animation-duration: 2.5s;
+                                        animation-iteration-count: infinite;
+                                        animation-timing-function: ease-in-out;
+                                        animation-delay: .7s;
                                     }
+                                }
 
-                                    50% {
-                                        transform: translateY(-.6rem);
-                                    }
-
-                                    100% {
-                                        transform: translateY(0);
+                                &:nth-child(1) {
+                                    circle {
+                                        animation-name: dot-jump;
+                                        animation-duration: 2.5s;
+                                        animation-iteration-count: infinite;
+                                        animation-timing-function: ease-in-out;
+                                        animation-delay: 1.4s;
                                     }
                                 }
                             }
                         }
-                    }
 
-                    &.demo {
-                        background: linear-gradient(90deg, $blue-gray, $blue-gray-lighter);
-                        border-color: $blue-gray;
+                        @keyframes dot-jump {
+                            0% {
+                                transform: translateY(0);
+                            }
 
-                        &::before {
-                            background: $blue-gray-lightest;
-                        }
+                            50% {
+                                transform: translateY(-.6rem);
+                            }
 
-                        &:hover,
-                        &:focus {
-                            svg {
-                                transform: rotate(360deg);
+                            100% {
+                                transform: translateY(0);
                             }
                         }
                     }
+                }
+            }
 
-                    &:first-of-type {
-                        margin-top: 0;
-                    }
+            &.demo {
+                background: linear-gradient(90deg, $blue-gray, $blue-gray-lighter);
+                border-color: $blue-gray;
 
+                &::before {
+                    background: $blue-gray-lightest;
+                }
+
+                &:hover,
+                &:focus {
                     svg {
-                        width: 6rem;
-                        margin-right: 1rem;
-                        transition: transform .6s ease-in-out;
-
-                        path,
-                        circle {
-                            fill: $blue-light !important;
-                        }
-                    }
-
-                    a,
-                    span {
-                        text-decoration: none;
-                        font-size: 4rem;
-                        color: inherit;
+                        transform: rotate(360deg);
                     }
                 }
+            }
+
+            &:first-of-type:not(label) {
+                margin-top: 0;
+            }
+
+            svg {
+                width: 6rem;
+                margin-right: 1rem;
+                transition: transform .6s ease-in-out;
+
+                path,
+                circle {
+                    fill: $blue-light !important;
+                }
+            }
+
+            a,
+            span {
+                text-decoration: none;
+                font-size: 4rem;
+                color: inherit;
             }
         }
 
@@ -2366,23 +2368,25 @@ img {
                 display: none;
             }
 
+            border-radius: 2rem;
             transition: .2s ease-in-out;
-            max-width: 800px;
-            max-height: 90vh;
-            width: 90%;
+            max-width: 750px;
+            height: 80vh;
             position: fixed;
+            width: 100%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba($blue-light, .9);
+            background: linear-gradient(rgba($blue-light, .95), rgba($blue-light, .8));
+            backdrop-filter: blur(2rem);
             z-index: 10;
             color: $text;
             overflow-y: auto;
+            box-shadow: 0 1rem 3rem 0 rgba(black, .1);
 
             &-top {
                 display: flex;
                 position: sticky;
-                margin-top: -1px;
                 top: 0;
                 background: $prim-light-gray;
 
@@ -2487,9 +2491,14 @@ img {
                 }
 
                 a {
-                    color: $prim-light-gray;
-                }
+                    color: $prim;
+                    letter-spacing: 1px;
+                    transition: .1 ease-in;
 
+                    &:hover {
+                        color: $prim-light-gray;
+                    }
+                }
             }
 
             &-shadow {
@@ -2503,10 +2512,12 @@ img {
                 top: 0;
                 left: 0;
                 z-index: 9;
+                cursor: pointer;
             }
 
             em {
-                color: $prim-light-gray;
+                color: $prim;
+                letter-spacing: .35px;
             }
         }
 
@@ -2523,10 +2534,57 @@ img {
             }
         }
 
-        &:last-of-type {
+        &:last-of-type:not(.final-block) {
             padding-bottom: 8rem;
         }
 
+    }
+
+    .final-block {
+        .container {
+            min-height: 320px;
+        }
+
+        .relative {
+            position: relative;
+            min-height: inherit;
+        }
+
+        p {
+            margin-top: 1rem;
+            margin-left: 2rem;
+        }
+
+        .buttons {
+            .button-container {
+                grid-column: col-start / span 7;
+                width: 65%;
+            }
+        }
+
+        a {
+            color: white;
+            letter-spacing: 1px;
+
+            strong {
+                color: inherit;
+            }
+        }
+
+        .image-container {
+            display: flex;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            max-width: 300px;
+            width: 100%;
+            opacity: .1;
+
+            img {
+                width: 100%;
+            }
+        }
     }
 
     @for $i from 1 through 4 {
@@ -2541,7 +2599,7 @@ img {
                 &:checked {
                     ~.modal {
                         max-width: 700px;
-                        max-height: 60vh;
+                        height: 60vh;
                     }
                 }
             }
@@ -2550,7 +2608,7 @@ img {
                 &:checked {
                     ~.modal {
                         max-width: 900px;
-                        max-height: 90vh;
+                        height: 90vh;
                     }
                 }
             }

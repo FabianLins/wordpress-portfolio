@@ -1587,39 +1587,39 @@ img {
 .projects .project .left {
   grid-column: col-start/span 7;
 }
-.projects .project .left .project-info {
+.projects .project .project-info {
   margin-top: 2rem;
 }
-.projects .project .left .made-with,
-.projects .project .left .created-in {
+.projects .project .made-with,
+.projects .project .created-in {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 }
-.projects .project .left .made-with svg,
-.projects .project .left .created-in svg {
+.projects .project .made-with svg,
+.projects .project .created-in svg {
   width: 6rem;
 }
-.projects .project .left .made-with svg path,
-.projects .project .left .created-in svg path {
+.projects .project .made-with svg path,
+.projects .project .created-in svg path {
   fill: hsl(180, 25%, 97%) !important;
 }
-.projects .project .left .made-with .text,
-.projects .project .left .created-in .text {
+.projects .project .made-with .text,
+.projects .project .created-in .text {
   margin-left: 1rem;
   font-weight: 100;
 }
-.projects .project .left .made-with {
+.projects .project .made-with {
   margin-top: 0.5rem;
 }
-.projects .project .left .made-with .wheel {
+.projects .project .made-with .wheel {
   display: flex;
 }
-.projects .project .left .created-in .calender {
+.projects .project .created-in .calender {
   display: flex;
   position: relative;
 }
-.projects .project .left .created-in .calender .circle-container {
+.projects .project .created-in .calender .circle-container {
   width: 50%;
   position: absolute;
   aspect-ratio: 1/1;
@@ -1629,14 +1629,14 @@ img {
   border: 0.2rem solid hsl(210, 2%, 49%);
   background: hsl(210, 2%, 49%);
 }
-.projects .project .left .created-in .calender .circle-container .circle {
+.projects .project .created-in .calender .circle-container .circle {
   border: 0.2rem hsl(180, 25%, 97%) solid;
   border-radius: 50%;
   aspect-ratio: 1/1;
   width: 100%;
   position: relative;
 }
-.projects .project .left .created-in .calender .circle-container .circle .sm-pointer {
+.projects .project .created-in .calender .circle-container .circle .sm-pointer {
   width: calc(50% - 0.45rem);
   position: absolute;
   top: 50%;
@@ -1646,7 +1646,7 @@ img {
   border-radius: 1rem;
   background: hsl(180, 25%, 97%);
 }
-.projects .project .left .created-in .calender .circle-container .circle .lg-pointer {
+.projects .project .created-in .calender .circle-container .circle .lg-pointer {
   width: calc(50% - 0.2rem);
   position: absolute;
   top: calc(50% - 1px);
@@ -1657,7 +1657,7 @@ img {
   border-radius: 1rem;
   background: hsl(180, 25%, 97%);
 }
-.projects .project .left .created-in .calender .circle-container .circle .dot {
+.projects .project .created-in .calender .circle-container .circle .dot {
   position: absolute;
   width: 0.4rem;
   height: 0.4rem;
@@ -1668,17 +1668,17 @@ img {
   margin-top: 0.5px;
   border-radius: 50%;
 }
-.projects .project .left .created-in .calender svg {
+.projects .project .created-in .calender svg {
   width: 6rem;
 }
-.projects .project .left .created-in .calender svg path {
+.projects .project .created-in .calender svg path {
   fill: hsl(180, 25%, 97%) !important;
 }
-.projects .project .left .buttons {
+.projects .project .buttons {
   gap: 0;
   margin-top: 4rem;
 }
-.projects .project .left .buttons .button-container {
+.projects .project .button-container {
   grid-column: col-start/span 12;
   width: 65%;
   display: flex;
@@ -1694,10 +1694,10 @@ img {
   border: 0.2rem solid hsl(255, 60%, 45%);
   box-shadow: 0 0 0 0 rgba(170, 153, 255, 0.2);
 }
-.projects .project .left .buttons .button-container:hover::before, .projects .project .left .buttons .button-container:focus::before {
+.projects .project .button-container:hover::before, .projects .project .button-container:focus::before {
   transform: translateX(0);
 }
-.projects .project .left .buttons .button-container::before {
+.projects .project .button-container::before {
   content: "";
   top: 0;
   left: 0;
@@ -1708,40 +1708,40 @@ img {
   transform: translateX(-130%);
   transition: transform 0.25s;
 }
-.projects .project .left .buttons .button-container.github {
+.projects .project .button-container.github {
   background: linear-gradient(90deg, hsl(255, 28%, 60%), hsl(250, 100%, 80%));
   border-color: hsl(255, 28%, 60%);
 }
-.projects .project .left .buttons .button-container.github::before {
+.projects .project .button-container.github::before {
   background: hsl(255, 28%, 75%);
 }
-.projects .project .left .buttons .button-container.github:hover svg, .projects .project .left .buttons .button-container.github:focus svg {
+.projects .project .button-container.github:hover svg, .projects .project .button-container.github:focus svg {
   transform: rotate(360deg);
 }
-.projects .project .left .buttons .button-container.more {
+.projects .project .button-container.more {
   background: linear-gradient(90deg, hsl(120, 15%, 55%), hsl(120, 10%, 70%));
   border-color: hsl(120, 15%, 55%);
 }
-.projects .project .left .buttons .button-container.more::before {
+.projects .project .button-container.more::before {
   background: hsl(120, 10%, 75%);
 }
-.projects .project .left .buttons .button-container.more:hover svg, .projects .project .left .buttons .button-container.more:focus svg {
+.projects .project .button-container.more:hover svg, .projects .project .button-container.more:focus svg {
   transform: rotate(-360deg);
 }
-.projects .project .left .buttons .button-container.more:hover svg #dots g:nth-child(3) circle, .projects .project .left .buttons .button-container.more:focus svg #dots g:nth-child(3) circle {
+.projects .project .button-container.more:hover svg #dots g:nth-child(3) circle, .projects .project .button-container.more:focus svg #dots g:nth-child(3) circle {
   animation-name: dot-jump;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
-.projects .project .left .buttons .button-container.more:hover svg #dots g:nth-child(2) circle, .projects .project .left .buttons .button-container.more:focus svg #dots g:nth-child(2) circle {
+.projects .project .button-container.more:hover svg #dots g:nth-child(2) circle, .projects .project .button-container.more:focus svg #dots g:nth-child(2) circle {
   animation-name: dot-jump;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-delay: 0.7s;
 }
-.projects .project .left .buttons .button-container.more:hover svg #dots g:nth-child(1) circle, .projects .project .left .buttons .button-container.more:focus svg #dots g:nth-child(1) circle {
+.projects .project .button-container.more:hover svg #dots g:nth-child(1) circle, .projects .project .button-container.more:focus svg #dots g:nth-child(1) circle {
   animation-name: dot-jump;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
@@ -1759,30 +1759,30 @@ img {
     transform: translateY(0);
   }
 }
-.projects .project .left .buttons .button-container.demo {
+.projects .project .button-container.demo {
   background: linear-gradient(90deg, hsl(215, 30%, 61%), hsl(215, 30%, 70%));
   border-color: hsl(215, 30%, 61%);
 }
-.projects .project .left .buttons .button-container.demo::before {
+.projects .project .button-container.demo::before {
   background: hsl(215, 30%, 75%);
 }
-.projects .project .left .buttons .button-container.demo:hover svg, .projects .project .left .buttons .button-container.demo:focus svg {
+.projects .project .button-container.demo:hover svg, .projects .project .button-container.demo:focus svg {
   transform: rotate(360deg);
 }
-.projects .project .left .buttons .button-container:first-of-type {
+.projects .project .button-container:first-of-type:not(label) {
   margin-top: 0;
 }
-.projects .project .left .buttons .button-container svg {
+.projects .project .button-container svg {
   width: 6rem;
   margin-right: 1rem;
   transition: transform 0.6s ease-in-out;
 }
-.projects .project .left .buttons .button-container svg path,
-.projects .project .left .buttons .button-container svg circle {
+.projects .project .button-container svg path,
+.projects .project .button-container svg circle {
   fill: hsl(180, 25%, 97%) !important;
 }
-.projects .project .left .buttons .button-container a,
-.projects .project .left .buttons .button-container span {
+.projects .project .button-container a,
+.projects .project .button-container span {
   text-decoration: none;
   font-size: 4rem;
   color: inherit;
@@ -1876,18 +1876,22 @@ img {
   border-radius: 3rem;
 }
 .projects .project .modal {
+  border-radius: 2rem;
   transition: 0.2s ease-in-out;
-  max-width: 800px;
-  max-height: 90vh;
-  width: 90%;
+  max-width: 750px;
+  height: 80vh;
   position: fixed;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(245, 249, 249, 0.9);
+  background: linear-gradient(rgba(245, 249, 249, 0.95), rgba(245, 249, 249, 0.8));
+  -webkit-backdrop-filter: blur(2rem);
+          backdrop-filter: blur(2rem);
   z-index: 10;
   color: hsl(204, 2%, 43%);
   overflow-y: auto;
+  box-shadow: 0 1rem 3rem 0 rgba(0, 0, 0, 0.1);
 }
 .projects .project .modal-container {
   display: none;
@@ -1895,7 +1899,6 @@ img {
 .projects .project .modal-top {
   display: flex;
   position: sticky;
-  margin-top: -1px;
   top: 0;
   background: hsl(255, 28%, 60%);
 }
@@ -1987,6 +1990,11 @@ img {
   width: 1em;
 }
 .projects .project .modal-content a {
+  color: hsl(255, 60%, 45%);
+  letter-spacing: 1px;
+  transition: 0.1 ease-in;
+}
+.projects .project .modal-content a:hover {
   color: hsl(255, 28%, 60%);
 }
 .projects .project .modal-shadow {
@@ -2001,9 +2009,11 @@ img {
   top: 0;
   left: 0;
   z-index: 9;
+  cursor: pointer;
 }
 .projects .project .modal em {
-  color: hsl(255, 28%, 60%);
+  color: hsl(255, 60%, 45%);
+  letter-spacing: 0.35px;
 }
 .projects .project:nth-of-type(even) {
   background: hsl(220, 1%, 41%);
@@ -2012,50 +2022,85 @@ img {
   border-color: hsl(220, 1%, 41%);
   background: hsl(220, 1%, 41%);
 }
-.projects .project:last-of-type {
+.projects .project:last-of-type:not(.final-block) {
   padding-bottom: 8rem;
+}
+.projects .final-block .container {
+  min-height: 320px;
+}
+.projects .final-block .relative {
+  position: relative;
+  min-height: inherit;
+}
+.projects .final-block p {
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+.projects .final-block .buttons .button-container {
+  grid-column: col-start/span 7;
+  width: 65%;
+}
+.projects .final-block a {
+  color: white;
+  letter-spacing: 1px;
+}
+.projects .final-block a strong {
+  color: inherit;
+}
+.projects .final-block .image-container {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  max-width: 300px;
+  width: 100%;
+  opacity: 0.1;
+}
+.projects .final-block .image-container img {
+  width: 100%;
 }
 .projects #modal1:checked ~ .modal-container {
   display: block;
 }
 .projects #modal1-min:checked ~ .modal {
   max-width: 700px;
-  max-height: 60vh;
+  height: 60vh;
 }
 .projects #modal1-max:checked ~ .modal {
   max-width: 900px;
-  max-height: 90vh;
+  height: 90vh;
 }
 .projects #modal2:checked ~ .modal-container {
   display: block;
 }
 .projects #modal2-min:checked ~ .modal {
   max-width: 700px;
-  max-height: 60vh;
+  height: 60vh;
 }
 .projects #modal2-max:checked ~ .modal {
   max-width: 900px;
-  max-height: 90vh;
+  height: 90vh;
 }
 .projects #modal3:checked ~ .modal-container {
   display: block;
 }
 .projects #modal3-min:checked ~ .modal {
   max-width: 700px;
-  max-height: 60vh;
+  height: 60vh;
 }
 .projects #modal3-max:checked ~ .modal {
   max-width: 900px;
-  max-height: 90vh;
+  height: 90vh;
 }
 .projects #modal4:checked ~ .modal-container {
   display: block;
 }
 .projects #modal4-min:checked ~ .modal {
   max-width: 700px;
-  max-height: 60vh;
+  height: 60vh;
 }
 .projects #modal4-max:checked ~ .modal {
   max-width: 900px;
-  max-height: 90vh;
+  height: 90vh;
 }/*# sourceMappingURL=style.css.map */

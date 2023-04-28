@@ -46,11 +46,11 @@ function sanitizeMarkup($input){
                 unset($projects[0]);
                 $projects = array_values($projects);
                 $projectsLen = count($projects);
-                $modalBoxes = get_pages( array(
+                $subPages = get_pages( array(
                     'child_of' => $post->ID,
                     'post_status' => array( 'publish', 'private' )
                 ) );
-                for ($i = 0; $i < $projectsLen - 1; $i++) {
+                for ($i = 0; $i < $projectsLen; $i++) {
                     $currProject = $projects[$i];
                     // Headline
                     $headlineEnd = strpos($currProject, "<!-- /wp:heading -->");
@@ -266,8 +266,8 @@ function sanitizeMarkup($input){
                                 echo ("</div>"); // right-content  
                             echo ("</div>"); // right
                         echo ("</div>"); // container
-                        foreach($modalBoxes as $currBox){
-                            if($currBox->post_name === $modal){
+                        foreach($subPages as $currPage){
+                            if($currPage->post_name === $modal){
                                 echo ("<input type='checkbox' id='" . $modal ."' name='modalboxes'>");
                                 echo ("<div class='modal-container'>");
                                     echo ("<input type='radio' id='" . $modal ."-min' name='". $modal ."-min-max'>");
@@ -281,7 +281,7 @@ function sanitizeMarkup($input){
                                             echo ("</div>"); // mac-buttons
                                         echo ("</div>"); // modal-top
                                         echo ("<div class='modal-content'>");
-                                            echo (sanitizeMarkup($currBox->post_content));
+                                            echo (sanitizeMarkup($currPage->post_content));
                                         echo ("</div>"); // modal-content
                                     echo ("</div>"); // modal
                                     echo ("<label class='modal-shadow animation-shadow-fade-in' for='" . $modal ."'>");
@@ -291,6 +291,118 @@ function sanitizeMarkup($input){
                             }
                         }
                     echo ("</div>"); // project
+                }
+                // Final Block
+                $finalBlock = "";
+                foreach($subPages as $currPage){
+                    if($currPage->post_name === "final-block"){
+                        $finalBlock = $currPage->post_content;
+                    }
+                }
+                if($finalBlock !== ""){
+                    preg_match("/<!-- wp:image {([\s\S]*)} -->/", $finalBlock, $matches);
+                    $imgData = ($matches[1]);
+                    $imgID = -1;
+                    // Paragraph
+                    $paragraphsLen = substr_count($finalBlock, "<!-- wp:paragraph -->");
+                    $paragraphs = [];
+                    $pStart = 0;
+                    $pEnd = 0;
+                    for ($j = 0; $j < $paragraphsLen; $j++) {
+                        if($j === 0){
+                            $pStart = strpos($finalBlock, "<!-- wp:paragraph -->", $pStart);
+                            $pEnd = strpos($finalBlock, "<!-- /wp:paragraph -->", $pEnd);    
+                        }
+                        else{
+                            $pStart = strpos($finalBlock, "<!-- wp:paragraph -->", $pStart + 1);
+                            $pEnd = strpos($finalBlock, "<!-- /wp:paragraph -->", $pEnd + 1);    
+                        }
+                        $pLen = $pEnd - $pStart;
+                        $paragraphContent = getParagraphContent(substr($finalBlock, $pStart, $pLen));
+                        $paragraphs[$j] = $paragraphContent[1];
+                    }
+                    // Image
+                    $currImgData = str_replace('"', '', $imgData); // Remove quotation marks (")
+                    $searchFor =  "id:";
+                    $searchForLen = strlen($searchFor);
+                    if(substr($currImgData, 0, $searchForLen) === $searchFor){
+                        $imgID = substr($currImgData, $searchForLen, (strlen($currImgData) - $searchForLen));
+                    }
+                    $headlineEnd = strpos($finalBlock, "<!-- /wp:heading -->");
+                    $headline = substr($finalBlock, 0, $headlineEnd);
+                    $headlineContent = getHeadlineContent($headline)[2];
+                    // Button
+                    $buttonsLen = substr_count($finalBlock, "<!-- wp:button -->");
+                    $buttons = [];
+                    $btnOffset = 0;
+                    $btnStart = 0;
+                    $btnEnd = 0;
+                    for ($j = 0; $j < $buttonsLen; $j++) {
+                        if($j === 0){
+                            $btnStart = strpos($finalBlock, "<!-- wp:button -->", $btnStart);
+                            $btnEnd = strpos($finalBlock, "<!-- /wp:button -->", $btnEnd);    
+                        }
+                        else{
+                            $btnStart = strpos($finalBlock, "<!-- wp:button -->", $btnStart + 1);
+                            $btnEnd = strpos($finalBlock, "<!-- /wp:button -->", $btnEnd + 1);    
+                        }
+                        $btnLen = $btnEnd - $btnStart;
+                        $btnStr = substr($finalBlock, $btnStart, $btnLen);
+                        $buttonContent = getLinkContent($btnStr);
+                        if($buttonContent[3]){
+                            $buttons[$j]["href"] = $buttonContent[1];
+                            $buttons[$j]["content"] = $buttonContent[3];
+                        }
+                        else{
+                            $buttons[$j]["href"] = false;
+                            $buttons[$j]["content"] = $buttonContent[1];
+                        }
+                        $buttons[$j]["new-tab"] = false;
+                        if(strpos($buttonContent[0], "target=\"_blank\"") !== false){
+                            $buttons[$j]["new-tab"] = true;
+                        }    
+                    }
+                    echo("<div class='project final-block'>");
+                        //var_dump($currPage->post_content);die;
+                        echo ("<div class='container'>");
+                            echo ("<div class='relative'>");
+                                echo ("<div class='content'>");
+                                    echo ("<h3 class='h3'>" . $headlineContent . "</h3>");
+                                    echo ("<p>" . $paragraphs[0] . "</p>");
+                                    echo ("<div class='buttons grid'>");
+                                        foreach($buttons as $currButton){
+                                            $target = "";
+                                            $currStr = strtolower($currButton["content"]);
+                                            $addClass = "";
+                                            $icon = "";
+                                            $animation = "animation-button-blink";
+                                            if (strpos($currStr, "github") !== false){
+                                                $addClass = "github " . $animation . "-github";
+                                                $src = get_template_directory_uri() . "/svg/github.svg";
+                                                $icon = file_get_contents( $src );
+                                            }
+                                            echo("<div class='button-container " . $addClass . "'>");
+                                                echo $icon;
+                                                if($currButton["new-tab"]) {
+                                                    $target = " target='_blank'";
+                                                }
+                                                if($currButton["href"]) {
+                                                    echo("<a href=" . $currButton["href"] . $target . ">" . $currButton["content"] . "</a>");
+                                                }
+                                                else {
+                                                    echo("<a href='#'" . ">" . $currButton["content"] . "</a>");
+                                                }
+                                            echo("</div>"); // button-container
+                                        }
+                                    echo ("</div>"); // buttons
+                                    echo ("<div class='image-container'>");
+                                        //$imgID
+                                        echo ("<img src=" . wp_get_attachment_image_src($imgID,[1000, 1000])[0] . " alt='' />");
+                                    echo ("</div>"); // image-container 
+                                echo ("</div>"); // content    
+                            echo ("</div>"); // relative
+                        echo ("</div>"); // container
+                    echo ("</div>"); // final-block    
                 }
             }
         }
