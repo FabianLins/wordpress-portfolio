@@ -724,7 +724,7 @@ em {
   overflow: hidden;
   z-index: 2;
   display: inline-block;
-  transition: 0.35s ease-in;
+  transition: transform 0.35s ease-in, border-color 0.35s ease-i;
 }
 .prim-btn:hover::before, .prim-btn:focus::before {
   transform: translateX(0);
@@ -1389,9 +1389,6 @@ img {
   }
 }
 @media only screen and (max-width: 576px) {
-  .list-of-skills .left {
-    grid-column: col-start/span 12;
-  }
   .list-of-skills .left .skills-point {
     margin-bottom: 1rem;
   }
@@ -1422,23 +1419,6 @@ img {
     width: 20rem;
   }
 }
-@media only screen and (max-width: 400px) {
-  .list-of-skills .right .front-end-icon .window-container {
-    margin: 0 4rem;
-  }
-  .list-of-skills .right .front-end-icon .window .bottom .tag-close {
-    font-size: 7rem;
-  }
-  .list-of-skills .right .back-end-icon .wheels .wheel-top {
-    width: 22rem;
-  }
-  .list-of-skills .right .back-end-icon .wheels .wheel-top-clipping {
-    width: 22rem;
-  }
-  .list-of-skills .right .back-end-icon .wheels .wheel-bot {
-    width: 19rem;
-  }
-}
 @media only screen and (max-width: 460px) {
   .list-of-skills .right .back-end-icon .wheels .wheel-top {
     width: 21rem;
@@ -1462,18 +1442,24 @@ img {
   }
 }
 @media only screen and (max-width: 400px) {
+  .list-of-skills .right .front-end-icon .window-container {
+    margin: 0 4rem;
+  }
+  .list-of-skills .right .front-end-icon .window .bottom .tag-close {
+    font-size: 7rem;
+  }
   .list-of-skills .right .back-end-icon .wheels .wheel-top {
-    width: 18rem;
+    width: 22rem;
     top: 5.5rem;
     right: 5.5rem;
   }
   .list-of-skills .right .back-end-icon .wheels .wheel-top-clipping {
-    width: 18rem;
+    width: 22rem;
     top: 5.5rem;
     right: 5.5rem;
   }
   .list-of-skills .right .back-end-icon .wheels .wheel-bot {
-    width: 15rem;
+    width: 19rem;
     bottom: 5.5rem;
     left: 5.5rem;
   }
@@ -1668,12 +1654,6 @@ img {
   margin-top: 0.5px;
   border-radius: 50%;
 }
-.projects .project .created-in .calender svg {
-  width: 6rem;
-}
-.projects .project .created-in .calender svg path {
-  fill: hsl(180, 25%, 97%) !important;
-}
 .projects .project .buttons {
   gap: 0;
   margin-top: 4rem;
@@ -1684,13 +1664,13 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 3rem;
+  padding: 1rem 1.5rem;
   margin-top: 2rem;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   z-index: 2;
-  transition: 0.35s ease-in;
+  transition: transform 0.35s ease-in, box-shadow 0.35s ease-in;
   border: 0.2rem solid hsl(255, 60%, 45%);
   box-shadow: 0 0 0 0 rgba(170, 153, 255, 0.2);
 }
@@ -1798,6 +1778,15 @@ img {
   border-radius: 1rem;
   display: flex;
 }
+.projects .project .right-content .bg {
+  width: 100%;
+  position: absolute;
+  height: 20rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4));
+  bottom: 0;
+  border-radius: 3rem;
+  z-index: 3;
+}
 .projects .project .right-content .project-state {
   position: absolute;
   width: 100%;
@@ -1813,6 +1802,7 @@ img {
           backdrop-filter: blur(0.5rem);
   filter: blur(0);
   align-items: center;
+  z-index: 4;
 }
 .projects .project .right-content .project-state.in-progress {
   background: rgba(77, 140, 230, 0.9);
@@ -1881,7 +1871,7 @@ img {
   max-width: 750px;
   height: 80vh;
   position: fixed;
-  width: 100%;
+  width: 90%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -2025,29 +2015,30 @@ img {
 .projects .project:last-of-type:not(.final-block) {
   padding-bottom: 8rem;
 }
-.projects .final-block .container {
+.projects .project.final-block .container {
   min-height: 320px;
 }
-.projects .final-block .relative {
+.projects .project.final-block .relative {
   position: relative;
   min-height: inherit;
 }
-.projects .final-block p {
+.projects .project.final-block p {
   margin-top: 1rem;
   margin-left: 2rem;
+  max-width: 800px;
 }
-.projects .final-block .buttons .button-container {
+.projects .project.final-block .buttons .button-container {
   grid-column: col-start/span 7;
   width: 65%;
 }
-.projects .final-block a {
+.projects .project.final-block a {
   color: white;
   letter-spacing: 1px;
 }
-.projects .final-block a strong {
+.projects .project.final-block a strong {
   color: inherit;
 }
-.projects .final-block .image-container {
+.projects .project.final-block .image-container {
   display: flex;
   position: absolute;
   top: 50%;
@@ -2057,8 +2048,75 @@ img {
   width: 100%;
   opacity: 0.1;
 }
-.projects .final-block .image-container img {
+.projects .project.final-block .image-container img {
   width: 100%;
+}
+@media only screen and (max-width: 992px) {
+  .projects .project .grid {
+    gap: 0;
+  }
+  .projects .project .left {
+    grid-column: col-start/span 12;
+  }
+  .projects .project .right {
+    grid-column: col-start/span 12;
+    margin-top: 4rem;
+  }
+  .projects .project .right-content {
+    margin: 0 auto;
+  }
+  .projects .project .button-container {
+    width: 100%;
+  }
+  .projects .project.final-block .buttons .button-container {
+    grid-column: col-start/span 12;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .projects .project {
+    font-size: 2rem;
+  }
+  .projects .project .button-container {
+    width: 100%;
+  }
+  .projects .project .button-container a,
+  .projects .project .button-container label,
+  .projects .project .button-container span {
+    font-size: 3.5rem;
+  }
+  .projects .project .button-container svg {
+    width: 5rem;
+  }
+  .projects .project .made-with svg,
+  .projects .project .created-in svg {
+    width: 4.5rem;
+  }
+  .projects .project .made-with .text,
+  .projects .project .created-in .text {
+    margin-left: 1rem;
+    font-weight: 100;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .projects .project .button-container a,
+  .projects .project .button-container label,
+  .projects .project .button-container span {
+    font-size: 3rem;
+  }
+  .projects .project .button-container svg {
+    width: 4rem;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .projects .project .button-container a,
+  .projects .project .button-container label,
+  .projects .project .button-container span {
+    font-size: 2.5rem;
+  }
+  .projects .project .button-container svg {
+    width: 3.5rem;
+  }
 }
 .projects #modal1:checked ~ .modal-container {
   display: block;
@@ -2066,10 +2124,12 @@ img {
 .projects #modal1-min:checked ~ .modal {
   max-width: 700px;
   height: 60vh;
+  width: 80%;
 }
 .projects #modal1-max:checked ~ .modal {
   max-width: 900px;
   height: 90vh;
+  width: 95%;
 }
 .projects #modal2:checked ~ .modal-container {
   display: block;
@@ -2077,10 +2137,12 @@ img {
 .projects #modal2-min:checked ~ .modal {
   max-width: 700px;
   height: 60vh;
+  width: 80%;
 }
 .projects #modal2-max:checked ~ .modal {
   max-width: 900px;
   height: 90vh;
+  width: 95%;
 }
 .projects #modal3:checked ~ .modal-container {
   display: block;
@@ -2088,10 +2150,12 @@ img {
 .projects #modal3-min:checked ~ .modal {
   max-width: 700px;
   height: 60vh;
+  width: 80%;
 }
 .projects #modal3-max:checked ~ .modal {
   max-width: 900px;
   height: 90vh;
+  width: 95%;
 }
 .projects #modal4:checked ~ .modal-container {
   display: block;
@@ -2099,8 +2163,10 @@ img {
 .projects #modal4-min:checked ~ .modal {
   max-width: 700px;
   height: 60vh;
+  width: 80%;
 }
 .projects #modal4-max:checked ~ .modal {
   max-width: 900px;
   height: 90vh;
+  width: 95%;
 }/*# sourceMappingURL=style.css.map */

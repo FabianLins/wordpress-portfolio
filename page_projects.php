@@ -262,6 +262,7 @@ function sanitizeMarkup($input){
                                             echo ("</div>"); // project-state-text 
                                         echo ("</div>"); // project-state
                                     }
+                                    echo ("<div class='bg'></div>");
                                     echo ("<img src=" . wp_get_attachment_image_src($imgID,[1000, 1000])[0] . " alt='' />");
                                 echo ("</div>"); // right-content  
                             echo ("</div>"); // right
