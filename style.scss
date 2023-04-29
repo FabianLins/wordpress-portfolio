@@ -58,6 +58,12 @@ $sm: 576px;
 $xs: 500px;
 $xxs: 400px;
 
+
+/*JS classes*/
+.js-modal-focus {
+    overflow: hidden;
+}
+
 /*Animations*/
 
 .animation-shadow-fade-in {
@@ -758,7 +764,7 @@ em {
     transition: transform 0.35s ease-in, border-color 0.35s ease-i;
 
     &:hover,
-    &:focus {
+    &:focus-within {
         &::before {
             transform: translateX(0);
         }
@@ -1041,7 +1047,7 @@ img {
                 transition: 0.35s ease-in;
 
                 &:hover,
-                &:focus {
+                &:focus-within {
                     animation-name: button-blink-hover;
                     animation-duration: 4s;
                     animation-iteration-count: infinite;
@@ -2093,7 +2099,7 @@ img {
             box-shadow: 0 0 0 0 rgba($sec-light, .2);
 
             &:hover,
-            &:focus {
+            &:focus-within {
                 &::before {
                     transform: translateX(0);
                 }
@@ -2120,7 +2126,7 @@ img {
                 }
 
                 &:hover,
-                &:focus {
+                &:focus-within {
                     svg {
                         transform: rotate(360deg);
                     }
@@ -2136,7 +2142,7 @@ img {
                 }
 
                 &:hover,
-                &:focus {
+                &:focus-within {
                     svg {
                         transform: rotate(-360deg);
 
@@ -2199,7 +2205,7 @@ img {
                 }
 
                 &:hover,
-                &:focus {
+                &:focus-within {
                     svg {
                         transform: rotate(360deg);
                     }
@@ -2389,7 +2395,8 @@ img {
                         &.red {
                             background: $mac-red;
 
-                            &:hover {
+                            &:hover,
+                            &:focus-within {
                                 background: hsl(25, 100%, 90%);
                                 box-shadow: 0 0 1.5rem 1rem rgba(hsl(358, 100%, 85%), .4) !important;
                             }
@@ -2398,7 +2405,8 @@ img {
                         &.yellow {
                             background: $mac-yellow;
 
-                            &:hover {
+                            &:hover,
+                            &:focus-within {
                                 background: hsl(52, 100%, 99%);
                                 box-shadow: 0 0 1.5rem 1rem rgba(hsl(52, 100%, 85%), .4) !important;
                             }
@@ -2408,7 +2416,8 @@ img {
                         &.green {
                             background: $mac-green;
 
-                            &:hover {
+                            &:hover,
+                            &:focus-within {
                                 background: hsl(84, 100%, 91%);
                                 box-shadow: 0 0 1.5rem 1rem rgba(hsl(84, 100%, 85%), .4) !important;
 
@@ -2473,7 +2482,8 @@ img {
                     letter-spacing: 1px;
                     transition: .1 ease-in;
 
-                    &:hover {
+                    &:hover,
+                    &:focus-within {
                         color: $prim-light-gray;
                     }
                 }
@@ -2542,9 +2552,15 @@ img {
             a {
                 color: white;
                 letter-spacing: 1px;
+                transition: .07s ease-in;
 
                 strong {
                     color: inherit;
+                }
+
+                &:hover,
+                &:focus-within {
+                    color: $prim-lighter-gray;
                 }
             }
 
@@ -2641,6 +2657,26 @@ img {
 
                 svg {
                     width: 4rem;
+                }
+            }
+
+            .right-content {
+                .project-state {
+                    font-size: 2.5rem;
+
+                    &.in-progress {
+                        .circle {
+                            max-width: 4rem;
+                        }
+                    }
+
+                    &.finished {
+                        .icon {
+                            svg {
+                                max-width: 4rem;
+                            }
+                        }
+                    }
                 }
             }
         }

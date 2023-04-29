@@ -88,6 +88,11 @@ footer small {
 
 /*Variables*/
 /*Breakpoints*/
+/*JS classes*/
+.js-modal-focus {
+  overflow: hidden;
+}
+
 /*Animations*/
 .animation-shadow-fade-in {
   animation: shadow-fade-in 0.35s ease-in;
@@ -726,7 +731,7 @@ em {
   display: inline-block;
   transition: transform 0.35s ease-in, border-color 0.35s ease-i;
 }
-.prim-btn:hover::before, .prim-btn:focus::before {
+.prim-btn:hover::before, .prim-btn:focus-within::before {
   transform: translateX(0);
 }
 .prim-btn::before {
@@ -947,9 +952,9 @@ img {
 .about-me .left .buttons .btn-2 label {
   cursor: pointer;
 }
-.about-me .left .buttons .btn-1:hover, .about-me .left .buttons .btn-1:focus,
+.about-me .left .buttons .btn-1:hover, .about-me .left .buttons .btn-1:focus-within,
 .about-me .left .buttons .btn-2:hover,
-.about-me .left .buttons .btn-2:focus {
+.about-me .left .buttons .btn-2:focus-within {
   animation-name: button-blink-hover;
   animation-duration: 4s;
   animation-iteration-count: infinite;
@@ -966,9 +971,9 @@ img {
     box-shadow: 0 0 1rem 0 rgba(77, 140, 230, 0.5);
   }
 }
-.about-me .left .buttons .btn-1:hover .prim-btn, .about-me .left .buttons .btn-1:focus .prim-btn,
+.about-me .left .buttons .btn-1:hover .prim-btn, .about-me .left .buttons .btn-1:focus-within .prim-btn,
 .about-me .left .buttons .btn-2:hover .prim-btn,
-.about-me .left .buttons .btn-2:focus .prim-btn {
+.about-me .left .buttons .btn-2:focus-within .prim-btn {
   box-shadow: none !important;
   border-color: #367ee2;
 }
@@ -1674,7 +1679,7 @@ img {
   border: 0.2rem solid hsl(255, 60%, 45%);
   box-shadow: 0 0 0 0 rgba(170, 153, 255, 0.2);
 }
-.projects .project .button-container:hover::before, .projects .project .button-container:focus::before {
+.projects .project .button-container:hover::before, .projects .project .button-container:focus-within::before {
   transform: translateX(0);
 }
 .projects .project .button-container::before {
@@ -1695,7 +1700,7 @@ img {
 .projects .project .button-container.github::before {
   background: hsl(255, 28%, 75%);
 }
-.projects .project .button-container.github:hover svg, .projects .project .button-container.github:focus svg {
+.projects .project .button-container.github:hover svg, .projects .project .button-container.github:focus-within svg {
   transform: rotate(360deg);
 }
 .projects .project .button-container.more {
@@ -1705,23 +1710,23 @@ img {
 .projects .project .button-container.more::before {
   background: hsl(120, 10%, 75%);
 }
-.projects .project .button-container.more:hover svg, .projects .project .button-container.more:focus svg {
+.projects .project .button-container.more:hover svg, .projects .project .button-container.more:focus-within svg {
   transform: rotate(-360deg);
 }
-.projects .project .button-container.more:hover svg #dots g:nth-child(3) circle, .projects .project .button-container.more:focus svg #dots g:nth-child(3) circle {
+.projects .project .button-container.more:hover svg #dots g:nth-child(3) circle, .projects .project .button-container.more:focus-within svg #dots g:nth-child(3) circle {
   animation-name: dot-jump;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
-.projects .project .button-container.more:hover svg #dots g:nth-child(2) circle, .projects .project .button-container.more:focus svg #dots g:nth-child(2) circle {
+.projects .project .button-container.more:hover svg #dots g:nth-child(2) circle, .projects .project .button-container.more:focus-within svg #dots g:nth-child(2) circle {
   animation-name: dot-jump;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-delay: 0.7s;
 }
-.projects .project .button-container.more:hover svg #dots g:nth-child(1) circle, .projects .project .button-container.more:focus svg #dots g:nth-child(1) circle {
+.projects .project .button-container.more:hover svg #dots g:nth-child(1) circle, .projects .project .button-container.more:focus-within svg #dots g:nth-child(1) circle {
   animation-name: dot-jump;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
@@ -1746,7 +1751,7 @@ img {
 .projects .project .button-container.demo::before {
   background: hsl(215, 30%, 75%);
 }
-.projects .project .button-container.demo:hover svg, .projects .project .button-container.demo:focus svg {
+.projects .project .button-container.demo:hover svg, .projects .project .button-container.demo:focus-within svg {
   transform: rotate(360deg);
 }
 .projects .project .button-container:first-of-type:not(label) {
@@ -1912,21 +1917,21 @@ img {
 .projects .project .modal-top .mac-buttons label.red {
   background: hsl(358, 100%, 85%);
 }
-.projects .project .modal-top .mac-buttons label.red:hover {
+.projects .project .modal-top .mac-buttons label.red:hover, .projects .project .modal-top .mac-buttons label.red:focus-within {
   background: hsl(25, 100%, 90%);
   box-shadow: 0 0 1.5rem 1rem rgba(255, 179, 181, 0.4) !important;
 }
 .projects .project .modal-top .mac-buttons label.yellow {
   background: hsl(52, 100%, 85%);
 }
-.projects .project .modal-top .mac-buttons label.yellow:hover {
+.projects .project .modal-top .mac-buttons label.yellow:hover, .projects .project .modal-top .mac-buttons label.yellow:focus-within {
   background: hsl(52, 100%, 99%);
   box-shadow: 0 0 1.5rem 1rem rgba(255, 245, 179, 0.4) !important;
 }
 .projects .project .modal-top .mac-buttons label.green {
   background: hsl(108, 100%, 85%);
 }
-.projects .project .modal-top .mac-buttons label.green:hover {
+.projects .project .modal-top .mac-buttons label.green:hover, .projects .project .modal-top .mac-buttons label.green:focus-within {
   background: hsl(84, 100%, 91%);
   box-shadow: 0 0 1.5rem 1rem rgba(224, 255, 179, 0.4) !important;
 }
@@ -1984,7 +1989,7 @@ img {
   letter-spacing: 1px;
   transition: 0.1 ease-in;
 }
-.projects .project .modal-content a:hover {
+.projects .project .modal-content a:hover, .projects .project .modal-content a:focus-within {
   color: hsl(255, 28%, 60%);
 }
 .projects .project .modal-shadow {
@@ -2034,9 +2039,13 @@ img {
 .projects .project.final-block a {
   color: white;
   letter-spacing: 1px;
+  transition: 0.07s ease-in;
 }
 .projects .project.final-block a strong {
   color: inherit;
+}
+.projects .project.final-block a:hover, .projects .project.final-block a:focus-within {
+  color: hsl(255, 28%, 75%);
 }
 .projects .project.final-block .image-container {
   display: flex;
@@ -2106,6 +2115,15 @@ img {
   }
   .projects .project .button-container svg {
     width: 4rem;
+  }
+  .projects .project .right-content .project-state {
+    font-size: 2.5rem;
+  }
+  .projects .project .right-content .project-state.in-progress .circle {
+    max-width: 4rem;
+  }
+  .projects .project .right-content .project-state.finished .icon svg {
+    max-width: 4rem;
   }
 }
 @media only screen and (max-width: 350px) {

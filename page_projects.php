@@ -212,7 +212,7 @@ function sanitizeMarkup($input){
                                             $icon = file_get_contents( $src );
                                         }
                                         if (strpos($currStr, "show more") !== false) {
-                                            echo("<label class='button-container " . $addClass . "' for='" . $modal . "'>");
+                                            echo("<label tabindex=0 class='js-checkbox-keyboard js-modal-label button-container " . $addClass . "' for='" . $modal . "'>");
                                                 echo $icon;
                                                 echo("<span>" . $currButton["content"] . "</span>");
                                             echo("</label>"); // button-container
@@ -276,16 +276,16 @@ function sanitizeMarkup($input){
                                     echo ("<div class='modal animation-modal-fade-in'>");
                                         echo ("<div class='modal-top'>");
                                             echo ("<div class='mac-buttons'>");
-                                                echo ("<label class='red animation-mac-red-blink' for='" . $modal . "'></label>");
-                                                echo ("<label class='yellow animation-mac-yellow-blink' for='" . $modal . "-min'></label>");
-                                                echo ("<label class='green animation-mac-green-blink' for='" . $modal . "-max'></label>");
+                                                echo ("<label tabindex=0 class='red animation-mac-red-blink js-modal-close js-checkbox-keyboard' for='" . $modal . "'></label>");
+                                                echo ("<label tabindex=0 class='yellow animation-mac-yellow-blink js-checkbox-keyboard' for='" . $modal . "-min'></label>");
+                                                echo ("<label tabindex=0 class='green animation-mac-green-blink js-checkbox-keyboard' for='" . $modal . "-max'></label>");
                                             echo ("</div>"); // mac-buttons
                                         echo ("</div>"); // modal-top
-                                        echo ("<div class='modal-content'>");
+                                        echo ("<div tabindex=0 class='modal-content'>");
                                             echo (sanitizeMarkup($currPage->post_content));
                                         echo ("</div>"); // modal-content
                                     echo ("</div>"); // modal
-                                    echo ("<label class='modal-shadow animation-shadow-fade-in' for='" . $modal ."'>");
+                                    echo ("<label class='modal-shadow animation-shadow-fade-in js-modal-close' for='" . $modal ."'>");
                                     echo ("</label>"); // modal-shadow    
                                 echo ("</div>"); // modal-container
                                 break;
