@@ -8,13 +8,11 @@
     <?php
     wp_head();
     ?>
-    <title>Document</title>
 </head>
 <?php
     $src = get_template_directory_uri() . "/svg/arrow.svg";
 ?>
-<body class="body no-js js-sections">
-    <div id="href-top"></div>
+<body id="href-top" class="body no-js js-sections">
     <a href="#href-top" class="scroll-arrow js-scroll-top">
         <?php echo file_get_contents($src); ?>
     </a>
@@ -34,15 +32,16 @@
             </div>
             <div class="icon-container">
                 <div class="icons animation-zoom-in">
-                    <img class="animation-jump" src="<?php echo (wp_get_attachment_image_src(26)[0]); ?>" alt="" />
+                    <img class="animation-jump" 
+                    src="<?php echo (get_template_directory_uri() . "/svg/html.svg"); ?>" alt="" />
                     <img class="animation-jump animation-delay-1"
-                        src="<?php echo (wp_get_attachment_image_src(25)[0]); ?>" alt="" />
+                        src="<?php echo (get_template_directory_uri() . "/svg/css.svg"); ?>" alt="" />
                     <img class="animation-jump animation-delay-2"
-                        src="<?php echo (wp_get_attachment_image_src(27)[0]); ?>" alt="" />
+                        src="<?php echo (get_template_directory_uri() . "/svg/js.svg"); ?>" alt="" />
                     <img class="animation-jump animation-delay-3"
-                        src="<?php echo (wp_get_attachment_image_src(28)[0]); ?>" alt="" />
+                        src="<?php echo (get_template_directory_uri() . "/svg/php.svg"); ?>" alt="" />
                     <img class="animation-jump animation-delay-4"
-                        src="<?php echo (wp_get_attachment_image_src(24)[0]); ?>" alt="" />
+                        src="<?php echo (get_template_directory_uri() . "/svg/adobe-cc.svg"); ?>" alt="" />
                 </div>
             </div>
             <img src="<?php header_image(); ?>" class="bg" alt="">

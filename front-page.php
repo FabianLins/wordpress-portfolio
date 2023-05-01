@@ -1,5 +1,13 @@
 <?php
 get_header();
+
+$logoPath = get_template_directory_uri() . "/img/logo.png";
+if ( function_exists( "the_custom_logo" ) ) {
+	$logo = get_theme_mod("custom_logo");
+    $image = wp_get_attachment_image_src( $logo , "full" );
+    $logoPath = $image[0];
+}
+
 ?>
 
 <section class="about-me">
@@ -20,7 +28,7 @@ get_header();
                     ?>
                 </div>
                 <div class="photo">
-                    <img src="/wp-content/themes/custom-theme/img/lucico.jpg" alt="">
+                    <img src="<?php echo $logoPath; ?>" alt="">
                 </div>
                 <div class="buttons">
                     <div class="btn-1">
@@ -39,7 +47,7 @@ get_header();
             </div>
             <div class="right">
                 <div class="photo animation-slide-in-left animation-spin-in">
-                    <img src="/wp-content/themes/custom-theme/img/lucico.jpg" alt="">
+                    <img src="<?php echo $logoPath; ?>" alt="">
                 </div>
             </div>
         </div>
