@@ -1,0 +1,21 @@
+/*
+Theme Name: Fabian Lins Portfolio Theme
+Text Domain: Fabian Lins Portfolio Theme
+Version: 1.0
+Description: A custom made theme
+Tags: portfolio, respsonsive, developer
+Author: Fabian Lins
+Author URI: fabian-lins.com
+*/
+
+@import 'reset';
+@import 'rem-reset';
+@import 'variables';
+@import 'js-classes';
+@import 'animations';
+@import 'general';
+@import 'header';
+@import 'sections/about-me';
+@import 'sections/skills';
+@import 'sections/projects';
+@import 'checkbox-hacks';

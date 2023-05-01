@@ -1,0 +1,565 @@
+
+.animation-scroll-bottom-fade {
+    animation: scroll-bottom-fade .2s ease-in;
+}
+
+@keyframes scroll-bottom-fade {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+
+    }
+
+    100% {}
+}
+
+.animation-shadow-fade-in {
+    animation: shadow-fade-in .35s ease-in;
+    transform-origin: top left;
+}
+
+@keyframes shadow-fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animation-modal-fade-in {
+    animation: modal-fade-in .35s ease-in;
+    transform-origin: top left;
+}
+
+@keyframes modal-fade-in {
+    0% {
+        transform: scale(.7) rotateX(90deg) translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotateX(0) translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+.animation-clock {
+    .lg-pointer {
+        animation: spin-min-90 20s linear infinite;
+    }
+
+    .sm-pointer {
+        animation: spin 240s linear infinite;
+    }
+
+    &.animation-slower {
+        .lg-pointer {
+            animation: spin-min-90 40s linear infinite;
+        }
+
+        .sm-pointer {
+            animation: spin 480s linear infinite;
+        }
+    }
+}
+
+.animation-draw-tick {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw-tick 14s ease-in-out infinite;
+}
+
+@keyframes draw-tick {
+    0% {
+        stroke-dashoffset: 1;
+    }
+
+    15% {
+        stroke-dashoffset: 0;
+    }
+
+    97% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 1;
+    }
+}
+
+.animation-cursor-move {
+    animation-name: cursor-move;
+    animation-duration: 3.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes cursor-move {
+    0% {
+        top: 50%;
+        left: 50%;
+    }
+
+    50% {
+        top: calc(50% - 1rem);
+        left: calc(50% + 1rem);
+    }
+
+    100% {
+        top: 50%;
+        left: 50%;
+    }
+}
+
+.animation-mac-yellow-blink {
+    animation-name: mac-yellow-blink;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes mac-yellow-blink {
+    0% {
+        box-shadow: 0 0 0 0 rgba(hsl(52, 100%, 90%), 0);
+    }
+
+    50% {
+        box-shadow: 0 0 2.5rem .2rem rgba(hsl(52, 100%, 80%), .8);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(hsl(52, 100%, 90%), 0);
+    }
+}
+
+.animation-mac-green-blink {
+    animation-name: mac-green-blink;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes mac-green-blink {
+    0% {
+        box-shadow: 0 0 0 0 rgba(hsl(108, 100%, 90%), 0);
+    }
+
+    50% {
+        box-shadow: 0 0 2.5rem .2rem rgba(hsl(108, 100%, 80%), .8);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(hsl(108, 100%, 90%), 0);
+    }
+}
+
+.animation-mac-red-blink {
+    animation-name: mac-red-blink;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes mac-red-blink {
+    0% {
+        box-shadow: 0 0 0 0 rgba(hsl(358, 100%, 90%), 0);
+    }
+
+    50% {
+        box-shadow: 0 0 2.5rem .2rem rgba(hsl(358, 100%, 80%), .9);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(hsl(358, 100%, 90%), 0);
+    }
+}
+
+.animation-button-blink-demo {
+    animation-name: button-blink-demo;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-delay: 2.66s;
+}
+
+@keyframes button-blink-demo {
+    0% {
+        box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .2);
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow: 0 0 2rem .2rem rgba($blue-gray-lightest, .4);
+        filter: brightness(1.035);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba($blue-gray-lightest, .2);
+        opacity: 1;
+    }
+}
+
+.animation-button-blink-more {
+    animation-name: button-blink-more;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1.33s;
+}
+
+@keyframes button-blink-more {
+    0% {
+        box-shadow: 0 0 0 0 rgba($green-light-gray, .2);
+        filter: brightness(1);
+    }
+
+    50% {
+        box-shadow: 0 0 2rem .2rem rgba($green-light-gray, .3);
+        filter: brightness(1.035);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba($green-light-gray, .2);
+        filter: brightness(1);
+    }
+}
+
+.animation-button-blink-github {
+    animation-name: button-blink-github;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes button-blink-github {
+    0% {
+        box-shadow: 0 0 0 0 rgba($sec-light, .2);
+        filter: brightness(1);
+    }
+
+    50% {
+        box-shadow: 0 0 2rem .2rem rgba($sec-light, .3);
+        filter: brightness(1.035);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba($sec-light, .2);
+        opacity: 1;
+    }
+}
+
+.animation-button-blink {
+    animation-name: button-blink;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+    &.animation-delay {
+        animation-delay: 2s;
+    }
+}
+
+@keyframes button-blink {
+    0% {
+        box-shadow: 0 0 0 0 $sec-light;
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow: 0 0 3rem .3rem $sec-light;
+        opacity: .85;
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 $sec-light;
+        opacity: 1;
+    }
+}
+
+.animation-wheel-icon {
+    animation-name: spin;
+    animation-duration: 85s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.animation-wheel-top {
+    animation-name: spin;
+    animation-duration: 55s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    &-clipping {
+        animation-name: spin-scale;
+        animation-duration: 55s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+
+.animation-wheel-bot {
+    animation-name: spin;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: reverse;
+}
+
+.animation-spin {
+    animation-name: spin;
+    animation-duration: 25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin-scale-2 {
+    0% {
+        transform: rotate(0deg) scale(.91);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(.91);
+    }
+}
+
+@keyframes spin-scale {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes spin-min-90 {
+    0% {
+        transform: rotate(-90deg);
+    }
+
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animation-jump {
+    animation-name: jump;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    position: relative;
+
+    &.animation-delay {
+        @for $i from 1 through 4 {
+            &-#{$i} {
+                animation-delay: #{$i * 2}s;
+            }
+        }
+    }
+}
+
+:root {
+    --jump-50-percent: -1rem;
+
+    @media only screen and (max-width: $lg) {
+        --jump-50-percent: -.5rem;
+    }
+
+    @media only screen and (max-width: $md) {
+        --jump-50-percent: -.2rem;
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(var(--jump-50-percent));
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.animation-slide-in {
+    &-left {
+        animation-name: slide-in-left;
+        animation-duration: .8s;
+        animation-timing-function: ease-out;
+        position: relative;
+
+        &.delay {
+            animation-duration: .85s;
+            animation-name: slide-in-left-delay;
+        }
+
+        &.delay-2 {
+            animation-duration: 1.15s;
+            animation-name: slide-in-left-delay;
+        }
+    }
+
+    &-right {
+        animation-name: slide-in-right;
+        animation-duration: .65s;
+        animation-timing-function: ease-out;
+        position: relative;
+
+        &.delay {
+            animation-name: slide-in-right-delay;
+
+            &-2 {
+                animation-duration: .85s;
+                animation-name: slide-in-right-delay;
+            }
+
+            &-3 {
+                animation-duration: .95s;
+                animation-name: slide-in-right-delay;
+            }
+
+            &-4 {
+                animation-duration: 1.05s;
+                animation-name: slide-in-right-delay;
+            }
+
+            &-5 {
+                animation-duration: 1.15s;
+                animation-name: slide-in-right-delay;
+            }
+        }
+    }
+}
+
+@keyframes slide-in-left-delay {
+    0% {
+        transform: translateX(100vw) rotate(65deg);
+    }
+
+    20% {
+        transform: translateX(50vw) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(0) rotate(0);
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(50vw) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(0) rotate(0);
+    }
+}
+
+@keyframes slide-in-right-delay {
+    0% {
+        transform: translateX(-100vw);
+    }
+
+    20% {
+        transform: translateX(-50vw);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(-50vw);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animation-blur-in {
+    animation-name: blur-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    @media only screen and (min-width: ($lg + 1px)) {
+        opacity: 1 !important;
+    }
+
+    @media only screen and (max-width: $lg) {
+        filter: blur(0) !important;
+    }
+}
+
+@keyframes blur-in {
+    0% {
+        filter: blur(1rem);
+        opacity: 0;
+    }
+
+    100% {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.animation-fade-blur-in {
+    animation-name: fade-blur-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    @media only screen and (max-width: $lg) {
+        filter: blur(0) !important;
+    }
+}
+
+@keyframes fade-blur-in {
+    0% {
+        opacity: 0;
+        filter: blur(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.animation-zoom-in {
+    animation-name: zoom-in;
+    animation-duration: .6s;
+    animation-timing-function: ease-out;
+    position: relative;
+}
+
+@keyframes zoom-in {
+    0% {
+        opacity: .4;
+        transform: scale(.5) translateX(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateX(-50%);
+    }
+}

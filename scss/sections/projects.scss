@@ -1,0 +1,769 @@
+.projects {
+    background: $gray-dark;
+
+    .mt-header {
+        margin-top: 6.5rem;
+    }
+
+    input {
+        display: none;
+    }
+
+    .h2 {
+        color: $blue-light;
+        border-bottom-color: $blue-light;
+    }
+
+    .project {
+        font-size: 2.4rem;
+        color: $blue-light;
+        padding: 3rem 0;
+
+        .container {
+            z-index: 3;
+            position: relative;
+
+        }
+
+        strong {
+            color: $white;
+            letter-spacing: .7px;
+        }
+
+        .h3 {
+            font-size: 4.8rem;
+            font-weight: 100;
+            letter-spacing: -.5px;
+            //negative margin to fix the line height
+            margin-top: -1.3rem;
+        }
+
+        .left {
+            grid-column: col-start / span 7;
+
+        }
+
+        .project-info {
+            margin-top: 2rem;
+        }
+
+        .made-with,
+        .created-in {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            svg {
+                width: 6rem;
+
+                path {
+                    fill: $blue-light !important;
+
+                }
+            }
+
+            .text {
+                margin-left: 1rem;
+                font-weight: 100;
+            }
+        }
+
+        .made-with {
+            .wheel {
+                display: flex;
+            }
+
+            margin-top: .5rem;
+        }
+
+        .created-in {
+            .calender {
+                display: flex;
+                position: relative;
+
+                .circle-container {
+                    width: 50%;
+                    position: absolute;
+                    aspect-ratio: 1 / 1;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: 50%;
+                    border: .2rem solid $gray-dark;
+                    background: $gray-dark;
+
+                    .circle {
+                        border: .2rem $blue-light solid;
+                        border-radius: 50%;
+                        aspect-ratio: 1 / 1;
+                        width: 100%;
+                        position: relative;
+
+                        .sm-pointer {
+                            width: calc(50% - .45rem);
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform-origin: left;
+                            height: .2rem;
+                            border-radius: 1rem;
+                            background: $blue-light;
+                        }
+
+                        .lg-pointer {
+                            width: calc(50% - .2rem);
+                            position: absolute;
+                            top: calc(50% - 1px);
+                            left: 50%;
+                            transform-origin: left;
+                            transform: rotate(-90deg);
+                            height: .2rem;
+                            border-radius: 1rem;
+                            background: $blue-light;
+                        }
+
+                        .dot {
+                            position: absolute;
+                            width: .4rem;
+                            height: .4rem;
+                            background: $blue-light;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            margin-top: .5px;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .buttons {
+            gap: 0;
+            margin-top: 4rem;
+        }
+
+        .button-container {
+            grid-column: col-start/span 12;
+            width: 75%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.5rem;
+            margin-top: 2rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            transition: transform 0.35s ease-in, box-shadow 0.35s ease-in;
+            border: .2rem solid $prim;
+            box-shadow: 0 0 0 0 rgba($sec-light, .2);
+
+            &:hover,
+            &:focus-within {
+                &::before {
+                    transform: translateX(0);
+                }
+            }
+
+            &::before {
+                content: '';
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                position: absolute;
+                z-index: -1;
+                transform: translateX(-130%);
+                transition: transform 0.25s;
+            }
+
+            &.github {
+                background: linear-gradient(90deg, $prim-light-gray, $sec-light);
+                border-color: $prim-light-gray;
+
+                &::before {
+                    background: $prim-lighter-gray;
+                }
+
+                &:hover,
+                &:focus-within {
+                    svg {
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+
+            &.more {
+                background: linear-gradient(90deg, $green-gray-darker, $green-gray);
+                border-color: $green-gray-darker;
+
+                &::before {
+                    background: $green-light-gray;
+                }
+
+                &:hover,
+                &:focus-within {
+                    svg {
+                        transform: rotate(-360deg);
+
+                        #dots {
+                            g {
+                                &:nth-child(3) {
+                                    circle {
+                                        animation-name: dot-jump;
+                                        animation-duration: 2.5s;
+                                        animation-iteration-count: infinite;
+                                        animation-timing-function: ease-in-out;
+                                    }
+                                }
+
+                                &:nth-child(2) {
+                                    circle {
+                                        animation-name: dot-jump;
+                                        animation-duration: 2.5s;
+                                        animation-iteration-count: infinite;
+                                        animation-timing-function: ease-in-out;
+                                        animation-delay: .7s;
+                                    }
+                                }
+
+                                &:nth-child(1) {
+                                    circle {
+                                        animation-name: dot-jump;
+                                        animation-duration: 2.5s;
+                                        animation-iteration-count: infinite;
+                                        animation-timing-function: ease-in-out;
+                                        animation-delay: 1.4s;
+                                    }
+                                }
+                            }
+                        }
+
+                        @keyframes dot-jump {
+                            0% {
+                                transform: translateY(0);
+                            }
+
+                            50% {
+                                transform: translateY(-.6rem);
+                            }
+
+                            100% {
+                                transform: translateY(0);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.demo {
+                background: linear-gradient(90deg, $blue-gray, $blue-gray-lighter);
+                border-color: $blue-gray;
+
+                &::before {
+                    background: $blue-gray-lightest;
+                }
+
+                &:hover,
+                &:focus-within {
+                    svg {
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+
+            &:first-of-type:not(label) {
+                margin-top: 0;
+            }
+
+            svg {
+                width: 6rem;
+                margin-right: 1rem;
+                transition: transform .6s ease-in-out;
+
+                path,
+                circle {
+                    fill: $blue-light !important;
+                }
+            }
+
+            a,
+            span {
+                text-decoration: none;
+                font-size: 4rem;
+                color: inherit;
+            }
+        }
+
+        .right {
+            grid-column: col-start 8 / span 5;
+            align-items: center;
+            display: flex;
+
+            &-content {
+                max-width: 500px;
+                position: relative;
+                border-radius: 1rem;
+                display: flex;
+
+                .bg {
+                    width: 100%;
+                    position: absolute;
+                    height: 20rem;
+                    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .4));
+                    bottom: 0;
+                    border-radius: 3rem;
+                    z-index: 3;
+                }
+
+                .project-state {
+                    position: absolute;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    bottom: 0;
+                    padding: 1rem;
+                    border-bottom-left-radius: 3rem;
+                    border-bottom-right-radius: 3rem;
+                    font-size: 3rem;
+                    letter-spacing: .7px;
+                    backdrop-filter: blur(.5rem);
+                    // Backdrop scale bug fix for older Chromium based browsers
+                    filter: blur(0);
+                    align-items: center;
+                    z-index: 4;
+
+                    &.in-progress {
+                        background: rgba($blue, .9);
+
+                        .circle {
+                            border: .25rem $blue-light solid;
+                            border-radius: 50%;
+                            aspect-ratio: 1 / 1;
+                            width: 100%;
+                            position: relative;
+                            max-width: 5rem;
+                            margin-right: 1rem;
+
+                            .sm-pointer {
+                                width: calc(50% - 1rem);
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform-origin: left;
+                                height: .25rem;
+                                border-radius: 1rem;
+                                background: $blue-light;
+                            }
+
+                            .lg-pointer {
+                                width: calc(50% - .3rem);
+                                position: absolute;
+                                top: 50%;
+                                left: calc(50%);
+                                transform-origin: left;
+                                transform: rotate(-90deg);
+                                height: .25rem;
+                                border-radius: 1rem;
+                                background: $blue-light;
+                            }
+
+                            .dot {
+                                position: absolute;
+                                width: .6rem;
+                                height: .6rem;
+                                background: $blue-light;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                border-radius: 50%;
+                                margin-top: .15rem;
+                            }
+                        }
+                    }
+
+                    &.finished {
+                        background: rgba($green, .9);
+
+                        .icon {
+                            display: flex;
+
+                            svg {
+                                max-width: 5rem;
+                                margin-right: 1rem;
+                            }
+
+                            path {
+                                stroke: $blue-light !important;
+                                stroke-width: 0.25rem !important;
+                            }
+                        }
+                    }
+                }
+
+                img {
+                    border-radius: 3rem;
+                }
+            }
+        }
+
+        .modal {
+            &-container {
+                display: none;
+            }
+
+            z-index: 22;
+            border-radius: 2rem;
+            transition: .2s ease-in-out;
+            max-width: 750px;
+            height: 80vh;
+            position: fixed;
+            width: 90%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(rgba($blue-light, .95), rgba($blue-light, .8));
+            backdrop-filter: blur(2rem);
+            color: $text;
+            overflow-y: auto;
+            box-shadow: 0 1rem 3rem 0 rgba(black, .1);
+
+            &-top {
+                display: flex;
+                position: sticky;
+                top: 0;
+                background: $prim-light-gray;
+
+                .mac-buttons {
+                    display: flex;
+                    padding: 1rem;
+
+                    label {
+                        width: 3rem;
+                        height: 3rem;
+                        display: block;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        margin: .5rem;
+                        transition: .1s ease-in-out;
+
+                        &:hover {
+                            filter: blur(.1rem);
+                            transform: scale(1.15);
+                        }
+
+                        &.red {
+                            background: $mac-red;
+
+                            &:hover,
+                            &:focus-within {
+                                background: hsl(25, 100%, 90%);
+                                box-shadow: 0 0 1.5rem 1rem rgba(hsl(358, 100%, 85%), .4) !important;
+                            }
+                        }
+
+                        &.yellow {
+                            background: $mac-yellow;
+
+                            &:hover,
+                            &:focus-within {
+                                background: hsl(52, 100%, 99%);
+                                box-shadow: 0 0 1.5rem 1rem rgba(hsl(52, 100%, 85%), .4) !important;
+                            }
+
+                        }
+
+                        &.green {
+                            background: $mac-green;
+
+                            &:hover,
+                            &:focus-within {
+                                background: hsl(84, 100%, 91%);
+                                box-shadow: 0 0 1.5rem 1rem rgba(hsl(84, 100%, 85%), .4) !important;
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-content {
+                padding: 2.5rem;
+                height: auto;
+                width: 100%;
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    color: $prim;
+                    font-size: 4rem;
+                    font-weight: 100;
+                    line-height: 1;
+                    letter-spacing: -.5px;
+                    margin-top: 2rem;
+
+                    &:first-of-type {
+                        margin-top: 0;
+                    }
+                }
+
+                p {
+                    margin-top: 1rem;
+                    margin-left: 2rem;
+                    margin-right: 2rem;
+                    font-size: 2rem;
+                    letter-spacing: .2px;
+                }
+
+                ul {
+                    margin-left: 5rem;
+                    margin-top: 1rem;
+
+                    li {
+                        font-size: 2rem;
+                        margin-bottom: .5rem;
+                        letter-spacing: .5px;
+
+                        &::before {
+                            content: "•";
+                            color: $gray;
+                            font-weight: bold;
+                            display: inline-block;
+                            width: 1em;
+                        }
+                    }
+                }
+
+                a {
+                    color: $prim;
+                    letter-spacing: 1px;
+                    transition: .1 ease-in;
+
+                    &:hover,
+                    &:focus-within {
+                        color: $prim-light-gray;
+                    }
+                }
+            }
+
+            &-shadow {
+                width: 100%;
+                height: 100vh;
+                background: rgba($blue-darkest, .7);
+                backdrop-filter: blur(.5rem);
+                filter: blur(0);
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 21;
+                cursor: pointer;
+
+            }
+
+            em {
+                color: $prim;
+                letter-spacing: .35px;
+            }
+        }
+
+        &:nth-of-type(even) {
+            background: $gray-darker;
+
+            .created-in {
+                .calender {
+                    .circle-container {
+                        border-color: $gray-darker;
+                        background: $gray-darker;
+                    }
+                }
+            }
+        }
+
+        &:last-of-type:not(.final-block) {
+            padding-bottom: 8rem;
+        }
+
+        &.final-block {
+            .container {
+                min-height: 320px;
+            }
+
+            .relative {
+                position: relative;
+                min-height: inherit;
+            }
+
+            p {
+                margin-top: 1rem;
+                margin-left: 2rem;
+                max-width: 800px;
+            }
+
+            a {
+                color: white;
+                letter-spacing: 1px;
+                transition: .07s ease-in;
+
+                strong {
+                    color: inherit;
+                }
+
+                &:hover,
+                &:focus-within {
+                    color: $prim-lighter-gray;
+                }
+            }
+
+            .buttons {
+                .button-container {
+                    grid-column: col-start / span 7;
+                    width: 75%;
+
+                    a {
+
+                        &:hover,
+                        &:focus-within {
+                            color: inherit;
+                        }
+                    }
+                }
+            }
+
+            .image-container {
+                display: flex;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                max-width: 300px;
+                width: 100%;
+                opacity: .1;
+
+
+                img {
+                    width: 100%;
+                }
+            }
+
+        }
+
+        @media only screen and (max-width: $lg) {
+            .grid {
+                gap: 0;
+            }
+
+            .left {
+                grid-column: col-start/span 12;
+            }
+
+            .right {
+                grid-column: col-start/span 12;
+                margin-top: 4rem;
+
+                &-content {
+                    margin: 0 auto;
+                }
+            }
+
+            .button-container {
+                width: 100%;
+            }
+
+            &.final-block {
+                .buttons {
+                    .button-container {
+                        grid-column: col-start/span 12;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        @media only screen and (max-width: $sm) {}
+
+        @media only screen and (max-width: $xs) {
+            font-size: 2rem;
+
+            .button-container {
+                width: 100%;
+
+                a,
+                label,
+                span {
+                    font-size: 3.5rem;
+                }
+
+                svg {
+                    width: 5rem;
+                }
+            }
+
+            .made-with,
+            .created-in {
+                svg {
+                    width: 4.5rem;
+                }
+
+
+                .text {
+                    margin-left: 1rem;
+                    font-weight: 100;
+                }
+            }
+        }
+
+        @media only screen and (max-width: $xxs) {
+            .button-container {
+
+                a,
+                label,
+                span {
+                    font-size: 3rem;
+                }
+
+                svg {
+                    width: 4rem;
+                }
+            }
+
+            .right-content {
+                .project-state {
+                    font-size: 2.5rem;
+
+                    &.in-progress {
+                        .circle {
+                            max-width: 4rem;
+                        }
+                    }
+
+                    &.finished {
+                        .icon {
+                            svg {
+                                max-width: 4rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @media only screen and (max-width: 350px) {
+            .button-container {
+
+                a,
+                label,
+                span {
+                    font-size: 2.5rem;
+                }
+
+                svg {
+                    width: 3.5rem;
+                }
+            }
+        }
+    }
+}

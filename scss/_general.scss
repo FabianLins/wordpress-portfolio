@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100&display=swap');
+
+.scroll-arrow {
+    width: 8rem;
+    height: 8rem;
+    background: $prim;
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
+    z-index: 7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    opacity: .5;
+    transition: .2s ease-in;
+
+    &:hover {
+        opacity: 1;
+
+        ~.scroll-bottom-fade {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    svg {
+        fill: $blue-light;
+        transform: rotate(180deg);
+        width: 65%;
+        margin: 0 auto;
+        left: 50%;
+    }
+}
+
+.scroll-bottom-fade {
+    width: 100%;
+    position: fixed;
+    height: 16rem;
+    background: linear-gradient(180deg, transparent, rgba(black, .3));
+    bottom: 0;
+    z-index: 6;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+
+}
+
+svg {
+    height: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Heebo';
+    background: linear-gradient(rgba($gray, 0) 70%, rgba($gray, .25) 100%);
+    background-attachment: fixed;
+}
+
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.h2 {
+    font-size: 7.2rem;
+    font-weight: 100;
+    color: $prim;
+    letter-spacing: -1px;
+    line-height: 1;
+    z-index: 2;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: 3rem;
+}
+
+.mt-header {
+    margin-top: 13rem;
+
+    @media only screen and (max-width: $lg) {
+        margin-top: 10rem;
+
+    }
+
+    @media only screen and (max-width: $md) {
+        margin-top: 9rem;
+
+    }
+
+    @media only screen and (max-width: $sm-md) {
+        margin-top: 8rem;
+
+    }
+
+    @media only screen and (max-width: $sm) {
+        margin-top: 7rem;
+
+    }
+
+    @media only screen and (max-width: $xs) {
+        margin-top: 6rem;
+
+    }
+}
+
+.wheel-icon {
+    position: fixed;
+    bottom: -25rem;
+    width: 800px;
+    left: -7rem;
+    opacity: .025;
+}
+
+.h-pl {
+    padding-left: 16rem;
+    padding-right: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 5px solid $prim;
+    display: inline-block;
+
+    @media only screen and (max-width: $xxl) {
+        padding-left: 10rem;
+    }
+
+    @media only screen and (max-width: $xl) {
+        padding-left: 6rem;
+    }
+
+    @media only screen and (max-width: $lg) {
+        padding-left: 5rem;
+    }
+
+    @media only screen and (max-width: $md) {
+        padding-left: 4rem;
+    }
+
+    @media only screen and (max-width: $sm) {
+        padding-left: 3rem;
+    }
+
+    @media only screen and (max-width: $xs) {
+        padding-left: 2rem;
+    }
+}
+
+.text-box {
+    margin-top: 4rem;
+    color: $text;
+
+    p {
+        max-width: 730px;
+        font-size: 2.4rem;
+        margin-bottom: 2.4rem;
+        letter-spacing: .5px;
+        line-height: 1.7;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+    }
+}
+
+em {
+    color: $prim;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+
+    @media only screen and (max-width: $xxl) {
+        padding: 0 7rem;
+    }
+
+    @media only screen and (max-width: $lg) {
+        padding: 0 6rem;
+    }
+
+    @media only screen and (max-width: $md) {
+        padding: 0 5rem;
+    }
+
+    @media only screen and (max-width: $sm) {
+        padding: 0 4rem;
+    }
+
+    @media only screen and (max-width: $xs) {
+        padding: 0 3rem;
+    }
+}
+
+.prim-btn {
+    background: linear-gradient(90deg, $prim, $sec);
+    border: .2rem solid $prim;
+    color: $white;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    transition: transform 0.35s ease-in, border-color 0.35s ease-i;
+
+    &:hover,
+    &:focus-within {
+        &::before {
+            transform: translateX(0);
+        }
+    }
+
+    &::before {
+        content: '';
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        background: $blue;
+        z-index: -1;
+        transform: translateX(-130%);
+        transition: transform 0.2s;
+    }
+
+    &.big {
+        font-size: 4.8rem;
+        padding: 1rem 5rem;
+        letter-spacing: 1px;
+        border: 2px solid $prim;
+
+        &::before {
+            box-shadow: 0 0 5rem 3rem $blue;
+        }
+    }
+
+    @media only screen and (max-width: $lg) {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+img {
+    max-width: 100%;
+}

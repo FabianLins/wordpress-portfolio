@@ -19,7 +19,7 @@ add_action("after_setup_theme", "lins_theme_support");
 function lins_register_styles()
 {
     $version = wp_get_theme()->get('Version');
-    wp_enqueue_style("lins-css", get_template_directory_uri() . "/style.css", array(), $version, "all");
+    wp_enqueue_style("lins-css", get_template_directory_uri() . "/style.min.css", array(), $version, "all");
 }
 
 add_action("wp_enqueue_scripts", "lins_register_styles");

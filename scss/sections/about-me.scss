@@ -1,0 +1,101 @@
+.about-me {
+    padding-bottom: 10rem;
+
+    .left {
+        z-index: 2;
+        grid-column: col-start / span 6;
+
+        .photo {
+            display: none;
+        }
+
+        .buttons {
+
+            .btn-1,
+            .btn-2 {
+                margin-top: 4.5rem;
+
+                label {
+                    cursor: pointer;
+                }
+
+                display: inline-flex;
+                text-decoration: none;
+                transition: 0.35s ease-in;
+
+                &:hover,
+                &:focus-within {
+                    .prim-btn {
+                        border-color: darken($blue, 5);
+                        box-shadow: none !important;
+                    }
+                }
+
+                @media only screen and (max-width: $lg) {
+                    display: flex;
+                }
+            }
+        }
+    }
+
+    .right {
+        z-index: 2;
+        grid-column: col-start 7 / span 6;
+
+    }
+
+    .photo {
+        max-width: 500px;
+        margin-left: auto;
+
+        img {
+            border-radius: 50%;
+        }
+    }
+
+    @media only screen and (max-width: $lg) {
+        .grid {
+            gap: 0;
+
+            .left {
+                grid-column: col-start/span 12;
+
+                .text-box {
+                    margin-top: 3rem;
+                }
+
+                .photo {
+                    display: block;
+                    margin: 4rem auto;
+                }
+
+                .buttons {
+                    margin-top: 0;
+                }
+            }
+
+            .right {
+                grid-column: col-start/span 12;
+                display: none;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $md) {
+        .wheel-icon {
+            margin-top: -55rem;
+        }
+    }
+
+    @media only screen and (max-width: $sm) {
+        .wheel-icon {
+            margin-top: -35rem;
+        }
+    }
+
+    @media only screen and (max-width: $xs) {
+        .wheel-icon {
+            margin-top: -25rem;
+        }
+    }
+}

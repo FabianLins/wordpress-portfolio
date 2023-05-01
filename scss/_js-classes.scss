@@ -1,0 +1,36 @@
+/*JS classes*/
+.js-modal-focus {
+    overflow: hidden;
+}
+
+.js-remove-item {
+    display: none;
+}
+
+.js-sections {
+
+    .list-of-skills,
+    .projects {
+        display: none;
+    }
+}
+
+.no-js {
+    .about-me {
+        .wheel-icon {
+            display: none;
+        }
+    }
+
+    .list-of-skills,
+    .projects {
+        display: block;
+    }
+
+    .projects {
+        .scroll-arrow {
+            z-index: 22;
+        }
+    }
+
+}
