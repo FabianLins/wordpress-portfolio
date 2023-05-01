@@ -10,8 +10,16 @@
     ?>
     <title>Document</title>
 </head>
-
-<body>
+<?php
+    $src = get_template_directory_uri() . "/svg/arrow.svg";
+?>
+<body class="body no-js js-sections">
+    <div id="href-top"></div>
+    <a href="#href-top" class="scroll-arrow js-scroll-top">
+        <?php echo file_get_contents($src); ?>
+    </a>
+    <div class="scroll-bottom-fade animation-scroll-bottom-fade">
+    </div>
     <header class="header">
         <div class="banner">
             <div class="name animation-blur-in">

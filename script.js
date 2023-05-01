@@ -1,3 +1,21 @@
+// Remove No JS class
+document.body.classList.remove("no-js");
+
+// Handle buttons
+let sectionsLocked = true;
+function unlockSection() {
+    if (sectionsLocked) {
+        document.body.classList.remove("js-sections");
+        document.querySelector("section.about-me img.wheel-icon").classList.add("js-remove-item");
+        sectionsLocked = false;
+    }
+}
+
+const homeBtns = document.querySelectorAll(".js-home-btn");
+homeBtns.forEach(currHomeBtn => {
+    currHomeBtn.addEventListener("click", unlockSection);
+});
+
 // Modal Boxes Keyboard Accessibility and Focus
 const checkBoxLabel = document.querySelectorAll("label.js-checkbox-keyboard");
 const modalBoxes = document.querySelectorAll(".js-modal-label");
@@ -7,14 +25,14 @@ let firstFocusableElement = null;
 let focusableContent = null;
 let lastFocusableElement = null;
 
-const handleToggle = function (event) {
+function handleToggle(event) {
     if (event.key === "Enter") {
         const selector = document.getElementById(this.htmlFor);
         selector.checked = !selector.checked;
     }
 }
 
-const catchFocus = function () {
+function catchFocus() {
     document.body.classList.add("js-modal-focus");
     modalActive = this.htmlFor;
     const focusableElements =
@@ -33,20 +51,27 @@ const catchFocus = function () {
     firstFocusableElement.focus();
     focusableContent = modal.querySelectorAll(focusableElements);
     lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
-
+    //document.querySelector(".scroll-arrow").classList.add("js-remove-item");
 }
 
-const removeFocus = function () {
+function removeFocus() {
     document.body.classList.remove("js-modal-focus");
+    //document.querySelector(".scroll-arrow").classList.remove("js-remove-item");
     modalActive = false;
     firstFocusableElement = null;
     focusableContent = null;
     lastFocusableElement = null;
 }
 
-const keyRemoveFocus = function (event) {
+function keyRemoveFocus(event) {
     if (event.key === "Enter") {
-        removeFocus;
+        removeFocus();
+    }
+}
+
+function keyCatchFocus(event) {
+    if (event.key === "Enter") {
+        removeFocus();
     }
 }
 
@@ -56,7 +81,7 @@ document.addEventListener("keydown", (event) => {
         if (isNotCombinedKey) {
             const selector = document.getElementById(modalActive);
             selector.checked = false;
-            removeFocus;
+            removeFocus();
         }
     }
 });
@@ -66,7 +91,7 @@ checkBoxLabel.forEach((currCheckBox) => {
 });
 
 modalBoxes.forEach((currModal) => {
-    currModal.addEventListener("keydown", catchFocus);
+    currModal.addEventListener("keydown", keyCatchFocus);
     currModal.addEventListener("click", catchFocus);
 });
 
@@ -75,8 +100,7 @@ modalClose.forEach((currClose) => {
     currClose.addEventListener("click", removeFocus);
 });
 
-
-document.addEventListener('keydown', function (event) {
+document.addEventListener("keydown", function (event) {
     if (event.key === "Tab") {
         if (event.shiftKey) { // Shift + Tab
             if (document.activeElement === firstFocusableElement) {

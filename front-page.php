@@ -1,9 +1,10 @@
 <?php
 get_header();
 ?>
+
 <section class="about-me">
     <h2 class="h2 mt-header h-pl animation-slide-in-right">
-        <?php the_title() ?>
+        <?php the_title(); ?>
     </h2>
     <div class="container">
         <div class="grid">
@@ -23,16 +24,15 @@ get_header();
                 </div>
                 <div class="buttons">
                     <div class="btn-1">
-                        <a href="<?php echo (get_permalink('22')); ?>"
-                            class="prim-btn big animation-button-blink animation-delay">
-                            <?php echo get_the_title('22'); ?>
+                        <a href="#href-projects"
+                            class="prim-btn big animation-button-blink js-home-btn">
+                            Projects
                         </a>
-
                     </div>
                     <div class="btn-2">
-                        <a href="<?php echo (get_permalink('18')); ?>"
-                            class="prim-btn big animation-button-blink">
-                            <?php echo get_the_title('18'); ?>
+                        <a href="#href-skills"
+                            class="prim-btn big animation-button-blink animation-delay js-home-btn">
+                            List of skills
                         </a>
                     </div>
                 </div>
@@ -42,16 +42,14 @@ get_header();
                     <img src="/wp-content/themes/custom-theme/img/lucico.jpg" alt="">
                 </div>
             </div>
-
         </div>
     </div>
-    <img class="wheel-icon animation-spin" src="<?php echo (wp_get_attachment_image_src(35)[0]); ?>" alt="" />
+    <img class="wheel-icon animation-spin" src="<?php echo (get_template_directory_uri() . "/svg/wheel.svg"); ?>" alt="" />    
 </section>
-
-
 <?php
+include "page_projects.php";
+include "page_skills.php";
 get_footer();
 ?>
 </body>
-
 </html>

@@ -58,13 +58,58 @@ $sm: 576px;
 $xs: 500px;
 $xxs: 400px;
 
-
 /*JS classes*/
 .js-modal-focus {
     overflow: hidden;
 }
 
+.js-remove-item {
+    display: none;
+}
+
+.js-sections {
+
+    .list-of-skills,
+    .projects {
+        display: none;
+    }
+}
+
+.no-js {
+    .about-me {
+        .wheel-icon {
+            display: none;
+        }
+    }
+
+    .list-of-skills,
+    .projects {
+        display: block;
+    }
+
+    .projects {
+        .scroll-arrow {
+            z-index: 22;
+        }
+    }
+
+}
+
 /*Animations*/
+
+.animation-scroll-bottom-fade {
+    animation: scroll-bottom-fade .2s ease-in;
+}
+
+@keyframes scroll-bottom-fade {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+
+    }
+
+    100% {}
+}
 
 .animation-shadow-fade-in {
     animation: shadow-fade-in .35s ease-in;
@@ -603,11 +648,65 @@ $xxs: 400px;
 }
 
 /*General*/
+
+.scroll-arrow {
+    width: 8rem;
+    height: 8rem;
+    background: $prim;
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
+    z-index: 7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    opacity: .5;
+    transition: .2s ease-in;
+
+    &:hover {
+        opacity: 1;
+
+        ~.scroll-bottom-fade {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    svg {
+        fill: $blue-light;
+        transform: rotate(180deg);
+        width: 65%;
+        margin: 0 auto;
+        left: 50%;
+    }
+}
+
+.scroll-bottom-fade {
+    width: 100%;
+    position: fixed;
+    height: 16rem;
+    background: linear-gradient(180deg, transparent, rgba(black, .3));
+    bottom: 0;
+    z-index: 6;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+
+}
+
+svg {
+    height: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Heebo';
     background: linear-gradient(rgba($gray, 0) 70%, rgba($gray, .25) 100%);
     background-attachment: fixed;
-    scroll-behavior: smooth;
 }
 
 section {
@@ -751,7 +850,6 @@ em {
     }
 }
 
-
 .prim-btn {
     background: linear-gradient(90deg, $prim, $sec);
     border: .2rem solid $prim;
@@ -760,7 +858,6 @@ em {
     position: relative;
     overflow: hidden;
     z-index: 2;
-    display: inline-block;
     transition: transform 0.35s ease-in, border-color 0.35s ease-i;
 
     &:hover,
@@ -814,6 +911,7 @@ img {
     .banner {
         position: relative;
         height: 100%;
+
 
         .name {
             z-index: 3;
@@ -1048,28 +1146,9 @@ img {
 
                 &:hover,
                 &:focus-within {
-                    animation-name: button-blink-hover;
-                    animation-duration: 4s;
-                    animation-iteration-count: infinite;
-                    animation-timing-function: ease-in-out;
-
-                    @keyframes button-blink-hover {
-                        0% {
-                            box-shadow: 0 0 1rem 0 rgba($blue, .5);
-                        }
-
-                        50% {
-                            box-shadow: 0 0 2rem .2rem rgba($blue, .7);
-                        }
-
-                        100% {
-                            box-shadow: 0 0 1rem 0 rgba($blue, .5);
-                        }
-                    }
-
                     .prim-btn {
-                        box-shadow: none !important;
                         border-color: darken($blue, 5);
+                        box-shadow: none !important;
                     }
                 }
 
@@ -1219,6 +1298,14 @@ img {
 .list-of-skills {
     padding-bottom: 10rem;
     background: linear-gradient(hsl(195, 18%, 96%), hsl(228, 80%, 98%));
+
+    .mt-header {
+        margin-top: 6.5rem;
+    }
+
+    input#back-end-checkbox {
+        display: none;
+    }
 
     .container {
         margin-top: 3rem;
@@ -1950,6 +2037,10 @@ img {
 .projects {
     background: $gray-dark;
 
+    .mt-header {
+        margin-top: 6.5rem;
+    }
+
     input {
         display: none;
     }
@@ -1963,6 +2054,12 @@ img {
         font-size: 2.4rem;
         color: $blue-light;
         padding: 3rem 0;
+
+        .container {
+            z-index: 3;
+            position: relative;
+
+        }
 
         strong {
             color: $white;
@@ -2084,7 +2181,7 @@ img {
 
         .button-container {
             grid-column: col-start/span 12;
-            width: 65%;
+            width: 75%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2352,6 +2449,7 @@ img {
                 display: none;
             }
 
+            z-index: 22;
             border-radius: 2rem;
             transition: .2s ease-in-out;
             max-width: 750px;
@@ -2363,7 +2461,6 @@ img {
             transform: translate(-50%, -50%);
             background: linear-gradient(rgba($blue-light, .95), rgba($blue-light, .8));
             backdrop-filter: blur(2rem);
-            z-index: 10;
             color: $text;
             overflow-y: auto;
             box-shadow: 0 1rem 3rem 0 rgba(black, .1);
@@ -2492,15 +2589,15 @@ img {
             &-shadow {
                 width: 100%;
                 height: 100vh;
-                overflow: none;
                 background: rgba($blue-darkest, .7);
                 backdrop-filter: blur(.5rem);
                 filter: blur(0);
                 position: fixed;
                 top: 0;
                 left: 0;
-                z-index: 9;
+                z-index: 21;
                 cursor: pointer;
+
             }
 
             em {
@@ -2542,13 +2639,6 @@ img {
                 max-width: 800px;
             }
 
-            .buttons {
-                .button-container {
-                    grid-column: col-start / span 7;
-                    width: 65%;
-                }
-            }
-
             a {
                 color: white;
                 letter-spacing: 1px;
@@ -2564,6 +2654,21 @@ img {
                 }
             }
 
+            .buttons {
+                .button-container {
+                    grid-column: col-start / span 7;
+                    width: 75%;
+
+                    a {
+
+                        &:hover,
+                        &:focus-within {
+                            color: inherit;
+                        }
+                    }
+                }
+            }
+
             .image-container {
                 display: flex;
                 position: absolute;
@@ -2573,6 +2678,7 @@ img {
                 max-width: 300px;
                 width: 100%;
                 opacity: .1;
+
 
                 img {
                     width: 100%;
@@ -2697,7 +2803,7 @@ img {
         }
     }
 
-    @for $i from 1 through 4 {
+    @for $i from 1 through 5 {
         #modal#{$i} {
             &:checked {
                 ~.modal-container {

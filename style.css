@@ -93,7 +93,37 @@ footer small {
   overflow: hidden;
 }
 
+.js-remove-item {
+  display: none;
+}
+
+.js-sections .list-of-skills,
+.js-sections .projects {
+  display: none;
+}
+
+.no-js .about-me .wheel-icon {
+  display: none;
+}
+.no-js .list-of-skills,
+.no-js .projects {
+  display: block;
+}
+.no-js .projects .scroll-arrow {
+  z-index: 22;
+}
+
 /*Animations*/
+.animation-scroll-bottom-fade {
+  animation: scroll-bottom-fade 0.2s ease-in;
+}
+
+@keyframes scroll-bottom-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
 .animation-shadow-fade-in {
   animation: shadow-fade-in 0.35s ease-in;
   transform-origin: top left;
@@ -564,11 +594,60 @@ footer small {
   }
 }
 /*General*/
+.scroll-arrow {
+  width: 8rem;
+  height: 8rem;
+  background: hsl(255, 60%, 45%);
+  position: fixed;
+  right: 4rem;
+  bottom: 4rem;
+  z-index: 7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.2s ease-in;
+}
+.scroll-arrow:hover {
+  opacity: 1;
+}
+.scroll-arrow:hover ~ .scroll-bottom-fade {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-arrow svg {
+  fill: hsl(180, 25%, 97%);
+  transform: rotate(180deg);
+  width: 65%;
+  margin: 0 auto;
+  left: 50%;
+}
+
+.scroll-bottom-fade {
+  width: 100%;
+  position: fixed;
+  height: 16rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.3));
+  bottom: 0;
+  z-index: 6;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 0.2s ease-in-out;
+}
+
+svg {
+  height: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Heebo";
   background: linear-gradient(rgba(176, 177, 181, 0) 70%, rgba(176, 177, 181, 0.25) 100%);
   background-attachment: fixed;
-  scroll-behavior: smooth;
 }
 
 section {
@@ -728,7 +807,6 @@ em {
   position: relative;
   overflow: hidden;
   z-index: 2;
-  display: inline-block;
   transition: transform 0.35s ease-in, border-color 0.35s ease-i;
 }
 .prim-btn:hover::before, .prim-btn:focus-within::before {
@@ -952,30 +1030,11 @@ img {
 .about-me .left .buttons .btn-2 label {
   cursor: pointer;
 }
-.about-me .left .buttons .btn-1:hover, .about-me .left .buttons .btn-1:focus-within,
-.about-me .left .buttons .btn-2:hover,
-.about-me .left .buttons .btn-2:focus-within {
-  animation-name: button-blink-hover;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-@keyframes button-blink-hover {
-  0% {
-    box-shadow: 0 0 1rem 0 rgba(77, 140, 230, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 2rem 0.2rem rgba(77, 140, 230, 0.7);
-  }
-  100% {
-    box-shadow: 0 0 1rem 0 rgba(77, 140, 230, 0.5);
-  }
-}
 .about-me .left .buttons .btn-1:hover .prim-btn, .about-me .left .buttons .btn-1:focus-within .prim-btn,
 .about-me .left .buttons .btn-2:hover .prim-btn,
 .about-me .left .buttons .btn-2:focus-within .prim-btn {
-  box-shadow: none !important;
   border-color: #367ee2;
+  box-shadow: none !important;
 }
 @media only screen and (max-width: 992px) {
   .about-me .left .buttons .btn-1,
@@ -1075,6 +1134,12 @@ img {
 .list-of-skills {
   padding-bottom: 10rem;
   background: linear-gradient(hsl(195, 18%, 96%), hsl(228, 80%, 98%));
+}
+.list-of-skills .mt-header {
+  margin-top: 6.5rem;
+}
+.list-of-skills input#back-end-checkbox {
+  display: none;
 }
 .list-of-skills .container {
   margin-top: 3rem;
@@ -1553,6 +1618,9 @@ img {
 .projects {
   background: hsl(210, 2%, 49%);
 }
+.projects .mt-header {
+  margin-top: 6.5rem;
+}
 .projects input {
   display: none;
 }
@@ -1564,6 +1632,10 @@ img {
   font-size: 2.4rem;
   color: hsl(180, 25%, 97%);
   padding: 3rem 0;
+}
+.projects .project .container {
+  z-index: 3;
+  position: relative;
 }
 .projects .project strong {
   color: white;
@@ -1665,7 +1737,7 @@ img {
 }
 .projects .project .button-container {
   grid-column: col-start/span 12;
-  width: 65%;
+  width: 75%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1871,6 +1943,7 @@ img {
   border-radius: 3rem;
 }
 .projects .project .modal {
+  z-index: 22;
   border-radius: 2rem;
   transition: 0.2s ease-in-out;
   max-width: 750px;
@@ -1883,7 +1956,6 @@ img {
   background: linear-gradient(rgba(245, 249, 249, 0.95), rgba(245, 249, 249, 0.8));
   -webkit-backdrop-filter: blur(2rem);
           backdrop-filter: blur(2rem);
-  z-index: 10;
   color: hsl(204, 2%, 43%);
   overflow-y: auto;
   box-shadow: 0 1rem 3rem 0 rgba(0, 0, 0, 0.1);
@@ -1995,7 +2067,6 @@ img {
 .projects .project .modal-shadow {
   width: 100%;
   height: 100vh;
-  overflow: none;
   background: rgba(45, 61, 83, 0.7);
   -webkit-backdrop-filter: blur(0.5rem);
           backdrop-filter: blur(0.5rem);
@@ -2003,7 +2074,7 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 21;
   cursor: pointer;
 }
 .projects .project .modal em {
@@ -2032,10 +2103,6 @@ img {
   margin-left: 2rem;
   max-width: 800px;
 }
-.projects .project.final-block .buttons .button-container {
-  grid-column: col-start/span 7;
-  width: 65%;
-}
 .projects .project.final-block a {
   color: white;
   letter-spacing: 1px;
@@ -2046,6 +2113,13 @@ img {
 }
 .projects .project.final-block a:hover, .projects .project.final-block a:focus-within {
   color: hsl(255, 28%, 75%);
+}
+.projects .project.final-block .buttons .button-container {
+  grid-column: col-start/span 7;
+  width: 75%;
+}
+.projects .project.final-block .buttons .button-container a:hover, .projects .project.final-block .buttons .button-container a:focus-within {
+  color: inherit;
 }
 .projects .project.final-block .image-container {
   display: flex;
@@ -2184,6 +2258,19 @@ img {
   width: 80%;
 }
 .projects #modal4-max:checked ~ .modal {
+  max-width: 900px;
+  height: 90vh;
+  width: 95%;
+}
+.projects #modal5:checked ~ .modal-container {
+  display: block;
+}
+.projects #modal5-min:checked ~ .modal {
+  max-width: 700px;
+  height: 60vh;
+  width: 80%;
+}
+.projects #modal5-max:checked ~ .modal {
   max-width: 900px;
   height: 90vh;
   width: 95%;
