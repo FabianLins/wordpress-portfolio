@@ -473,6 +473,10 @@ footer small {
   animation-duration: 0.85s;
   animation-name: slide-in-left-delay;
 }
+.animation-slide-in-left.delay-2 {
+  animation-duration: 1.15s;
+  animation-name: slide-in-left-delay;
+}
 .animation-slide-in-right {
   animation-name: slide-in-right;
   animation-duration: 0.65s;
@@ -488,6 +492,14 @@ footer small {
 }
 .animation-slide-in-right.delay-3 {
   animation-duration: 0.95s;
+  animation-name: slide-in-right-delay;
+}
+.animation-slide-in-right.delay-4 {
+  animation-duration: 1.05s;
+  animation-name: slide-in-right-delay;
+}
+.animation-slide-in-right.delay-5 {
+  animation-duration: 1.15s;
   animation-name: slide-in-right-delay;
 }
 

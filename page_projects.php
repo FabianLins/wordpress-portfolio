@@ -163,7 +163,19 @@ $title = $query->queried_object->post_title;
                 // HTML output
                 echo ("<div class='project'>");
                     echo ("<div class='container grid'>");
-                        echo ("<div class='left'>");
+                        $leftDelay = "";
+                        switch ($i) {
+                            case 1:
+                                $leftDelay = "delay";
+                                break;
+                            case 2:
+                                $leftDelay = "delay-2";
+                                break;
+                            case 3:
+                                $leftDelay = "delay-3";
+                                break;
+                        }
+                        echo ("<div class='left animation-slide-in-right " . $leftDelay . "'>");
                             echo ("<h3 class='h3'>" . $headlineContent . "</h3>");
                             echo ("<div class='project-info'>");
                                 echo ("<div class='made-with'>");
@@ -239,7 +251,19 @@ $title = $query->queried_object->post_title;
                                 }
                             echo ("</div>"); // buttons
                         echo ("</div>"); // left
-                        echo ("<div class='right'>");
+                        $rightDelay = "";
+                        switch ($i) {
+                            case 1:
+                                $rightDelay = "delay";
+                                break;
+                            case 2:
+                                $rightDelay = "delay-2";
+                                break;
+                            case 3:
+                                $rightDelay = "delay-3";
+                                break;
+                        }
+                        echo ("<div class='right animation-slide-in-left " . $rightDelay . "'>");
                             echo ("<div class='right-content'>");
                                 if($projectState === "{#finished}"){
                                     echo ("<div class='project-state finished'>");

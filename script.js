@@ -32,9 +32,13 @@ function handleToggle(event) {
     }
 }
 
-function catchFocus() {
+function catchFocus(lastThis) {
+    let element = lastThis;
+    if (lastThis.pointerId !== undefined) {
+        element = this;
+    }
     document.body.classList.add("js-modal-focus");
-    modalActive = this.htmlFor;
+    modalActive = element.htmlFor;
     const focusableElements =
         "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])";
     const modal = document.querySelector(`#${modalActive}~ .modal-container`); // select the modal by it's id
@@ -48,15 +52,12 @@ function catchFocus() {
             });
         }
     })
-    firstFocusableElement.focus();
     focusableContent = modal.querySelectorAll(focusableElements);
     lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
-    //document.querySelector(".scroll-arrow").classList.add("js-remove-item");
 }
 
 function removeFocus() {
     document.body.classList.remove("js-modal-focus");
-    //document.querySelector(".scroll-arrow").classList.remove("js-remove-item");
     modalActive = false;
     firstFocusableElement = null;
     focusableContent = null;
@@ -71,7 +72,8 @@ function keyRemoveFocus(event) {
 
 function keyCatchFocus(event) {
     if (event.key === "Enter") {
-        removeFocus();
+        let lastThis = this;
+        catchFocus(lastThis);
     }
 }
 
@@ -108,7 +110,6 @@ document.addEventListener("keydown", function (event) {
                 event.preventDefault();
             }
         } else {
-            console.log(document.activeElement);
             if (document.activeElement === lastFocusableElement) {
                 firstFocusableElement.focus();
                 event.preventDefault();

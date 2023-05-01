@@ -508,6 +508,11 @@ $xxs: 400px;
             animation-duration: .85s;
             animation-name: slide-in-left-delay;
         }
+
+        &.delay-2 {
+            animation-duration: 1.15s;
+            animation-name: slide-in-left-delay;
+        }
     }
 
     &-right {
@@ -526,6 +531,16 @@ $xxs: 400px;
 
             &-3 {
                 animation-duration: .95s;
+                animation-name: slide-in-right-delay;
+            }
+
+            &-4 {
+                animation-duration: 1.05s;
+                animation-name: slide-in-right-delay;
+            }
+
+            &-5 {
+                animation-duration: 1.15s;
                 animation-name: slide-in-right-delay;
             }
         }

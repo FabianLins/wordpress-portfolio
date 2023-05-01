@@ -12,7 +12,7 @@ for ($i = 0; $i < $categoriesLen; $i++) {
 ?>
 
 <section id="href-skills" class="list-of-skills">
-    <h2 class="h2 mt-header h-pl animation-slide-in-right">
+    <h2 class="h2 mt-header h-pl animation-slide-in-right delay-4">
         <?php echo $title; ?>
     </h2>
     <div class="container">
@@ -28,16 +28,16 @@ for ($i = 0; $i < $categoriesLen; $i++) {
                     $listContent = explode("<!-- /wp:list-item -->", $listContent, -1);
                     $listContentLen = count($listContent);
                     echo ("<div class='category-container grid'>");
-                        $leftDelay = "";
+                        $leftDelay = "delay-2";
                         switch ($i) {
                             case 1:
-                                $leftDelay = "delay";
+                                $leftDelay = "delay-3";
                                 break;
                             case 2:
-                                $leftDelay = "delay-2";
+                                $leftDelay = "delay-4";
                                 break;
                             case 3:
-                                $leftDelay = "delay-3";
+                                $leftDelay = "delay-5";
                                 break;
                         }
                         echo ("<div class='left animation-slide-in-right " . $leftDelay . "'>");
@@ -72,7 +72,7 @@ for ($i = 0; $i < $categoriesLen; $i++) {
                             echo ("</div>");// skill-heading-content
                         echo ("</div>");// left
                         if($i === 0){ // front end icon
-                            echo ("<div class='right animation-slide-in-left'>");
+                            echo ("<div class='right animation-slide-in-left delay'>");
                                 echo ("<input id='default' class='mac-dot-input' type='radio' name='mac-dots' checked>");
                                 echo ("<input id='red-dot' class='mac-dot-input' type='radio' name='mac-dots'>");
                                 echo ("<input id='yellow-dot' class='mac-dot-input' type='radio' name='mac-dots'>");
@@ -102,7 +102,7 @@ for ($i = 0; $i < $categoriesLen; $i++) {
                             echo ("</div>"); // right
                         }
                         elseif($i === 1){ // back end icon
-                            echo ("<div class='right animation-slide-in-left delay'>");
+                            echo ("<div class='right animation-slide-in-left delay-2'>");
                                 echo ("<label for='back-end-checkbox' class='back-end-icon-container'>");
                                     echo("<input type='checkbox' name='back-end-checkbox' id='back-end-checkbox'>");
                                     echo ("<div class='icon back-end-icon'>");
