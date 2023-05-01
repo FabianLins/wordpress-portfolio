@@ -1,22 +1,3 @@
-// Remove No JS class
-document.body.classList.remove("no-js");
-
-// Handle buttons
-let sectionsLocked = true;
-function unlockSection() {
-    if (sectionsLocked) {
-        document.body.classList.remove("js-sections");
-        document.querySelector("section.about-me img.wheel-icon").classList.add("js-remove-item");
-        sectionsLocked = false;
-    }
-}
-
-const homeBtns = document.querySelectorAll(".js-home-btn");
-homeBtns.forEach(currHomeBtn => {
-    currHomeBtn.addEventListener("click", unlockSection);
-});
-
-// Modal Boxes Keyboard Accessibility and Focus
 const checkBoxLabel = document.querySelectorAll("label.js-checkbox-keyboard");
 const modalBoxes = document.querySelectorAll(".js-modal-label");
 const modalClose = document.querySelectorAll("label.js-modal-close");
