@@ -4,14 +4,14 @@ function lins_theme_support()
     add_theme_support("title-tag");
     add_theme_support("post-thumbnails");
     $args = array(
-        "flex-width" => true,
-        "width" => 1500,
-        "flex-height" => true,
-        "height" => 420,
+        "flex-width"    => true,
+        "width"         => 1500,
+        "flex-height"   => true,
+        "height"        => 420,
         "default-image" => get_template_directory_uri() . "/img/header.jpg",
     );
     add_theme_support("custom-header", $args);
-	add_theme_support("custom-logo", $args);
+    add_theme_support("custom-logo", $args);
 }
 
 add_action("after_setup_theme", "lins_theme_support");

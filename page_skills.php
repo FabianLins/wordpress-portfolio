@@ -1,9 +1,9 @@
 <?php
 /* //Template Name: List of skills */
 //get_header();
-$query = new WP_Query( array( 'pagename' => 'list-of-skills' ) );
-$content = ($query->queried_object->post_content);
-$title = $query->queried_object->post_title;
+$query         = new WP_Query(array('pagename' => 'list-of-skills'));
+$content       = ($query->queried_object->post_content);
+$title         = $query->queried_object->post_title;
 $categories    = explode("<!-- /wp:list -->", $content, -1);
 $categoriesLen = count($categories);
 for ($i = 0; $i < $categoriesLen; $i++) {
@@ -19,13 +19,13 @@ for ($i = 0; $i < $categoriesLen; $i++) {
         <?php
             for ($i = 0; $i < $categoriesLen; $i++) {
                 if (preg_match("/<h(1|2|3|4|5|6).*?>(.*?)<\/h.*?>/", $categories[$i], $matches)) {
-                    $listStart = strpos($categories[$i], "<ul>");
-                    $listContent = substr($categories[$i], $listStart);
-                    $listContent = str_replace("<ul>", "", $listContent);
-                    $listContent = str_replace("</ul>", "", $listContent);
-                    $listContent = str_replace("<!-- /wp:list -->", "", $listContent);
-                    $listContent = str_replace("<!-- wp:list-item -->", "", $listContent);
-                    $listContent = explode("<!-- /wp:list-item -->", $listContent, -1);
+                    $listStart      = strpos($categories[$i], "<ul>");
+                    $listContent    = substr($categories[$i], $listStart);
+                    $listContent    = str_replace("<ul>", "", $listContent);
+                    $listContent    = str_replace("</ul>", "", $listContent);
+                    $listContent    = str_replace("<!-- /wp:list -->", "", $listContent);
+                    $listContent    = str_replace("<!-- wp:list-item -->", "", $listContent);
+                    $listContent    = explode("<!-- /wp:list-item -->", $listContent, -1);
                     $listContentLen = count($listContent);
                     echo ("<div class='category-container grid'>");
                         $leftDelay = "delay-2";
@@ -49,7 +49,7 @@ for ($i = 0; $i < $categoriesLen; $i++) {
                                 foreach($listContent as $currListContent){
                                     $stars = 0;
                                     if (preg_match("/{(1|2|3|4|5)s}/", $currListContent, $matches)) {
-                                        $stars = $matches[1];
+                                        $stars           = $matches[1];
                                         $currListContent = str_replace($matches[0], "", $currListContent);
                                     }
                                     echo ("<div class='skills-point grid'>");
@@ -57,11 +57,11 @@ for ($i = 0; $i < $categoriesLen; $i++) {
                                         echo ("<div class='rating-container'>");
                                             echo ("<div class='rating'>");
                                             for ($j = 0; $j < $stars; $j++) {
-                                                $src = wp_get_attachment_image_src(71)[0];
+                                                $src = get_template_directory_uri() . "/svg/star.svg";
                                                 echo ("<img class='star-full' src=" . $src . " alt='' /> ");
                                             }
                                             for ($j = 0; $j < 5 - $stars; $j++) {
-                                                $src = wp_get_attachment_image_src(67)[0];
+                                                $src = get_template_directory_uri() . "/svg/star-outline.svg";
                                                 echo ("<img class='star-outline' src=" . $src . " alt='' /> ");
                                             }
                                             echo ("</div>"); // rating

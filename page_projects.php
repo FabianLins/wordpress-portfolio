@@ -1,48 +1,52 @@
 <?php
 /* //Template Name: Projects Page */
 //get_header();
-function getHeadlineContent($headline){
+function getHeadlineContent($headline)
+{
     $matches = [];
     preg_match("/<h(1|2|3|4|5|6).*?>([\s\S]*)<\/h.*?>/", $headline, $matches);
     return $matches;
 }
 
-function getParagraphContent($paragraph){
+function getParagraphContent($paragraph)
+{
     $matches = [];
     preg_match("/<p.*?>([\s\S]*)<\/p>/", $paragraph, $matches);
     return $matches;
 }
 
-function getLinkContent($link){
+function getLinkContent($link)
+{
     $matches = [];
-    if(strpos($link, "href") !== false){
+    if (strpos($link, "href") !== false) {
         preg_match("/<a.* href=\"(.*?)\"(.*?)>([\s\S]*)<\/a>/", $link, $matches);
-    }
-    else{
+    } else {
         preg_match("/<a.*>([\s\S]*)<\/a>/", $link, $matches);
     }
     return $matches;
 }
 
-function sanitizeMarkup($input){
+function sanitizeMarkup($input)
+{
     return preg_replace("/<!--(.*)-->/Uis", "", $input);
 }
 
-$query = new WP_Query( array( 'pagename' => 'projects' ) );
-$content = ($query->queried_object->post_content);
-$content = str_replace("<strong>", "", $content);
-$content = str_replace("</strong>", "", $content);
+$query    = new WP_Query(array('pagename' => 'projects'));
+$content  = ($query->queried_object->post_content);
+$content  = str_replace("<strong>", "", $content);
+$content  = str_replace("</strong>", "", $content);
 $projects = explode("<!-- wp:heading -->", $content);
 unset($projects[0]);
-$projects = array_values($projects);
+$projects    = array_values($projects);
 $projectsLen = count($projects);
-$subPages = get_pages( array(
-    'child_of' => $query->queried_object->ID,
-    'post_status' => array( 'publish', 'private' )
-) );
-$finalBlock = "";
-foreach($subPages as $currPage){
-    if($currPage->post_name === "final-block"){
+$subPages    = get_pages(
+    array(
+        'child_of'    => $query->queried_object->ID,
+        'post_status' => array('publish', 'private')
+    ));
+$finalBlock  = "";
+foreach ($subPages as $currPage) {
+    if ($currPage->post_name === "final-block") {
         $finalBlock = $currPage->post_content;
     }
 }
@@ -56,111 +60,106 @@ $title = $query->queried_object->post_title;
     </h2>
     <div class="all-projects">
         <?php
-            for ($i = 0; $i < $projectsLen; $i++) {
-                $currProject = $projects[$i];
-                // Headline
-                $headlineEnd = strpos($currProject, "<!-- /wp:heading -->");
-                $headline = substr($currProject,0,$headlineEnd);
-                $headlineContent = getHeadlineContent($headline)[2];
-                // Paragraphs
-                $paragraphsLen = substr_count($currProject, "<!-- wp:paragraph -->");
-                $paragraphs = [];
-                $pStart = 0;
-                $pEnd = 0;
-                for ($j = 0; $j < $paragraphsLen; $j++) {
-                    if($j === 0){
-                        $pStart = strpos($currProject, "<!-- wp:paragraph -->", $pStart);
-                        $pEnd = strpos($currProject, "<!-- /wp:paragraph -->", $pEnd);    
-                    }
-                    else{
-                        $pStart = strpos($currProject, "<!-- wp:paragraph -->", $pStart + 1);
-                        $pEnd = strpos($currProject, "<!-- /wp:paragraph -->", $pEnd + 1);    
-                    }
-                    $pLen = $pEnd - $pStart;
-                    $paragraphContent = getParagraphContent(substr($currProject, $pStart, $pLen));
-                    $paragraphs[$j] = $paragraphContent[1];
+        for ($i = 0; $i < $projectsLen; $i++) {
+            $currProject = $projects[$i];
+            // Headline
+            $headlineEnd     = strpos($currProject, "<!-- /wp:heading -->");
+            $headline        = substr($currProject, 0, $headlineEnd);
+            $headlineContent = getHeadlineContent($headline)[2];
+            // Paragraphs
+            $paragraphsLen = substr_count($currProject, "<!-- wp:paragraph -->");
+            $paragraphs    = [];
+            $pStart        = 0;
+            $pEnd          = 0;
+            for ($j = 0; $j < $paragraphsLen; $j++) {
+                if ($j === 0) {
+                    $pStart = strpos($currProject, "<!-- wp:paragraph -->", $pStart);
+                    $pEnd   = strpos($currProject, "<!-- /wp:paragraph -->", $pEnd);
+                } else {
+                    $pStart = strpos($currProject, "<!-- wp:paragraph -->", $pStart + 1);
+                    $pEnd   = strpos($currProject, "<!-- /wp:paragraph -->", $pEnd + 1);
                 }
-                $projectInfo = [$paragraphs[0], $paragraphs[1]];
-                $projectInfo[0] = str_replace("{#made with}", "", $projectInfo[0]);
-                $madeWithArr = explode(',', $projectInfo[0]);
-                $madeWithArrLen = count($madeWithArr);
-                $projectInfo[0] = "<strong>";
-                if($madeWithArrLen > 1){
-                    for ($j = 0; $j < ($madeWithArrLen - 1); $j++){
-                        $projectInfo[0] .= $madeWithArr[$j] . ",";
-                    }
-                    $projectInfo[0] = substr($projectInfo[0], 0, strlen($projectInfo[0]) - 1);
-                    $projectInfo[0] .= "</strong> and <strong>" . $madeWithArr[$madeWithArrLen - 1] . "</strong>";
+                $pLen             = $pEnd - $pStart;
+                $paragraphContent = getParagraphContent(substr($currProject, $pStart, $pLen));
+                $paragraphs[$j]   = $paragraphContent[1];
+            }
+            $projectInfo    = [$paragraphs[0], $paragraphs[1]];
+            $projectInfo[0] = str_replace("{#made with}", "", $projectInfo[0]);
+            $madeWithArr    = explode(',', $projectInfo[0]);
+            $madeWithArrLen = count($madeWithArr);
+            $projectInfo[0] = "<strong>";
+            if ($madeWithArrLen > 1) {
+                for ($j = 0; $j < ($madeWithArrLen - 1); $j++) {
+                    $projectInfo[0] .= $madeWithArr[$j] . ",";
                 }
-                else{
-                    $projectInfo[0] = $madeWithArr[0];
+                $projectInfo[0] = substr($projectInfo[0], 0, strlen($projectInfo[0]) - 1);
+                $projectInfo[0] .= "</strong> and <strong>" . $madeWithArr[$madeWithArrLen - 1] . "</strong>";
+            } else {
+                $projectInfo[0] = $madeWithArr[0];
+            }
+            $projectInfo[0] = "made with " . $projectInfo[0];
+            if (strpos($projectInfo[1], "{#created in}") === 0) {
+                $projectInfo[1] = str_replace("{#created in}", "", $projectInfo[1]);
+                $projectInfo[1] = "created in <strong>" . $projectInfo[1] . "</strong>";
+            } elseif (strpos($projectInfo[1], "{#created from}") === 0) {
+                $currProjectInfo = $projectInfo[1];
+                preg_match("/{#created from} ([\s\S]*) {#to}/", $projectInfo[1], $matches);
+                $projectInfo[1] = "created from <strong>" . $matches[1] . "</strong>";
+                $toDateStartPos = strpos($currProjectInfo, "{#to}") + strlen("{#to}") + 1;
+                $toDateLength   = strlen($currProjectInfo) - $toDateStartPos;
+                $toDate         = substr($currProjectInfo, $toDateStartPos, $toDateLength);
+                $projectInfo[1] .= " to <strong>" . $toDate . "</strong>";
+            }
+            $projectState = $paragraphs[2];
+            // Modal
+            $modal = $paragraphs[3];
+            $modal = strtolower($modal);
+            preg_match("/{#modal([\s\S]*)}/", $modal, $matches);
+            $modal = "modal" . $matches[1];
+            // Buttons
+            $buttonsLen = substr_count($currProject, "<!-- wp:button -->");
+            $buttons    = [];
+            $btnOffset  = 0;
+            $btnStart   = 0;
+            $btnEnd     = 0;
+            for ($j = 0; $j < $buttonsLen; $j++) {
+                if ($j === 0) {
+                    $btnStart = strpos($currProject, "<!-- wp:button -->", $btnStart);
+                    $btnEnd   = strpos($currProject, "<!-- /wp:button -->", $btnEnd);
+                } else {
+                    $btnStart = strpos($currProject, "<!-- wp:button -->", $btnStart + 1);
+                    $btnEnd   = strpos($currProject, "<!-- /wp:button -->", $btnEnd + 1);
                 }
-                $projectInfo[0] = "made with " . $projectInfo[0];
-                if(strpos($projectInfo[1], "{#created in}") === 0){
-                    $projectInfo[1] = str_replace("{#created in}", "", $projectInfo[1]);
-                    $projectInfo[1] = "created in <strong>" . $projectInfo[1] . "</strong>";
+                $btnLen        = $btnEnd - $btnStart;
+                $btnStr        = substr($currProject, $btnStart, $btnLen);
+                $buttonContent = getLinkContent($btnStr);
+                if ($buttonContent[3]) {
+                    $buttons[$j]["href"]    = $buttonContent[1];
+                    $buttons[$j]["content"] = $buttonContent[3];
+                } else {
+                    $buttons[$j]["href"]    = false;
+                    $buttons[$j]["content"] = $buttonContent[1];
                 }
-                elseif(strpos($projectInfo[1], "{#created from}")  === 0){
-                    $currProjectInfo = $projectInfo[1];
-                    preg_match("/{#created from} ([\s\S]*) {#to}/", $projectInfo[1], $matches);
-                    $projectInfo[1] = "created from <strong>" . $matches[1] . "</strong>";
-                    $toDateStartPos = strpos($currProjectInfo, "{#to}") + strlen("{#to}") + 1;
-                    $toDateLength = strlen($currProjectInfo) - $toDateStartPos;
-                    $toDate = substr($currProjectInfo, $toDateStartPos, $toDateLength);
-                    $projectInfo[1] .= " to <strong>" . $toDate . "</strong>";
-                }       
-                $projectState = $paragraphs[2];
-                // Modal
-                $modal = $paragraphs[3];
-                $modal = strtolower($modal);                   
-                preg_match("/{#modal([\s\S]*)}/", $modal, $matches);
-                $modal = "modal" . $matches[1];
-                // Buttons
-                $buttonsLen = substr_count($currProject, "<!-- wp:button -->");
-                $buttons = [];
-                $btnOffset = 0;
-                $btnStart = 0;
-                $btnEnd = 0;
-                for ($j = 0; $j < $buttonsLen; $j++) {
-                    if($j === 0){
-                        $btnStart = strpos($currProject, "<!-- wp:button -->", $btnStart);
-                        $btnEnd = strpos($currProject, "<!-- /wp:button -->", $btnEnd);    
-                    }
-                    else{
-                        $btnStart = strpos($currProject, "<!-- wp:button -->", $btnStart + 1);
-                        $btnEnd = strpos($currProject, "<!-- /wp:button -->", $btnEnd + 1);    
-                    }
-                    $btnLen = $btnEnd - $btnStart;
-                    $btnStr = substr($currProject, $btnStart, $btnLen);
-                    $buttonContent = getLinkContent($btnStr);
-                    if($buttonContent[3]){
-                        $buttons[$j]["href"] = $buttonContent[1];
-                        $buttons[$j]["content"] = $buttonContent[3];
-                    }
-                    else{
-                        $buttons[$j]["href"] = false;
-                        $buttons[$j]["content"] = $buttonContent[1];
-                    }
-                    $buttons[$j]["new-tab"] = false;
-                    if(strpos($buttonContent[0], "target=\"_blank\"") !== false){
-                        $buttons[$j]["new-tab"] = true;
-                    }    
-                }            
-                // Image
-                preg_match("/<!-- wp:image {([\s\S]*)} -->/", $currProject, $matches);
-                $imgData = ($matches[1]);
-                $imgData = explode(',', $imgData);
-                $imgID = -1;
-                for ($j = 0; $j < count($imgData); $j++){
-                    $currImgData = str_replace('"', '', $imgData[$j]); // Remove quotation marks (")
-                    $searchFor =  "id:";
-                    $searchForLen = strlen($searchFor);
-                    if(substr($currImgData, 0, $searchForLen) === $searchFor){
-                        $imgID = substr($currImgData, $searchForLen, (strlen($currImgData) - $searchForLen));
-                        break;
-                    }
+                $buttons[$j]["new-tab"] = false;
+                if (strpos($buttonContent[0], "target=\"_blank\"") !== false) {
+                    $buttons[$j]["new-tab"] = true;
                 }
-                // HTML output
+            }
+            // Image
+            preg_match("/<!-- wp:image {([\s\S]*)} -->/", $currProject, $matches);
+            $imgData = ($matches[1]);
+            $imgData = explode(',', $imgData);
+            $imgID   = -1;
+            for ($j = 0; $j < count($imgData); $j++) {
+                $currImgData  = str_replace('"', '', $imgData[$j]); // Remove quotation marks (")
+                $searchFor    = "id:";
+                $searchForLen = strlen($searchFor);
+                if (substr($currImgData, 0, $searchForLen) === $searchFor) {
+                    $imgID = substr($currImgData, $searchForLen, (strlen($currImgData) - $searchForLen));
+                    break;
+                }
+            }
+            // HTML output
                 echo ("<div class='project'>");
                     echo ("<div class='container grid'>");
                         $leftDelay = "";
@@ -324,68 +323,65 @@ $title = $query->queried_object->post_title;
                 echo ("</div>"); // project
             }
             // Final Block
-            if($finalBlock !== ""){
+            if ($finalBlock !== "") {
                 preg_match("/<!-- wp:image {([\s\S]*)} -->/", $finalBlock, $matches);
                 $imgData = ($matches[1]);
-                $imgID = -1;
+                $imgID   = -1;
                 // Paragraph
                 $paragraphsLen = substr_count($finalBlock, "<!-- wp:paragraph -->");
-                $paragraphs = [];
-                $pStart = 0;
-                $pEnd = 0;
+                $paragraphs    = [];
+                $pStart        = 0;
+                $pEnd          = 0;
                 for ($j = 0; $j < $paragraphsLen; $j++) {
-                    if($j === 0){
+                    if ($j === 0) {
                         $pStart = strpos($finalBlock, "<!-- wp:paragraph -->", $pStart);
-                        $pEnd = strpos($finalBlock, "<!-- /wp:paragraph -->", $pEnd);    
-                    }
-                    else{
+                        $pEnd   = strpos($finalBlock, "<!-- /wp:paragraph -->", $pEnd);
+                    } else {
                         $pStart = strpos($finalBlock, "<!-- wp:paragraph -->", $pStart + 1);
-                        $pEnd = strpos($finalBlock, "<!-- /wp:paragraph -->", $pEnd + 1);    
+                        $pEnd   = strpos($finalBlock, "<!-- /wp:paragraph -->", $pEnd + 1);
                     }
-                    $pLen = $pEnd - $pStart;
+                    $pLen             = $pEnd - $pStart;
                     $paragraphContent = getParagraphContent(substr($finalBlock, $pStart, $pLen));
-                    $paragraphs[$j] = $paragraphContent[1];
+                    $paragraphs[$j]   = $paragraphContent[1];
                 }
                 // Image
-                $currImgData = str_replace('"', '', $imgData); // Remove quotation marks (")
-                $searchFor =  "id:";
+                $currImgData  = str_replace('"', '', $imgData); // Remove quotation marks (")
+                $searchFor    = "id:";
                 $searchForLen = strlen($searchFor);
-                if(substr($currImgData, 0, $searchForLen) === $searchFor){
+                if (substr($currImgData, 0, $searchForLen) === $searchFor) {
                     $imgID = substr($currImgData, $searchForLen, (strlen($currImgData) - $searchForLen));
                 }
-                $headlineEnd = strpos($finalBlock, "<!-- /wp:heading -->");
-                $headline = substr($finalBlock, 0, $headlineEnd);
+                $headlineEnd     = strpos($finalBlock, "<!-- /wp:heading -->");
+                $headline        = substr($finalBlock, 0, $headlineEnd);
                 $headlineContent = getHeadlineContent($headline)[2];
                 // Button
                 $buttonsLen = substr_count($finalBlock, "<!-- wp:button -->");
-                $buttons = [];
-                $btnOffset = 0;
-                $btnStart = 0;
-                $btnEnd = 0;
+                $buttons    = [];
+                $btnOffset  = 0;
+                $btnStart   = 0;
+                $btnEnd     = 0;
                 for ($j = 0; $j < $buttonsLen; $j++) {
-                    if($j === 0){
+                    if ($j === 0) {
                         $btnStart = strpos($finalBlock, "<!-- wp:button -->", $btnStart);
-                        $btnEnd = strpos($finalBlock, "<!-- /wp:button -->", $btnEnd);    
-                    }
-                    else{
+                        $btnEnd   = strpos($finalBlock, "<!-- /wp:button -->", $btnEnd);
+                    } else {
                         $btnStart = strpos($finalBlock, "<!-- wp:button -->", $btnStart + 1);
-                        $btnEnd = strpos($finalBlock, "<!-- /wp:button -->", $btnEnd + 1);    
+                        $btnEnd   = strpos($finalBlock, "<!-- /wp:button -->", $btnEnd + 1);
                     }
-                    $btnLen = $btnEnd - $btnStart;
-                    $btnStr = substr($finalBlock, $btnStart, $btnLen);
+                    $btnLen        = $btnEnd - $btnStart;
+                    $btnStr        = substr($finalBlock, $btnStart, $btnLen);
                     $buttonContent = getLinkContent($btnStr);
-                    if($buttonContent[3]){
-                        $buttons[$j]["href"] = $buttonContent[1];
+                    if ($buttonContent[3]) {
+                        $buttons[$j]["href"]    = $buttonContent[1];
                         $buttons[$j]["content"] = $buttonContent[3];
-                    }
-                    else{
-                        $buttons[$j]["href"] = false;
+                    } else {
+                        $buttons[$j]["href"]    = false;
                         $buttons[$j]["content"] = $buttonContent[1];
                     }
                     $buttons[$j]["new-tab"] = false;
-                    if(strpos($buttonContent[0], "target=\"_blank\"") !== false){
+                    if (strpos($buttonContent[0], "target=\"_blank\"") !== false) {
                         $buttons[$j]["new-tab"] = true;
-                    }    
+                    }
                 }
                 echo("<div class='project final-block'>");
                     echo ("<div class='container'>");
@@ -394,17 +390,17 @@ $title = $query->queried_object->post_title;
                                 echo ("<h3 class='h3'>" . $headlineContent . "</h3>");
                                 echo ("<p>" . $paragraphs[0] . "</p>");
                                 echo ("<div class='buttons grid'>");
-                                    foreach($buttons as $currButton){
-                                        $target = "";
-                                        $currStr = strtolower($currButton["content"]);
-                                        $addClass = "";
-                                        $icon = "";
+                                    foreach ($buttons as $currButton) {
+                                        $target    = "";
+                                        $currStr   = strtolower($currButton["content"]);
+                                        $addClass  = "";
+                                        $icon      = "";
                                         $animation = "animation-button-blink";
-                                        if (strpos($currStr, "github") !== false){
+                                        if (strpos($currStr, "github") !== false) {
                                             $addClass = "github " . $animation . "-github";
-                                            $src = get_template_directory_uri() . "/svg/github.svg";
-                                            $icon = file_get_contents( $src );
-                                        }
+                                            $src      = get_template_directory_uri() . "/svg/github.svg";
+                                            $icon     = file_get_contents($src);
+                                        } 
                                         echo("<div class='button-container " . $addClass . "'>");
                                             echo $icon;
                                             if($currButton["new-tab"]) {
@@ -421,7 +417,7 @@ $title = $query->queried_object->post_title;
                                 echo ("</div>"); // buttons
                                 echo ("<div class='image-container'>");
                                     //$imgID
-                                    echo ("<img src=" . wp_get_attachment_image_src($imgID,[1000, 1000])[0] . " alt='' />");
+                                    echo ("<img src=" . wp_get_attachment_image_src($imgID, [1000, 1000])[0] . " alt='' />");
                                 echo ("</div>"); // image-container 
                             echo ("</div>"); // content    
                         echo ("</div>"); // relative

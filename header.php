@@ -10,8 +10,9 @@
     ?>
 </head>
 <?php
-    $src = get_template_directory_uri() . "/svg/arrow.svg";
+$src = get_template_directory_uri() . "/svg/arrow.svg";
 ?>
+
 <body id="href-top" class="body no-js js-sections">
     <a href="#href-top" class="scroll-arrow js-scroll-top">
         <?php echo file_get_contents($src); ?>
@@ -32,8 +33,8 @@
             </div>
             <div class="icon-container">
                 <div class="icons animation-zoom-in">
-                    <img class="animation-jump" 
-                    src="<?php echo (get_template_directory_uri() . "/svg/html.svg"); ?>" alt="" />
+                    <img class="animation-jump" src="<?php echo (get_template_directory_uri() . "/svg/html.svg"); ?>"
+                        alt="" />
                     <img class="animation-jump animation-delay-1"
                         src="<?php echo (get_template_directory_uri() . "/svg/css.svg"); ?>" alt="" />
                     <img class="animation-jump animation-delay-2"

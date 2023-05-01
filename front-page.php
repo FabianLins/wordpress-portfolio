@@ -2,14 +2,13 @@
 get_header();
 
 $logoPath = get_template_directory_uri() . "/img/logo.png";
-if ( function_exists( "the_custom_logo" ) ) {
-	$logo = get_theme_mod("custom_logo");
-    $image = wp_get_attachment_image_src( $logo , "full" );
+if (function_exists("the_custom_logo")) {
+    $logo     = get_theme_mod("custom_logo");
+    $image    = wp_get_attachment_image_src($logo, "full");
     $logoPath = $image[0];
 }
 
 ?>
-
 <section class="about-me">
     <h2 class="h2 mt-header h-pl animation-slide-in-right">
         <?php the_title(); ?>
