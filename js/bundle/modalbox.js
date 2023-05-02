@@ -6,20 +6,40 @@ let firstFocusableElement = null;
 let focusableContent = null;
 let lastFocusableElement = null;
 
+function removeFocus() {
+    document.body.classList.remove("js-modal-focus");
+    modalActive = false;
+    firstFocusableElement = null;
+    focusableContent = null;
+    lastFocusableElement = null;
+}
+
 function handleToggle(event) {
     if (event.key === "Enter") {
         const selector = document.getElementById(this.htmlFor);
         selector.checked = !selector.checked;
+        if (modalActive) {
+            setTimeout(() => {
+                removeFocus();
+            }, 50)
+        }
     }
 }
 
-function catchFocus(lastThis) {
-    let element = lastThis;
-    if (lastThis.pointerId !== undefined) {
-        element = this;
+function keyRemoveFocus(event) {
+    if (event.key === "Escape") {
+        removeFocus();
+    }
+}
+
+function catchFocus(event) {
+    if (event.type === "click") {
+        modalActive = this.htmlFor
+    }
+    else {
+        modalActive = event.htmlFor;
     }
     document.body.classList.add("js-modal-focus");
-    modalActive = element.htmlFor;
     const focusableElements =
         "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])";
     const modal = document.querySelector(`#${modalActive}~ .modal-container`); // select the modal by it's id
@@ -37,24 +57,9 @@ function catchFocus(lastThis) {
     lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
 }
 
-function removeFocus() {
-    document.body.classList.remove("js-modal-focus");
-    modalActive = false;
-    firstFocusableElement = null;
-    focusableContent = null;
-    lastFocusableElement = null;
-}
-
-function keyRemoveFocus(event) {
-    if (event.key === "Enter") {
-        removeFocus();
-    }
-}
-
 function keyCatchFocus(event) {
     if (event.key === "Enter") {
-        let lastThis = this;
-        catchFocus(lastThis);
+        catchFocus(this);
     }
 }
 

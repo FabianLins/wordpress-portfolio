@@ -14,23 +14,29 @@
     align-items: center;
     cursor: pointer;
     opacity: .5;
-    transition: .2s ease-in;
+    transition: opacity .2s ease-in;
 
     &:hover {
         opacity: 1;
 
+        svg {
+            transform: rotate(180deg) translateY(1rem);
+        }
+
         ~.scroll-bottom-fade {
             opacity: 1;
             transform: translateY(0);
+
         }
     }
 
     svg {
         fill: $blue-light;
-        transform: rotate(180deg);
+        transform: rotate(180deg) translateY(0);
         width: 65%;
         margin: 0 auto;
         left: 50%;
+        transition: transform 0.4s ease-in-out;
     }
 }
 
@@ -38,12 +44,12 @@
     width: 100%;
     position: fixed;
     height: 16rem;
-    background: linear-gradient(180deg, transparent, rgba(black, .3));
+    background: linear-gradient(180deg, transparent, rgba($black, .3));
     bottom: 0;
     z-index: 6;
     opacity: 0;
     transform: translateY(100%);
-    transition: .2s ease-in-out;
+    transition: transform .3s ease-in-out, opacity .4s ease-in-out;
 
 }
 
