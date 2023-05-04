@@ -624,11 +624,14 @@
                 .button-container {
                     grid-column: col-start / span 7;
                     width: 75%;
+                    color: inherit;
+                    text-decoration: none;
 
-                    a {
+                    &:hover,
+                    &:focus-within {
                         color: inherit;
-                        text-decoration: none;
                     }
+
                 }
             }
 
