@@ -207,45 +207,41 @@ $title = $query->queried_object->post_title;
                                 echo ("</div>"); // created in
                             echo ("</div>"); // project-info
                             echo ("<div class='buttons grid'>");
-                                foreach($buttons as $currButton){
-                                    $target = "";
-                                    $currStr = strtolower($currButton["content"]);
-                                    $addClass = "";
-                                    $icon = "";
+                                foreach ($buttons as $currButton) {
+                                    $target    = "";
+                                    $currStr   = strtolower($currButton["content"]);
+                                    $addClass  = "";
+                                    $icon      = "";
                                     $animation = "animation-button-blink";
-                                    if (strpos($currStr, "github") !== false){
+                                    if (strpos($currStr, "github") !== false) {
                                         $addClass = "github " . $animation . "-github";
-                                        $src = get_template_directory_uri() . "/svg/github.svg";
-                                        $icon = file_get_contents( $src );
-                                    }
-                                    elseif (strpos($currStr, "show more") !== false){
+                                        $src      = get_template_directory_uri() . "/svg/github.svg";
+                                        $icon     = file_get_contents($src);
+                                    } elseif (strpos($currStr, "show more") !== false) {
                                         $addClass = "more " . $animation . "-more";
-                                        $src = get_template_directory_uri() . "/svg/show-more.svg";
-                                        $icon = file_get_contents( $src );
-                                    }
-                                    elseif (strpos($currStr, "demo") !== false){
+                                        $src      = get_template_directory_uri() . "/svg/show-more.svg";
+                                        $icon     = file_get_contents($src);
+                                    } elseif (strpos($currStr, "demo") !== false) {
                                         $addClass = "demo " . $animation . "-demo";
-                                        $src = get_template_directory_uri() . "/svg/world.svg";
-                                        $icon = file_get_contents( $src );
+                                        $src      = get_template_directory_uri() . "/svg/world.svg";
+                                        $icon     = file_get_contents($src);
                                     }
                                     if (strpos($currStr, "show more") !== false) {
-                                        echo("<label tabindex=0 class='js-checkbox-keyboard js-modal-label button-container " . $addClass . "' for='" . $modal . "'>");
+                                        echo ("<label tabindex=0 class='js-checkbox-keyboard js-modal-label button-container " . $addClass . "' for='" . $modal . "'>");
                                             echo $icon;
-                                            echo("<span>" . $currButton["content"] . "</span>");
-                                        echo("</label>"); // button-container
-                                    }
-                                    else{
-                                        echo("<div class='button-container " . $addClass . "'>");
-                                        echo $icon;
-                                        if($currButton["new-tab"]) {
+                                            echo ("<span>" . $currButton["content"] . "</span>");
+                                        echo ("</label>"); // button-container
+                                    } else {
+                                        if (!$currButton["href"]) {
+                                            $currButton["href"] = '#';
+                                        }
+                                        if ($currButton["new-tab"]) {
                                             $target = " target='_blank'";
                                         }
-                                        if($currButton["href"]) {
-                                            echo("<a href=" . $currButton["href"] . $target . ">" . $currButton["content"] . "</a>");
-                                        } else {
-                                            echo("<a href='#'" . ">" . $currButton["content"] . "</a>");
-                                        }
-                                        echo("</div>"); // button-container
+                                        echo ("<a class='button-container " . $addClass . "' href=" . $currButton["href"] . $target . ">");
+                                            echo $icon;
+                                            echo ("<span>" . $currButton["content"] . "</span>");
+                                        echo ("</a>"); // button-container
                                     }
                                 }
                             echo ("</div>"); // buttons
@@ -319,7 +315,6 @@ $title = $query->queried_object->post_title;
                             break;
                         }
                     }
-
                 echo ("</div>"); // project
             }
             // Final Block
