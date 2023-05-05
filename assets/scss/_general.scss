@@ -1,5 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100&display=swap');
+@font-face {
+    font-display: swap;
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: 100;
+    src: url("../fonts/heebo-v21-latin-100.woff2") format("woff2"),
+        /* Chrome 36+, Opera 23+, Firefox 39+ */
+        url("../fonts/heebo-v21-latin-100.woff") format("woff");
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/heebo-v21-latin-regular.woff2") format("woff2"),
+        /* Chrome 36+, Opera 23+, Firefox 39+ */
+        url("../fonts/heebo-v21-latin-regular.woff") format("woff");
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 
 .scroll-arrow {
     width: 8rem;
@@ -62,7 +81,7 @@ html {
 }
 
 body {
-    font-family: 'Heebo';
+    font-family: "Heebo";
     background: linear-gradient(rgba($gray, 0) 70%, rgba($gray, .25) 100%);
     background-attachment: fixed;
 }
@@ -226,7 +245,7 @@ em {
     }
 
     &::before {
-        content: '';
+        content: "";
         top: 0;
         left: 0;
         bottom: 0;
