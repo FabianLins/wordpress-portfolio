@@ -19,7 +19,9 @@ echo ("<div class='project'>");
                 echo ("<div class='made-with'>");
                     echo ("<div class='wheel animation-wheel-icon'>");
                         $src = get_template_directory_uri() . "/svg/wheel.svg";
-                        echo file_get_contents( $src );
+                        $svg = wp_remote_get($src);
+                        $svg = wp_remote_retrieve_body($svg);
+                        echo ($svg);
                     echo ("</div>"); // wheel
                     echo ("<div class='text'>");
                         echo ($projectInfo[0]);
@@ -38,7 +40,9 @@ echo ("<div class='project'>");
                             echo ("</div>"); // circle
                         echo ("</div>"); // circle-container
                         $src = get_template_directory_uri() . "/svg/calender.svg";
-                        echo file_get_contents( $src );
+                        $svg = wp_remote_get($src);
+                        $svg = wp_remote_retrieve_body($svg);
+                        echo ($svg);
                     echo ("</div>"); // calender
                     echo ("<div class='text'>");
                         echo ($projectInfo[1]);
@@ -55,16 +59,15 @@ echo ("<div class='project'>");
                     if (strpos($currStr, "github") !== false) {
                         $addClass = "github " . $animation . "-github";
                         $src      = get_template_directory_uri() . "/svg/github.svg";
-                        $icon     = file_get_contents($src);
                     } elseif (strpos($currStr, "show more") !== false) {
                         $addClass = "more " . $animation . "-more";
                         $src      = get_template_directory_uri() . "/svg/show-more.svg";
-                        $icon     = file_get_contents($src);
                     } elseif (strpos($currStr, "demo") !== false) {
                         $addClass = "demo " . $animation . "-demo";
                         $src      = get_template_directory_uri() . "/svg/world.svg";
-                        $icon     = file_get_contents($src);
                     }
+                    $icon = wp_remote_get($src);
+                    $icon = wp_remote_retrieve_body($icon);
                     if (strpos($currStr, "show more") !== false) {
                         echo ("<label tabindex=0 class='js-checkbox-keyboard js-modal-label button-container " . $addClass . "' for='" . $modal . "'>");
                             echo $icon;
@@ -103,7 +106,9 @@ echo ("<div class='project'>");
                     echo ("<div class='project-state finished'>");
                         echo ("<div class='icon animation-draw-tick'>");
                             $src = get_template_directory_uri() . "/svg/tick.svg";
-                            echo file_get_contents( $src );
+                            $svg = wp_remote_get($src);
+                            $svg = wp_remote_retrieve_body($svg);
+                            echo ($svg);    
                         echo ("</div>"); // icon
                         echo ("<div class='project-state-text'>");
                             echo ("Finished");

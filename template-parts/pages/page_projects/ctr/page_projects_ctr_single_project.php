@@ -1,5 +1,4 @@
 <?php
-$currProject = $projects[$i];
 // Headline
 $headlineEnd     = strpos($currProject, "<!-- /wp:heading -->");
 $headline        = substr($currProject, 0, $headlineEnd);

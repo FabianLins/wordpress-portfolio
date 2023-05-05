@@ -11,11 +11,15 @@
 </head>
 <?php
 $src = get_template_directory_uri() . "/svg/arrow.svg";
+$svg = wp_remote_get($src);
+$svg = wp_remote_retrieve_body($svg);
 ?>
 
 <body id="href-top" class="body no-js js-sections">
     <a href="#href-top" class="scroll-arrow js-scroll-top">
-        <?php echo file_get_contents($src); ?>
+        <?php
+        echo $svg;
+        ?>
     </a>
     <div class="scroll-bottom-fade animation-scroll-bottom-fade">
     </div>

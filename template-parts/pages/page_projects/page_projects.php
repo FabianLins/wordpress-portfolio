@@ -31,6 +31,7 @@ $title = $query->queried_object->post_title;
     <div class="all-projects">
         <?php
         for ($i = 0; $i < $projectsLen; $i++) {
+            $currProject = $projects[$i];
             // Controller
             include "ctr/page_projects_ctr_single_project.php";
             // HTML output

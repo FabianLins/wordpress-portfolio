@@ -15,7 +15,8 @@ echo("<div class='project final-block'>");
                         if (strpos($finalCurrStr, "github") !== false) {
                             $addClass = "github " . $animation . "-github";
                             $src      = get_template_directory_uri() . "/svg/github.svg";
-                            $icon     = file_get_contents($src);
+                            $svg = wp_remote_get($src);
+                            $icon = wp_remote_retrieve_body($svg);
                         } 
                         if (!$finalCurrButton["href"]) {
                             $finalCurrButton["href"] = '#';
