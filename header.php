@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
     wp_head();
+    $src = get_template_directory_uri() . "/svg/arrow.svg";
+    $svg = wp_remote_get($src);
+    $svg = wp_remote_retrieve_body($svg);
     ?>
 </head>
 <?php
-$src = get_template_directory_uri() . "/svg/arrow.svg";
-$svg = wp_remote_get($src);
-$svg = wp_remote_retrieve_body($svg);
 ?>
 
 <body id="href-top" class="body no-js js-sections">
