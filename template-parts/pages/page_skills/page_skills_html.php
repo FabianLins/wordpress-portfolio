@@ -53,23 +53,21 @@ echo ("<div class='category-container grid'>");
                 $src = get_template_directory_uri() . "/svg/cursor.svg";
                 echo ("<img class='cursor animation-cursor-move' src=". $src ." />");
                 echo ("<img class='cursor animation-cursor-move cursor-shadow' src=". $src ." />");
-                echo ("<div class='window-container-container'>");
-                    echo ("<div class='window-container'>");
-                        echo ("<div class='window'>");
-                            echo ("<div class='top'>");
-                                echo ("<div class='dots'>");
-                                    echo ("<label for='red-dot' class='red animation-mac-red-blink'></label>"); // red
-                                    echo ("<label for='yellow-dot' class='yellow animation-mac-yellow-blink'></label>"); // yellow
-                                    echo ("<label for='green-dot'class='green animation-mac-green-blink'></label>"); // green
-                                echo ("</div>"); // dots
-                            echo ("</div>"); // top
-                            echo ("<div class='bottom'>");
-                                echo ("<div class='tag-close'>");
-                                echo ("</div>"); // tag-close
-                            echo ("</div>"); // bottom
-                        echo ("</div>"); // window
-                    echo ("</div>"); // window-container
-                echo ("</div>"); // window-container-container
+                echo ("<div class='window-container'>");
+                    echo ("<div class='window'>");
+                        echo ("<div class='top'>");
+                            echo ("<div class='dots'>");
+                                echo ("<label for='red-dot' class='red animation-mac-red-blink'></label>"); // red
+                                echo ("<label for='yellow-dot' class='yellow animation-mac-yellow-blink'></label>"); // yellow
+                                echo ("<label for='green-dot'class='green animation-mac-green-blink'></label>"); // green
+                            echo ("</div>"); // dots
+                        echo ("</div>"); // top
+                        echo ("<div class='bottom'>");
+                            echo ("<div class='tag-close'>");
+                            echo ("</div>"); // tag-close
+                        echo ("</div>"); // bottom
+                    echo ("</div>"); // window
+                echo ("</div>"); // window-container
             echo ("</div>"); // front-end-icon
         echo ("</div>"); // right
     }

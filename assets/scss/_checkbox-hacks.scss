@@ -24,7 +24,7 @@
             }
 
             .window {
-                width: 60%;
+                width: 50%;
             }
 
             .bottom {
@@ -43,7 +43,7 @@
     &:checked {
         ~.front-end-icon {
             .window {
-                width: 100%;
+                width: 77%;
             }
         }
     }
@@ -82,7 +82,7 @@
                 ~.modal {
                     max-width: 700px;
                     height: 60vh;
-                    width: 80%;
+                    width: 75%;
                 }
             }
         }

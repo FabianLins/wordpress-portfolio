@@ -1,8 +1,12 @@
 .projects {
-    background: $gray-dark;
+    .header-container {
+        background: $gray-dark;
+        z-index: 3;
+        position: relative;
 
-    .mt-header {
-        margin-top: 6.5rem;
+        h2 {
+            padding-top: 6.5rem;
+        }
     }
 
     input {
@@ -17,12 +21,16 @@
     .project {
         font-size: 2.4rem;
         color: $blue-light;
-        padding: 3rem 0;
 
         .container {
-            z-index: 3;
-            position: relative;
+            &-parent {
+                z-index: 3;
+                position: relative;
+                background: $gray-dark;
+            }
 
+            padding-top: 3rem;
+            padding-bottom: 3rem;
         }
 
         strong {
@@ -573,7 +581,9 @@
         }
 
         &:nth-of-type(even) {
-            background: $gray-darker;
+            .container-parent {
+                background: $gray-darker;
+            }
 
             .created-in {
                 .calender {
@@ -586,7 +596,9 @@
         }
 
         &:last-of-type:not(.final-block) {
-            padding-bottom: 8rem;
+            .container {
+                padding-bottom: 8rem;
+            }
         }
 
         &.final-block {
@@ -684,8 +696,6 @@
                 }
             }
         }
-
-        @media only screen and (max-width: $sm) {}
 
         @media only screen and (max-width: $xs) {
             font-size: 2rem;

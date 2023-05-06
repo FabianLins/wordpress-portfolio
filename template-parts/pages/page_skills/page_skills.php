@@ -1,5 +1,5 @@
 <?php
-$query         = new WP_Query(array('pagename' => 'list-of-skills'));
+$query         = new WP_Query(array("pagename" => "list-of-skills"));
 $content       = ($query->queried_object->post_content);
 $title         = $query->queried_object->post_title;
 $categories    = explode("<!-- /wp:list -->", $content, -1);
