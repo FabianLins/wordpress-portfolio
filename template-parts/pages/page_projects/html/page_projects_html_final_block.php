@@ -8,11 +8,11 @@ echo("<div class='project final-block'>");
                     echo ("<p>" . $finalParagraphs[0] . "</p>");
                     echo ("<div class='buttons grid'>");
                         foreach ($finalButtons as $finalCurrButton) {
-                            $target    = "";
-                            $finalCurrStr   = strtolower($finalCurrButton["content"]);
-                            $addClass  = "";
-                            $icon      = "";
-                            $animation = "animation-button-blink";
+                            $target       = "";
+                            $finalCurrStr = strtolower($finalCurrButton["content"]);
+                            $addClass     = "";
+                            $icon         = "";
+                            $animation    = "animation-button-blink";
                             if (strpos($finalCurrStr, "github") !== false) {
                                 $addClass = "github " . $animation . "-github";
                                 $src  = get_template_directory_uri() . "/svg/github.svg";
