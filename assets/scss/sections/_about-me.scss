@@ -2,6 +2,10 @@
     padding-bottom: 10rem;
     font-size: 2.4rem;
 
+    .mt-header {
+        margin-top: 13rem;
+    }
+
     .left {
         z-index: 2;
         grid-column: col-start / span 6;
@@ -53,7 +57,12 @@
         }
     }
 
+    // .about me => media queries
     @media only screen and (max-width: $lg) {
+        .mt-header {
+            margin-top: 10rem;
+        }
+
         .grid {
             gap: 0;
 
@@ -71,6 +80,14 @@
 
                 .buttons {
                     margin-top: 0;
+
+                    .btn-1,
+                    .btn-2 {
+                        @media only screen and (max-width: $lg) {
+                            display: flex;
+                        }
+                    }
+
                 }
             }
 
@@ -82,23 +99,31 @@
     }
 
     @media only screen and (max-width: $md) {
-        .wheel-icon {
-            margin-top: -55rem;
+        .mt-header {
+            margin-top: 9rem;
         }
     }
 
+    @media only screen and (max-width: $sm-md) {
+        .mt-header {
+            margin-top: 8rem;
+        }
+
+    }
+
     @media only screen and (max-width: $sm) {
-        .wheel-icon {
-            margin-top: -35rem;
+        .mt-header {
+            margin-top: 7rem;
         }
     }
 
     @media only screen and (max-width: $xs) {
-        font-size: 2rem;
-
-        .wheel-icon {
-            margin-top: -25rem;
+        .mt-header {
+            margin-top: 6rem;
         }
 
+        p {
+            font-size: 2rem;
+        }
     }
 }

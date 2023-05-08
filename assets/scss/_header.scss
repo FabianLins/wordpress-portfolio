@@ -227,8 +227,16 @@
     backdrop-filter: blur(.2rem);
     transition: background .4s ease-in;
 
-    @media only screen and (min-width: $lg) {
+    svg {
+        fill: $blue-light;
+        transform: rotate(180deg) translateY(0);
+        width: 65%;
+        margin: 0 auto;
+        left: 50%;
+        transition: transform 0.4s ease-in-out;
+    }
 
+    @media (pointer: fine) {
         &:hover,
         &:focus-within {
             background: rgba($prim, 1);
@@ -242,16 +250,24 @@
                 transform: translateY(0);
             }
         }
-
     }
 
-    svg {
-        fill: $blue-light;
-        transform: rotate(180deg) translateY(0);
-        width: 65%;
-        margin: 0 auto;
-        left: 50%;
-        transition: transform 0.4s ease-in-out;
+    @media only screen and (max-width: $lg) {
+        transition-duration: .45s;
+
+        svg {
+            transition-duration: .45s;
+        }
+    }
+
+    @media only screen and (max-width: $md) {
+        right: 3rem;
+        bottom: 3rem;
+    }
+
+    @media only screen and (max-width: $sm) {
+        right: 2rem;
+        bottom: 2rem;
     }
 }
 
@@ -265,4 +281,8 @@
     opacity: 0;
     transform: translateY(100%);
     transition: transform .3s ease-in-out, opacity .4s ease-in-out;
+
+    @media only screen and (max-width: $lg) {
+        transition-duration: .45s;
+    }
 }

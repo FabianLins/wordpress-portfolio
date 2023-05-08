@@ -78,10 +78,10 @@ echo ("<div class='category-container grid'>");
                 echo ("<div class='icon back-end-icon'>");
                     echo ("<div class='wheels'>");
                         $src = get_template_directory_uri() . "/svg/wheel.svg";
-                        echo ("<img class='wheel-top animation-wheel-top' src=". $src . " alt='' />");
+                        echo ("<img class='wheel-top animation-wheel-top' src=". $src . " alt='' draggable='false' />");
                         $srcClipping = get_template_directory_uri() . "/svg/wheel-clipping-mask.svg";
-                        echo ("<img class='wheel-top-clipping animation-wheel-top-clipping' src=". $srcClipping . " alt='' />");
-                        echo ("<img class='wheel-bot animation-wheel-bot' src=". $src . " alt='' />");
+                        echo ("<img class='wheel-top-clipping animation-wheel-top-clipping' src=". $srcClipping . " alt='' draggable='false' />");
+                        echo ("<img class='wheel-bot animation-wheel-bot' src=". $src . " alt='' draggable='false' />");
                     echo ("</div>"); // wheels
                 echo ("</div>"); // back-end-icon
             echo ("</label>"); // parent

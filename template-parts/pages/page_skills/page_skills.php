@@ -31,5 +31,5 @@ for ($i = 0; $i < $categoriesLen; $i++) {
         ?>
     </div>
     <img class="wheel-icon animation-spin" src="<?php echo (get_template_directory_uri() . "/svg/wheel.svg"); ?>"
-        alt="" />
+        alt="" draggable="false"/>
 </section>

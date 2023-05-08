@@ -2,7 +2,7 @@
     padding-bottom: 10rem;
     background: linear-gradient(hsl(195, 18%, 96%), hsl(228, 80%, 98%));
 
-    .mt-header {
+    h2 {
         margin-top: 6.5rem;
     }
 
@@ -179,17 +179,21 @@
                             cursor: pointer;
                             transition: .1s ease-out;
 
-                            &:hover {
-                                filter: blur(.1rem);
-                                transform: scale(1.15);
+                            @media (pointer: fine) {
+                                &:hover {
+                                    filter: blur(.1rem);
+                                    transform: scale(1.15);
+                                }
                             }
 
                             &.red {
                                 background: $mac-red;
 
-                                &:hover {
-                                    background: hsl(25, 100%, 90%);
-                                    box-shadow: 0 0 1.5rem 1rem rgba(hsl(358, 100%, 85%), .4) !important;
+                                @media (pointer: fine) {
+                                    &:hover {
+                                        background: hsl(25, 100%, 90%);
+                                        box-shadow: 0 0 1.5rem 1rem rgba(hsl(358, 100%, 85%), .4) !important;
+                                    }
                                 }
                             }
 
@@ -197,20 +201,22 @@
                                 background: $mac-yellow;
                                 margin: 0 1rem;
 
-                                &:hover {
-                                    background: hsl(52, 100%, 99%);
-                                    box-shadow: 0 0 1.5rem 1rem rgba(hsl(52, 100%, 85%), .4) !important;
+                                @media (pointer: fine) {
+                                    &:hover {
+                                        background: hsl(52, 100%, 99%);
+                                        box-shadow: 0 0 1.5rem 1rem rgba(hsl(52, 100%, 85%), .4) !important;
+                                    }
                                 }
-
                             }
 
                             &.green {
                                 background: $mac-green;
 
-                                &:hover {
-                                    background: hsl(84, 100%, 91%);
-                                    box-shadow: 0 0 1.5rem 1rem rgba(hsl(84, 100%, 85%), .4) !important;
-
+                                @media (pointer: fine) {
+                                    &:hover {
+                                        background: hsl(84, 100%, 91%);
+                                        box-shadow: 0 0 1.5rem 1rem rgba(hsl(84, 100%, 85%), .4) !important;
+                                    }
                                 }
                             }
                         }
@@ -292,6 +298,7 @@
         }
     }
 
+    //  .list-of-skills => media queries
     @media only screen and (max-width: $xxl) {
         .left {
             .skills {
@@ -334,7 +341,6 @@
     }
 
     @media only screen and (max-width: $lg-xl) {
-
         .left {
             .skills {
                 margin-left: 1.5rem;
@@ -414,9 +420,37 @@
         }
     }
 
+    @media only screen and (max-width: 1015px) {
+        .right {
+            .back-end-icon {
+                .wheels {
+                    .wheel-top {
+                        width: 18rem;
+
+                        &-clipping {
+                            width: 18rem;
+                        }
+                    }
+
+                    .wheel-bot {
+                        width: 14rem;
+                    }
+                }
+            }
+        }
+    }
+
     @media only screen and (max-width: $lg) {
+        .skill-heading {
+            font-size: 4.4rem;
+        }
+
         .grid {
             gap: 0;
+        }
+
+        .container {
+            margin-top: 0;
         }
 
         .left {
@@ -459,7 +493,33 @@
         }
     }
 
+    @media only screen and (max-width: $md) {
+        h2 {
+            margin-top: 5rem;
+        }
+
+        .skill-heading {
+            font-size: 4rem;
+        }
+
+    }
+
+    @media only screen and (max-width: $sm-md) {
+        h2 {
+            margin-top: 4rem;
+        }
+
+        .skill-heading {
+            font-size: 3.5rem;
+        }
+
+    }
+
     @media only screen and (max-width: $sm) {
+        h2 {
+            margin-top: 3rem;
+        }
+
         .left {
             .skills-point {
                 margin-bottom: 1rem;
@@ -483,6 +543,14 @@
     }
 
     @media only screen and (max-width: $xs) {
+        .left {
+            .skills-point {
+                li {
+                    font-size: 2rem;
+                }
+            }
+        }
+
         .right {
             .front-end-icon {
                 .window {
@@ -573,19 +641,19 @@
             .back-end-icon {
                 .wheels {
                     .wheel-top {
-                        width: 22rem;
+                        width: 19rem;
                         top: 5.5rem;
                         right: 5.5rem;
 
                         &-clipping {
-                            width: 22rem;
+                            width: 19rem;
                             top: 5.5rem;
                             right: 5.5rem;
                         }
                     }
 
                     .wheel-bot {
-                        width: 19rem;
+                        width: 17rem;
                         bottom: 5.5rem;
                         left: 5.5rem;
                     }

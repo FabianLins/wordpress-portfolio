@@ -1,12 +1,15 @@
-
 let lockScroll = false;
 let projectsLocked = true;
+
+function unlockProjects() {
+    document.querySelector(".projects").classList.add("js-display-block-important");
+    projectsLocked = false;
+}
 
 window.onscroll = () => {
     if (!lockScroll && (window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
         if (projectsLocked) {
-            document.querySelector(".projects").classList.add("js-display-block-important");
-            projectsLocked = false;
+            unlockProjects();
         }
         else {
             document.querySelector(".list-of-skills").classList.add("js-display-block-important");

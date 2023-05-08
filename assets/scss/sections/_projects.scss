@@ -1,5 +1,5 @@
 .projects {
-    .header-container {
+    .headline-container {
         background: $gray-dark;
         z-index: 3;
         position: relative;
@@ -16,6 +16,11 @@
     .h2 {
         color: $blue-light;
         border-bottom-color: $blue-light;
+    }
+
+    .all-projects {
+        // Fixes unwanted pixel row
+        margin-top: -1px;
     }
 
     .project {
@@ -578,6 +583,7 @@
         &.final-block {
             .container {
                 min-height: 320px;
+                padding-bottom: 4rem;
             }
 
             .relative {
@@ -690,6 +696,7 @@
             }
         }
 
+        // .project media queries
         @media only screen and (max-width: $lg) {
             .grid {
                 gap: 0;
@@ -699,6 +706,14 @@
                 grid-column: col-start/span 12;
             }
 
+            .h3 {
+                font-size: 4.4rem;
+            }
+
+            .project-info {
+                margin-top: 0;
+            }
+
             .right {
                 grid-column: col-start/span 12;
                 margin-top: 4rem;
@@ -706,6 +721,10 @@
                 &-content {
                     margin: 0 auto;
                 }
+            }
+
+            .buttons {
+                margin-top: 2rem;
             }
 
             .button-container {
@@ -722,8 +741,21 @@
             }
         }
 
+        @media only screen and (max-width: $md) {
+            .h3 {
+                font-size: 4rem;
+            }
+        }
+
+        @media only screen and (max-width: $sm-md) {
+            .h3 {
+                font-size: 3.5rem;
+            }
+        }
+
         @media only screen and (max-width: $xs) {
             font-size: 2rem;
+
 
             .button-container {
                 width: 100%;
@@ -800,6 +832,31 @@
                 svg {
                     width: 3.5rem;
                 }
+            }
+        }
+    }
+
+    // .projects => media queries
+    @media only screen and (max-width: $md) {
+        .headline-container {
+            h2 {
+                padding-top: 5rem;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $sm-md) {
+        .headline-container {
+            h2 {
+                padding-top: 4rem;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $sm) {
+        .headline-container {
+            h2 {
+                padding-top: 3rem;
             }
         }
     }

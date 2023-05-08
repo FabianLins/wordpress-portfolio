@@ -24,6 +24,11 @@ svg {
     height: auto;
 }
 
+
+img {
+    max-width: 100%;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -33,6 +38,8 @@ body {
     background: linear-gradient(rgba($gray, 0) 70%, rgba($gray, .25) 100%);
     background-attachment: fixed;
     overscroll-behavior: none;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0;
 }
 
 section {
@@ -51,6 +58,18 @@ strong {
     letter-spacing: -1px;
     line-height: 1;
     z-index: 2;
+
+    @media only screen and (max-width: $lg) {
+        font-size: 6.5rem;
+    }
+
+    @media only screen and (max-width: $md) {
+        font-size: 6rem;
+    }
+
+    @media only screen and (max-width: $sm-md) {
+        font-size: 5.5rem;
+    }
 }
 
 .grid {
@@ -59,41 +78,20 @@ strong {
     gap: 3rem;
 }
 
-.mt-header {
-    margin-top: 13rem;
-
-    @media only screen and (max-width: $lg) {
-        margin-top: 10rem;
-
-    }
-
-    @media only screen and (max-width: $md) {
-        margin-top: 9rem;
-
-    }
-
-    @media only screen and (max-width: $sm-md) {
-        margin-top: 8rem;
-
-    }
-
-    @media only screen and (max-width: $sm) {
-        margin-top: 7rem;
-
-    }
-
-    @media only screen and (max-width: $xs) {
-        margin-top: 6rem;
-
-    }
-}
-
 .wheel-icon {
     position: fixed;
     bottom: -25rem;
     width: 800px;
     left: -7rem;
     opacity: .025;
+
+    @media only screen and (max-width: $sm-md) {
+        bottom: -20rem;
+    }
+
+    @media only screen and (max-width: $sm) {
+        bottom: -15rem;
+    }
 }
 
 .h-pl {
@@ -221,6 +219,19 @@ em {
         &::before {
             box-shadow: 0 0 5rem 3rem $blue;
         }
+
+        @media only screen and (max-width: $lg) {
+            font-size: 4.4rem;
+            padding: 1rem 2rem;
+        }
+
+        @media only screen and (max-width: $md) {
+            font-size: 4.2rem;
+        }
+
+        @media only screen and (max-width: $sm-md) {
+            font-size: 4rem;
+        }
     }
 
     @media only screen and (max-width: $lg) {
@@ -228,8 +239,4 @@ em {
         width: 100%;
         text-align: center;
     }
-}
-
-img {
-    max-width: 100%;
 }

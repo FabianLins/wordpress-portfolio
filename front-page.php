@@ -2,7 +2,7 @@
 include "inc/helpers.php";
 get_header();
 
-$logoPath = get_template_directory_uri() . "/assets/images/logo.png";
+$logoPath = false;
 if (function_exists("the_custom_logo")) {
     $logo     = get_theme_mod("custom_logo");
     $image    = wp_get_attachment_image_src($logo, "full");
@@ -27,31 +27,38 @@ if (function_exists("the_custom_logo")) {
                     }
                     ?>
                 </div>
-                <div class="photo">
-                    <img src="<?php echo $logoPath; ?>" alt="">
-                </div>
+                <?php if ($logoPath) {
+                    echo ("<div class='photo'>");
+                        echo ("<img src=" . $logoPath . " alt=''>");
+                    echo ("</div>");
+                } ?>
                 <div class="buttons">
                     <div class="btn-1">
-                        <a href="#href-projects" class="prim-btn big animation-button-blink js-home-btn">
+                        <a href="#href-projects" class="prim-btn big animation-button-blink" onclick="unlockProjects()">
+                            <?php // unlockProjects() => home.js ?>
                             Projects
                         </a>
                     </div>
                     <div class="btn-2">
-                        <a href="#href-skills" class="prim-btn big animation-button-blink animation-delay js-home-btn">
+                        <a href="#href-skills" class="prim-btn big animation-button-blink animation-delay"
+                            onclick="unlockSections()">
+                            <?php // unlockSections() => scroll.js ?>
                             List of skills
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="right">
-                <div class="photo animation-slide-in-left animation-spin-in">
-                    <img src="<?php echo $logoPath; ?>" alt="">
-                </div>
-            </div>
+            <?php if ($logoPath) {
+                echo ("<div class='right'>");
+                    echo ("<div class='photo animation-slide-in-left animation-spin-in'>");
+                        echo ("<img src=" . $logoPath . " alt=''>");
+                    echo ("</div>");
+                echo ("</div>");
+            } ?>
         </div>
     </div>
     <img class="wheel-icon animation-spin" src="<?php echo (get_template_directory_uri() . "/svg/wheel.svg"); ?>"
-        alt="" />
+        alt="" draggable="false"/>
 </section>
 <?php
 include "template-parts/pages/page_projects/page_projects.php";
