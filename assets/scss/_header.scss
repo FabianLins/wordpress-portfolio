@@ -1,11 +1,11 @@
 .header {
     background: $blue-darkest;
     word-break: break-word;
+    position: relative;
 
     .banner {
         position: relative;
         height: 100%;
-
 
         .name {
             z-index: 3;
@@ -210,4 +210,59 @@
             }
         }
     }
+}
+
+.scroll-arrow {
+    width: 8rem;
+    height: 8rem;
+    background: rgba(darken($prim, 5), .5);
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
+    z-index: 7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(.2rem);
+    transition: background .4s ease-in;
+
+    @media only screen and (min-width: $lg) {
+
+        &:hover,
+        &:focus-within {
+            background: rgba($prim, 1);
+
+            svg {
+                transform: rotate(180deg) translateY(1rem);
+            }
+
+            ~.scroll-bottom-fade {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    }
+
+    svg {
+        fill: $blue-light;
+        transform: rotate(180deg) translateY(0);
+        width: 65%;
+        margin: 0 auto;
+        left: 50%;
+        transition: transform 0.4s ease-in-out;
+    }
+}
+
+.scroll-bottom-fade {
+    width: 100%;
+    position: fixed;
+    height: 16rem;
+    background: linear-gradient(180deg, transparent, rgba($black, .3));
+    bottom: 0;
+    z-index: 6;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform .3s ease-in-out, opacity .4s ease-in-out;
 }

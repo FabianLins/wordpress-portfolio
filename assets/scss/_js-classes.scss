@@ -33,3 +33,32 @@
     }
 
 }
+
+.js-display-block-important {
+    display: block !important;
+}
+
+.js-hide-items {
+    .left {
+        transform: translateX(-100vw) !important;
+        opacity: 0 !important;
+    }
+
+    .right {
+        transform: translateX(100vw) rotate(45deg) !important;
+        opacity: 0 !important;
+    }
+}
+
+.js-scroll-bottom-fade {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.js-arrow-rotate-bg {
+    background: rgba($prim, 1) !important;
+
+    svg {
+        transform: rotate(180deg) translateY(1rem) !important;
+    }
+}

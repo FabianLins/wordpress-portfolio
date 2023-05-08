@@ -48,7 +48,6 @@
 
         .left {
             grid-column: col-start / span 7;
-
         }
 
         .project-info {
@@ -576,27 +575,6 @@
             }
         }
 
-        &:nth-of-type(even) {
-            .container-parent {
-                background: $gray-darker;
-            }
-
-            .created-in {
-                .calender {
-                    .circle-container {
-                        border-color: $gray-darker;
-                        background: $gray-darker;
-                    }
-                }
-            }
-        }
-
-        &:last-of-type:not(.final-block) {
-            .container {
-                padding-bottom: 8rem;
-            }
-        }
-
         &.final-block {
             .container {
                 min-height: 320px;
@@ -659,6 +637,57 @@
                 }
             }
 
+        }
+
+        &:nth-of-type(even) {
+            .container-parent {
+                background: $gray-darker;
+            }
+
+            .created-in {
+                .calender {
+                    .circle-container {
+                        border-color: $gray-darker;
+                        background: $gray-darker;
+                    }
+                }
+            }
+        }
+
+        &:last-of-type:not(.final-block) {
+            .container {
+                padding-bottom: 8rem;
+            }
+        }
+
+        &:nth-of-type(1) {
+            .left {
+                transition: transform .7s ease-in, opacity .7s ease-in;
+            }
+
+            .right {
+                transition: transform 1.3s ease-in, opacity 1.3s ease-in;
+            }
+        }
+
+        &:nth-of-type(2) {
+            .left {
+                transition: transform 1s ease-in, opacity 1s ease-in;
+            }
+
+            .right {
+                transition: transform 1.6s ease-in, opacity 1.6s ease-in;
+            }
+        }
+
+        &:nth-of-type(3) {
+            .left {
+                transition: transform 1.3s ease-in, opacity 1.3s ease-in;
+            }
+
+            .right {
+                transition: transform 1.9s ease-in, opacity 1.9s ease-in;
+            }
         }
 
         @media only screen and (max-width: $lg) {

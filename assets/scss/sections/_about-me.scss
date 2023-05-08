@@ -1,5 +1,6 @@
 .about-me {
     padding-bottom: 10rem;
+    font-size: 2.4rem;
 
     .left {
         z-index: 2;
@@ -18,6 +19,7 @@
                 label {
                     cursor: pointer;
                 }
+
                 display: inline-flex;
                 text-decoration: none;
 
@@ -92,8 +94,11 @@
     }
 
     @media only screen and (max-width: $xs) {
+        font-size: 2rem;
+
         .wheel-icon {
             margin-top: -25rem;
         }
+
     }
 }

@@ -24,7 +24,7 @@ $title = $query->queried_object->post_title;
 ?>
 
 <section class="projects">
-    <div class="header-container mt-header">
+    <div class="header-container">
         <h2 id="href-projects" class="h2 h-pl animation-slide-in-right">
             <?php echo $title; ?>
         </h2>
