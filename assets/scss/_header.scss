@@ -83,6 +83,7 @@
         }
     }
 
+    // .header => media queries
     @media only screen and (max-width: $lg) {
         .banner {
             .name {
@@ -149,12 +150,13 @@
             .name {
                 font-size: 4.2rem;
                 margin-left: 4rem;
+                margin-right: 4rem;
             }
 
             .slogan {
                 margin-top: 0;
                 margin-left: 4rem;
-                padding-bottom: 7rem;
+                margin-right: 4rem;
             }
 
             .icons {
@@ -170,11 +172,12 @@
             .name {
                 font-size: 3.7rem;
                 margin-left: 3rem;
+                margin-right: 3rem;
             }
 
             .slogan {
-
                 margin-left: 3rem;
+                margin-right: 3rem;
                 padding-bottom: 7rem;
             }
 
@@ -195,9 +198,31 @@
             }
 
             .slogan {
-
                 margin-left: 3rem;
                 padding-bottom: 5rem;
+            }
+
+            .icons {
+                gap: 1rem;
+                padding: 1rem;
+
+                img {
+                    max-width: 40px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 380px) {
+        .banner {
+            .name {
+                margin-left: 2rem;
+                margin-right: 2rem;
+            }
+
+            .slogan {
+                margin-left: 2rem;
+                margin-right: 2rem;
             }
 
             .icons {
@@ -237,6 +262,7 @@
     }
 
     @media (pointer: fine) {
+
         &:hover,
         &:focus-within {
             background: rgba($prim, 1);

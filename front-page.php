@@ -2,12 +2,9 @@
 include "inc/helpers.php";
 get_header();
 
-$logoPath = false;
-if (function_exists("the_custom_logo")) {
-    $logo     = get_theme_mod("custom_logo");
-    $image    = wp_get_attachment_image_src($logo, "full");
-    $logoPath = $image[0];
-}
+$logo     = get_theme_mod("custom_logo");
+$image    = wp_get_attachment_image_src($logo, "full");
+$logoPath = $image[0];
 
 ?>
 <section class="about-me">

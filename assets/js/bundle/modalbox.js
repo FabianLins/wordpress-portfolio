@@ -18,10 +18,17 @@ function handleToggle(event) {
     if (event.key === "Enter") {
         const selector = document.getElementById(this.htmlFor);
         selector.checked = !selector.checked;
+
         if (modalActive) {
-            setTimeout(() => {
-                removeFocus();
-            }, 50)
+            const allClasses = this.classList;
+            for (const currClass of allClasses) {
+                if (currClass === "js-modal-close") {
+                    setTimeout(() => {
+                        removeFocus();
+                    }, 50)
+                    break;
+                }
+            }
         }
     }
 }

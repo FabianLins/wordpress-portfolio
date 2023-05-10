@@ -1,5 +1,5 @@
 function mobileScrollFix() {
-    if (window.innerWidth <= 991) {
+    if(window.matchMedia("(any-pointer: coarse)").matches) {
         const selScrollArr = document.querySelector(".scroll-arrow");
         const selScrollBot = document.querySelector(".scroll-bottom-fade");
         selScrollArr.classList.add("js-arrow-rotate-bg");

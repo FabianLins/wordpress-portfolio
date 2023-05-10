@@ -23,6 +23,10 @@
                 }
 
                 margin-bottom: 2rem;
+
+                @media only screen and (max-width: ($lg)) {
+                    margin-bottom: 0;
+                }
             }
         }
     }
@@ -494,14 +498,28 @@
     }
 
     @media only screen and (max-width: $md) {
+        padding-bottom: 8rem;
+
         h2 {
             margin-top: 5rem;
         }
 
         .skill-heading {
             font-size: 4rem;
+            margin-top: 2rem;
         }
 
+        .left {
+            .skills {
+                margin-top: 1rem;
+            }
+
+            .skills-point {
+                li {
+                    font-size: 2rem;
+                }
+            }
+        }
     }
 
     @media only screen and (max-width: $sm-md) {
@@ -513,6 +531,11 @@
             font-size: 3.5rem;
         }
 
+        .left {
+            .skills {
+                margin-top: .5rem;
+            }
+        }
     }
 
     @media only screen and (max-width: $sm) {
@@ -543,6 +566,10 @@
     }
 
     @media only screen and (max-width: $xs) {
+        .skill-heading {
+            margin-top: 1.5rem;
+        }
+
         .left {
             .skills-point {
                 li {

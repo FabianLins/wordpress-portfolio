@@ -696,8 +696,10 @@
             }
         }
 
-        // .project media queries
+        // .project => media queries
         @media only screen and (max-width: $lg) {
+            font-size: 2.3rem;
+
             .grid {
                 gap: 0;
             }
@@ -742,20 +744,35 @@
         }
 
         @media only screen and (max-width: $md) {
+            font-size: 2.2rem;
+
             .h3 {
                 font-size: 4rem;
+            }
+
+            .right-content {
+                .project-state {
+                    font-size: 2.7rem;
+                }
             }
         }
 
         @media only screen and (max-width: $sm-md) {
+            font-size: 2.1rem;
+
             .h3 {
                 font-size: 3.5rem;
+            }
+
+            .right-content {
+                .project-state {
+                    font-size: 2.5rem;
+                }
             }
         }
 
         @media only screen and (max-width: $xs) {
             font-size: 2rem;
-
 
             .button-container {
                 width: 100%;
