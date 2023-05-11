@@ -88,6 +88,10 @@
                         }
                     }
 
+                    .btn-1 {
+                        margin-top: 0;
+                    }
+
                 }
             }
 
@@ -109,6 +113,25 @@
             font-size: 2.3rem;
             margin-bottom: 1.5rem;
         }
+
+        .grid {
+            .left {
+
+                .text-box {
+                    margin-top: 2rem;
+                }
+
+                .photo {
+                    margin: 3.5rem auto;
+                }
+
+                .buttons {
+                    .btn-2 {
+                        margin-top: 3.5rem;
+                    }
+                }
+            }
+        }
     }
 
     @media only screen and (max-width: $sm-md) {
@@ -122,6 +145,25 @@
             font-size: 2.2rem;
             margin-bottom: 1.2rem;
         }
+
+        .grid {
+            .left {
+                .text-box {
+                    margin-top: 1.5rem;
+                }
+
+                .photo {
+                    margin: 3rem auto;
+                }
+
+                .buttons {
+                    .btn-2 {
+                        margin-top: 3rem;
+                    }
+                }
+            }
+        }
+
     }
 
     @media only screen and (max-width: $sm) {
@@ -135,15 +177,47 @@
             font-size: 2.1rem;
             margin-bottom: 1rem;
         }
+
+        .grid {
+            .left {
+                .photo {
+                    margin: 2rem auto;
+                }
+
+                .buttons {
+                    .btn-2 {
+                        margin-top: 2rem;
+                    }
+                }
+            }
+        }
     }
 
     @media only screen and (max-width: $xs) {
         .mt-header {
-            margin-top: 6rem;
+            margin-top: 5rem;
         }
 
         p {
             font-size: 2rem;
+        }
+
+        .grid {
+            .left {
+                .text-box {
+                    margin-top: 1rem;
+                }
+
+                .photo {
+                    margin: 1.5rem auto;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $xxs) {
+        .mt-header {
+            margin-top: 4rem;
         }
     }
 }

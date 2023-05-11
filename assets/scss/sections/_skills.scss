@@ -241,8 +241,8 @@
                         font-size: 14rem;
                         margin-left: 1rem;
                         line-height: 1;
-                        padding-top: 2.5rem;
-                        padding-bottom: 3.5rem;
+                        padding-top: 0;
+                        padding-bottom: 0;
                         opacity: 1;
                         transition: .1s;
 
@@ -315,8 +315,8 @@
                 .window {
                     .bottom {
                         .tag-close {
-                            padding-top: 1.5rem;
-                            padding-bottom: 2.5rem;
+                            //padding-top: 1.5rem;
+                            //padding-bottom: 2.5rem;
                         }
                     }
                 }
@@ -356,8 +356,8 @@
                 .window {
                     .bottom {
                         .tag-close {
-                            padding-top: .5rem;
-                            padding-bottom: 1.5rem;
+                            //padding-top: .5rem;
+                            //padding-bottom: 1.5rem;
                             font-size: 12rem;
                         }
                     }
@@ -479,6 +479,12 @@
                 margin: 0 auto;
             }
 
+            .front-end-icon {
+                .window {
+                    width: 57%;
+                }
+            }
+
             .back-end-icon {
                 .wheels {
                     .wheel-top {
@@ -511,12 +517,17 @@
 
         .left {
             .skills {
-                margin-top: 1rem;
+                margin-top: .4rem;
+                margin-left: 1rem;
             }
 
             .skills-point {
                 li {
                     font-size: 2rem;
+
+                    &::before {
+                        margin-right: .6rem;
+                    }
                 }
             }
         }
@@ -533,12 +544,14 @@
 
         .left {
             .skills {
-                margin-top: .5rem;
+                margin-top: .3rem;
             }
         }
     }
 
     @media only screen and (max-width: $sm) {
+        padding-bottom: 2rem;
+
         h2 {
             margin-top: 3rem;
         }
@@ -558,7 +571,7 @@
 
                 .rating-container {
                     margin-top: .3rem;
-                    margin-left: 2rem;
+                    margin-left: 1rem;
                     grid-column: col-start /span 12;
                 }
             }
@@ -571,9 +584,13 @@
         }
 
         .left {
-            .skills-point {
-                li {
-                    font-size: 2rem;
+            .skills {
+                margin-left: 0;
+
+                &-point {
+                    li {
+                        font-size: 2rem;
+                    }
                 }
             }
         }
@@ -659,7 +676,7 @@
 
                     .bottom {
                         .tag-close {
-                            font-size: 7rem;
+                            font-size: 8rem;
                         }
                     }
                 }

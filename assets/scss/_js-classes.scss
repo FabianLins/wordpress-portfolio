@@ -25,29 +25,10 @@
     .projects {
         display: block !important;
     }
-
-    .projects {
-        .scroll-arrow {
-            z-index: 22;
-        }
-    }
-
 }
 
 .js-display-block-important {
     display: block !important;
-}
-
-.js-hide-items {
-    .left {
-        transform: translateX(-100vw) !important;
-        opacity: 0 !important;
-    }
-
-    .right {
-        transform: translateX(100vw) rotate(45deg) !important;
-        opacity: 0 !important;
-    }
 }
 
 .js-scroll-bottom-fade {

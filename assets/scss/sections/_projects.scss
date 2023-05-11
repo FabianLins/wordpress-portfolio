@@ -697,6 +697,36 @@
         }
 
         // .project => media queries
+        @media only screen and (max-width: 1260px) {
+            .button-container {
+                span {
+                    font-size: 3.7rem;
+                }
+            }
+        }
+
+        @media only screen and (max-width: 1250px) {
+            .button-container {
+                span {
+                    font-size: 3.6rem;
+                }
+            }
+        }
+
+        @media only screen and (max-width: 1240px) {
+            .button-container {
+                span {
+                    font-size: 3.5rem;
+                }
+            }
+        }
+
+        @media only screen and (max-width: 1240px) {
+            .button-container {
+                width: 90%;
+            }
+        }
+
         @media only screen and (max-width: $lg) {
             font-size: 2.3rem;
 
@@ -722,6 +752,22 @@
 
                 &-content {
                     margin: 0 auto;
+
+                    .project-state {
+                        &.in-progress {
+                            .circle {
+                                max-width: 4.7rem;
+                            }
+                        }
+
+                        &.finished {
+                            .icon {
+                                svg {
+                                    max-width: 4.7rem;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -731,6 +777,10 @@
 
             .button-container {
                 width: 100%;
+
+                span {
+                    font-size: 3.8rem;
+                }
             }
 
             &.final-block {
@@ -739,6 +789,14 @@
                         grid-column: col-start/span 12;
                         width: 100%;
                     }
+                }
+            }
+
+            .modal-content {
+                padding: 1.5rem 2rem;
+
+                p {
+                    margin-left: 1.5rem;
                 }
             }
         }
@@ -755,6 +813,22 @@
                     font-size: 2.7rem;
                 }
             }
+
+            .button-container {
+                width: 100%;
+
+                span {
+                    font-size: 3.7rem;
+                }
+            }
+
+            .modal-content {
+                padding: 1rem 1.5rem;
+
+                p {
+                    margin-left: 1rem;
+                }
+            }
         }
 
         @media only screen and (max-width: $sm-md) {
@@ -766,9 +840,17 @@
 
             .right-content {
                 .project-state {
-                    font-size: 2.5rem;
+                    font-size: 2.4rem;
+
                 }
             }
+
+            .button-container {
+                span {
+                    font-size: 3.6rem;
+                }
+            }
+
         }
 
         @media only screen and (max-width: $xs) {
@@ -818,7 +900,7 @@
 
             .right-content {
                 .project-state {
-                    font-size: 2.5rem;
+                    font-size: 2.3rem;
 
                     &.in-progress {
                         .circle {

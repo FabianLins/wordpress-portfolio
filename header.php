@@ -39,13 +39,13 @@
                 <div class="icons">
                     <img class="animation-jump" src="<?php echo (get_template_directory_uri() . "/svg/html.svg"); ?>"
                         alt="" />
-                    <img class="animation-jump animation-delay-1"
+                    <img class="animation-jump delay"
                         src="<?php echo (get_template_directory_uri() . "/svg/css.svg"); ?>" alt="" />
-                    <img class="animation-jump animation-delay-2"
+                    <img class="animation-jump delay-2"
                         src="<?php echo (get_template_directory_uri() . "/svg/js.svg"); ?>" alt="" />
-                    <img class="animation-jump animation-delay-3"
+                    <img class="animation-jump delay-3"
                         src="<?php echo (get_template_directory_uri() . "/svg/php.svg"); ?>" alt="" />
-                    <img class="animation-jump animation-delay-4"
+                    <img class="animation-jump delay-4"
                         src="<?php echo (get_template_directory_uri() . "/svg/adobe-cc.svg"); ?>" alt="" />
                 </div>
             </div>

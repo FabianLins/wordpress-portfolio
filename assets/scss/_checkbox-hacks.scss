@@ -11,6 +11,7 @@
 
             .tag-close {
                 opacity: 0;
+                padding: 0;
             }
         }
     }
@@ -44,6 +45,26 @@
         ~.front-end-icon {
             .window {
                 width: 77%;
+
+                @media only screen and (max-width: $lg) {
+                    width: 67%;
+                }
+            }
+
+            .tag-close {
+                padding-top: 2.5rem;
+                padding-bottom: 3.5rem;
+
+                @media only screen and (max-width: $xxl) {
+                    padding-top: 1.5rem;
+                    padding-bottom: 2.5rem;
+                }
+
+                @media only screen and (max-width: $lg-xl) {
+                    padding-top: .5rem;
+                    padding-bottom: 1.5rem;
+                }
+
             }
         }
     }

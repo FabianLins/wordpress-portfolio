@@ -13,8 +13,8 @@ $logoPath = $image[0];
     </h2>
     <div class="container">
         <div class="grid">
-            <div class="left animation-slide-in-right">
-                <div class="text-box">
+            <div class="left">
+                <div class="text-box animation-slide-in-right">
                     <?php
                     if (have_posts()) {
                         while (have_posts()) {
@@ -25,11 +25,11 @@ $logoPath = $image[0];
                     ?>
                 </div>
                 <?php if ($logoPath) {
-                    echo ("<div class='photo'>");
+                    echo ("<div class='photo animation-slide-in-left animation-spin-in'>");
                         echo ("<img src=" . $logoPath . " alt=''>");
                     echo ("</div>");
                 } ?>
-                <div class="buttons">
+                <div class="buttons animation-slide-in-right delay">
                     <div class="btn-1">
                         <a href="#href-projects" class="prim-btn big animation-button-blink" onclick="unlockProjects()">
                             <?php // unlockProjects() => home.js ?>
@@ -37,7 +37,7 @@ $logoPath = $image[0];
                         </a>
                     </div>
                     <div class="btn-2">
-                        <a href="#href-skills" class="prim-btn big animation-button-blink animation-delay"
+                        <a href="#href-skills" class="prim-btn big animation-button-blink delay"
                             onclick="unlockSections()">
                             <?php // unlockSections() => scroll.js ?>
                             List of skills
