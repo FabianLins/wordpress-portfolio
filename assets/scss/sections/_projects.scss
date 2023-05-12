@@ -148,6 +148,14 @@
             }
         }
 
+        .left-mobile-photo {
+            display: none;
+
+            .right-content {
+                max-width: 450px;
+            }
+        }
+
         .buttons {
             gap: 0;
             margin-top: 4rem;
@@ -746,9 +754,34 @@
                 margin-top: 0;
             }
 
+            .left-mobile-photo {
+                display: block;
+            }
+
+            .buttons {
+                margin-top: 3.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .button-container {
+                width: 100%;
+
+                span {
+                    font-size: 3.8rem;
+                }
+            }
+
+            &.final-block {
+                .buttons {
+                    .button-container {
+                        grid-column: col-start/span 12;
+                        width: 100%;
+                    }
+                }
+            }
+
             .right {
-                grid-column: col-start/span 12;
-                margin-top: 4rem;
+                display: none;
 
                 &-content {
                     margin: 0 auto;
@@ -771,29 +804,9 @@
                 }
             }
 
-            .buttons {
-                margin-top: 2rem;
-            }
-
-            .button-container {
-                width: 100%;
-
-                span {
-                    font-size: 3.8rem;
-                }
-            }
-
-            &.final-block {
-                .buttons {
-                    .button-container {
-                        grid-column: col-start/span 12;
-                        width: 100%;
-                    }
-                }
-            }
-
             .modal-content {
                 padding: 1.5rem 2rem;
+                margin-left: 4rem;
 
                 p {
                     margin-left: 1.5rem;
@@ -822,8 +835,12 @@
                 }
             }
 
+            .buttons {
+                margin-top: 2rem;
+            }
+
             .modal-content {
-                padding: 1rem 1.5rem;
+                margin-left: 3rem;
 
                 p {
                     margin-left: 1rem;
@@ -851,6 +868,9 @@
                 }
             }
 
+            .modal-content {
+                margin-left: 2rem;
+            }
         }
 
         @media only screen and (max-width: $xs) {
@@ -881,6 +901,10 @@
                     margin-left: 1rem;
                     font-weight: 100;
                 }
+            }
+
+            .modal-content {
+                margin-left: 1rem;
             }
         }
 

@@ -711,15 +711,14 @@
             .back-end-icon {
                 .wheels {
                     .wheel-top {
-                        width: 18rem;
+                        width: 19rem;
                         top: 5rem;
                         right: 5rem;
 
                         &-clipping {
-                            width: 18rem;
+                            width: 19rem;
                             top: 5rem;
                             right: 5rem;
-
                         }
                     }
 
@@ -727,7 +726,6 @@
                         width: 15rem;
                         bottom: 5rem;
                         left: 5rem;
-
                     }
                 }
             }
@@ -740,22 +738,14 @@
                 .wheels {
                     .wheel-top {
                         width: 18rem;
-                        top: 4rem;
-                        right: 4rem;
 
                         &-clipping {
                             width: 18rem;
-                            top: 4rem;
-                            right: 4rem;
-
                         }
                     }
 
                     .wheel-bot {
                         width: 15rem;
-                        bottom: 4rem;
-                        left: 4rem;
-
                     }
                 }
             }
@@ -768,47 +758,37 @@
                 .wheels {
                     .wheel-top {
                         width: 17rem;
-                        top: 4rem;
-                        right: 4rem;
 
                         &-clipping {
                             width: 17rem;
-                            top: 4rem;
-                            right: 4rem;
-
                         }
                     }
 
                     .wheel-bot {
                         width: 14rem;
-                        bottom: 4rem;
-                        left: 4rem;
-
                     }
                 }
             }
         }
     }
 
-    @media only screen and (max-width: 350px) {
+    @media only screen and (max-width: 340px) {
         .right {
             .back-end-icon {
                 .wheels {
                     .wheel-top {
-                        top: 3.5rem;
-                        right: 3.5rem;
+                        top: 4rem;
+                        right: 4rem;
 
                         &-clipping {
-                            top: 3.5rem;
-                            right: 3.5rem;
-
+                            top: 4rem;
+                            right: 4rem;
                         }
                     }
 
                     .wheel-bot {
-                        bottom: 3.5rem;
-                        left: 3.5rem;
-
+                        bottom: 4rem;
+                        left: 4rem;
                     }
                 }
             }
@@ -820,19 +800,18 @@
             .back-end-icon {
                 .wheels {
                     .wheel-top {
-                        top: 3rem;
-                        right: 3rem;
+                        top: 3.5rem;
+                        right: 3.5rem;
 
                         &-clipping {
-                            top: 3rem;
-                            right: 3rem;
-
+                            top: 3.5rem;
+                            right: 3.5rem;
                         }
                     }
 
                     .wheel-bot {
-                        bottom: 3rem;
-                        left: 3rem;
+                        bottom: 3.5rem;
+                        left: 3.5rem;
 
                     }
                 }
