@@ -7,7 +7,7 @@ function unlockProjects() {
 }
 
 window.addEventListener('scroll', () => {
-    if (!lockScroll && (window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+    if (!lockScroll && (window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight - 100) {
         if (projectsLocked) {
             unlockProjects();
         }

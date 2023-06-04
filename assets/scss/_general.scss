@@ -24,22 +24,22 @@ svg {
     height: auto;
 }
 
-
 img {
     max-width: 100%;
 }
 
 html {
     scroll-behavior: smooth;
+    overscroll-behavior: none;
 }
 
 body {
     font-family: "Heebo";
     background: linear-gradient(rgba($gray, 0) 70%, rgba($gray, .25) 100%);
     background-attachment: fixed;
-    overscroll-behavior: none;
     font-variant-ligatures: none;
     font-feature-settings: "liga" 0;
+    overflow-y: scroll;
 }
 
 section {
